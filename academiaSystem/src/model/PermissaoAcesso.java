@@ -9,6 +9,6 @@ package model;
  *
  * @author wesle
  */
-public class FichaTreino {
+public class PermissaoAcesso {
     
 }
