@@ -1,7 +1,7 @@
 package model;
 
 public class Aluno extends Usuario {
-    
+
     private int matriculaAluno;
     private String dataMatricula;
     private String status;
@@ -12,7 +12,8 @@ public class Aluno extends Usuario {
     private Fatura fatura;
     private PermissaoAcesso permissaoAcesso;
 
-    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura, PermissaoAcesso permissaoAcesso) {
+    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura, PermissaoAcesso permissaoAcesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, String dataNascimento, String estadoCivil, String foto) {
+        super(CPF, RG, nome, telefone, celular, email, sexo, dataNascimento, estadoCivil, foto);
         this.matriculaAluno = matriculaAluno;
         this.dataMatricula = dataMatricula;
         this.status = status;
@@ -24,7 +25,6 @@ public class Aluno extends Usuario {
         this.permissaoAcesso = permissaoAcesso;
     }
 
-    
     public int getMatriculaAluno() {
         return matriculaAluno;
     }
@@ -96,5 +96,5 @@ public class Aluno extends Usuario {
     public void setPermissaoAcesso(PermissaoAcesso permissaoAcesso) {
         this.permissaoAcesso = permissaoAcesso;
     }
-        
+
 }
