@@ -16,10 +16,10 @@ public class EnumEx {
         
         System.out.println("CARGO: " + Cargo.ADMINISTRADOR.getCargo());
         
-        Funcionario f = new Funcionario();
-        f.setCargo(Cargo.values()[2]);
+       // Funcionario f = new Funcionario();
+     //   f.setCargo(Cargo.values()[2]);
         
-        System.out.println("CARGO: " + f.getCargo().getCargo());
+  //      System.out.println("CARGO: " + f.getCargo().getCargo());
     }
     
 }

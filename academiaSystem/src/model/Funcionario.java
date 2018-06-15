@@ -9,7 +9,7 @@ package model;
  *
  * @author wesle
  */
-public class Funcionario {
+public class Funcionario extends Usuario {
     
     private int matriculaFuncionario;
     private Cargo cargo;
@@ -24,7 +24,8 @@ public class Funcionario {
     private Aluno aluno;
     private Funcionario administrador; 
 
-    public Funcionario(int matriculaFuncionario, Cargo cargo, double salario, String dataAdmissao, String dataDemissao, PermissaoAcesso permissaoAcesso, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador) {
+    public Funcionario(int matriculaFuncionario, Cargo cargo, double salario, String dataAdmissao, String dataDemissao, PermissaoAcesso permissaoAcesso, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, String dataNascimento, String estadoCivil, String foto) {
+        super(CPF, RG, nome, telefone, celular, email, sexo, dataNascimento, estadoCivil, foto);
         this.matriculaFuncionario = matriculaFuncionario;
         this.cargo = cargo;
         this.salario = salario;
@@ -38,6 +39,8 @@ public class Funcionario {
         this.aluno = aluno;
         this.administrador = administrador;
     }
+
+   
 
     public int getMatriculaFuncionario() {
         return matriculaFuncionario;

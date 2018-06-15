@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package academiasystem;
+import utils.Connect;
 
 /**
  *
@@ -15,7 +16,12 @@ public class AcademiaSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+      Connect con = new Connect();
+              
+       if(con.conectaBaseDados() != null) {
+           
+           System.out.println("Base de dados conectada!");
+       }
     }
     
 }

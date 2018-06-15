@@ -11,7 +11,6 @@ package model;
  */
 public class Fatura {
     
-    private int idFatura;
     private double valor;
     private String dataVencimento;
     private String dataPagamento;
@@ -20,8 +19,7 @@ public class Fatura {
     private Aluno aluno;
     private Funcionario secretaria;
 
-    public Fatura(int idFatura, double valor, String dataVencimento, String dataPagamento, String formaPg, String status, Aluno aluno, Funcionario secretaria) {
-        this.idFatura = idFatura;
+    public Fatura(double valor, String dataVencimento, String dataPagamento, String formaPg, String status, Aluno aluno, Funcionario secretaria) {
         this.valor = valor;
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;
@@ -29,14 +27,6 @@ public class Fatura {
         this.status = status;
         this.aluno = aluno;
         this.secretaria = secretaria;
-    }
-
-    public int getIdFatura() {
-        return idFatura;
-    }
-
-    public void setIdFatura(int idFatura) {
-        this.idFatura = idFatura;
     }
 
     public double getValor() {

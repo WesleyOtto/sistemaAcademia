@@ -1,7 +1,6 @@
 package model;
 
 public class Aluno extends Usuario {
-
     private int matriculaAluno;
     private String dataMatricula;
     private String status;

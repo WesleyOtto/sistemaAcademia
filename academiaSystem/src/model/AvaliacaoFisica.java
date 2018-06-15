@@ -2,7 +2,7 @@ package model;
 
 public class AvaliacaoFisica {
 
-    private int idAvaliacaoFisica;
+    private double gluteos;
     private String status;
     private String dataAvaliacao;
     private String dataVencimentoAvaliacao;
@@ -22,8 +22,8 @@ public class AvaliacaoFisica {
     private Funcionario funcionario;
     private Aluno aluno;
 
-    public AvaliacaoFisica(int idAvaliacaoFisica, String status, String dataAvaliacao, String dataVencimentoAvaliacao, double coxa, double altura, double braco, double gorduraCorporal, double frequenciaCardiaca, double abdomem, double peso, double panturrilha, double torax, double peito, double triceps, double supraIliada, double subEscapular, Funcionario funcionario, Aluno aluno) {
-        this.idAvaliacaoFisica = idAvaliacaoFisica;
+    public AvaliacaoFisica(double gluteos, String status, String dataAvaliacao, String dataVencimentoAvaliacao, double coxa, double altura, double braco, double gorduraCorporal, double frequenciaCardiaca, double abdomem, double peso, double panturrilha, double torax, double peito, double triceps, double supraIliada, double subEscapular, Funcionario funcionario, Aluno aluno) {
+        this.gluteos = gluteos;
         this.status = status;
         this.dataAvaliacao = dataAvaliacao;
         this.dataVencimentoAvaliacao = dataVencimentoAvaliacao;
@@ -44,12 +44,12 @@ public class AvaliacaoFisica {
         this.aluno = aluno;
     }
 
-    public int getIdAvaliacaoFisica() {
-        return idAvaliacaoFisica;
+    public double getGluteos() {
+        return gluteos;
     }
 
-    public void setIdAvaliacaoFisica(int idAvaliacaoFisica) {
-        this.idAvaliacaoFisica = idAvaliacaoFisica;
+    public void setGluteos(double gluteos) {
+        this.gluteos = gluteos;
     }
 
     public String getStatus() {
@@ -233,8 +233,11 @@ public class AvaliacaoFisica {
     }
 
     public double pesoResidual(double pesoAtual, String sexo) {
-        if(sexo == "masculino") return pesoAtual*0.24;
-        else return pesoAtual*0.21;
+        if (sexo == "masculino") {
+            return pesoAtual * 0.24;
+        } else {
+            return pesoAtual * 0.21;
+        }
     }
 
 }

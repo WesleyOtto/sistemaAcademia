@@ -11,7 +11,6 @@ package model;
  */
 public class Endereco {
 
-    private int idEndereco;
     private String rua;
     private int numero;
     private String bairro;
@@ -21,7 +20,6 @@ public class Endereco {
     private Usuario usuario;
 
     public Endereco(int idEndereco, String rua, int numero, String bairro, String CEP, String cidade, String estado, Usuario usuario) {
-        this.idEndereco = idEndereco;
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
@@ -29,14 +27,6 @@ public class Endereco {
         this.cidade = cidade;
         this.estado = estado;
         this.usuario = usuario;
-    }
-
-    public int getIdEndereco() {
-        return idEndereco;
-    }
-
-    public void setIdEndereco(int idEndereco) {
-        this.idEndereco = idEndereco;
     }
 
     public String getRua() {
