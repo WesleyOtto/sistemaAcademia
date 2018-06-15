@@ -29,6 +29,9 @@ public class Endereco {
         this.usuario = usuario;
     }
 
+    public Endereco() {
+    }
+    
     public String getRua() {
         return rua;
     }

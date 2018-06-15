@@ -6,7 +6,7 @@ public class Connect {
     
     private static final String USUARIO = "root";
     private static final String SENHA = "otto1305";
-    private static final String URL = "jdbc:mysql://localhost:3306/academiaSystem";
+    private static final String URL = "jdbc:mysql://localhost:3306/mydb";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
             
     public Connect() {

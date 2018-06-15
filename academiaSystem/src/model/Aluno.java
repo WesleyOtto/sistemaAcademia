@@ -23,8 +23,9 @@ public class Aluno extends Usuario {
         this.fatura = fatura;
     }
 
- 
-
+    public Aluno() {
+    }
+    
     public int getMatriculaAluno() {
         return matriculaAluno;
     }

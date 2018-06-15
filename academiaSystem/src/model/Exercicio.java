@@ -26,6 +26,9 @@ public class Exercicio {
         this.planoTreino = planoTreino;
         this.instrutor = instrutor;
     }
+    
+    public Exercicio(){
+    }
 
     public int getCodExercicio() {
         return codExercicio;

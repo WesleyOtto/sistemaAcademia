@@ -11,7 +11,10 @@ public class Acesso {
         this.senha = senha;
         this.usuario = usuario;
     }
-  
+    
+    public Acesso(){
+    }
+    
     public String getLogin() {
         return login;
     }

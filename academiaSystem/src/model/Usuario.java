@@ -36,6 +36,9 @@ public class Usuario {
         this.estadoCivil = estadoCivil;
         this.foto = foto;
     }
+    
+    public Usuario(){
+    }
 
     public String getCPF() {
         return CPF;

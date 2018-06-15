@@ -26,6 +26,9 @@ public class Treino {
         this.instrutor = instrutor;
         this.aluno = aluno;
     }
+    
+    public Treino (){
+    }
 
     public int getCodTreino() {
         return codTreino;

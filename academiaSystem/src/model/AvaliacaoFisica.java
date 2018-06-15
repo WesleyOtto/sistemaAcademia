@@ -44,6 +44,9 @@ public class AvaliacaoFisica {
         this.aluno = aluno;
     }
 
+    public AvaliacaoFisica() {
+    }
+
     public double getGluteos() {
         return gluteos;
     }

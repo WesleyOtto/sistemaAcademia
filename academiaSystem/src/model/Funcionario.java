@@ -37,7 +37,10 @@ public class Funcionario extends Usuario {
         this.aluno = aluno;
         this.administrador = administrador;
     }
-
+    
+    public Funcionario(){
+    }
+    
     public int getMatriculaFuncionario() {
         return matriculaFuncionario;
     }

@@ -31,6 +31,9 @@ public class PlanoTreino {
         this.exercicio = exercicio;
     }
 
+    public PlanoTreino(){
+    }
+    
     public int getCodPlano() {
         return codPlano;
     }

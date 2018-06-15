@@ -28,6 +28,9 @@ public class Fatura {
         this.aluno = aluno;
         this.secretaria = secretaria;
     }
+    
+    public Fatura(){
+    }
 
     public double getValor() {
         return valor;
