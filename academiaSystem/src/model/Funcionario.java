@@ -10,28 +10,26 @@ package model;
  * @author wesle
  */
 public class Funcionario extends Usuario {
-    
+
     private int matriculaFuncionario;
     private Cargo cargo;
     private double salario;
     private String dataAdmissao;
     private String dataDemissao;
-    private PermissaoAcesso permissaoAcesso;
     private AvaliacaoFisica avaliacaoFisica;
     private Exercicio exercicio;
     private Treino treino;
-    private Fatura fatura; 
+    private Fatura fatura;
     private Aluno aluno;
-    private Funcionario administrador; 
+    private Funcionario administrador;
 
-    public Funcionario(int matriculaFuncionario, Cargo cargo, double salario, String dataAdmissao, String dataDemissao, PermissaoAcesso permissaoAcesso, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, String dataNascimento, String estadoCivil, String foto) {
-        super(CPF, RG, nome, telefone, celular, email, sexo, dataNascimento, estadoCivil, foto);
+    public Funcionario(int matriculaFuncionario, Cargo cargo, double salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
+        super(CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
         this.matriculaFuncionario = matriculaFuncionario;
         this.cargo = cargo;
         this.salario = salario;
         this.dataAdmissao = dataAdmissao;
         this.dataDemissao = dataDemissao;
-        this.permissaoAcesso = permissaoAcesso;
         this.avaliacaoFisica = avaliacaoFisica;
         this.exercicio = exercicio;
         this.treino = treino;
@@ -39,8 +37,6 @@ public class Funcionario extends Usuario {
         this.aluno = aluno;
         this.administrador = administrador;
     }
-
-   
 
     public int getMatriculaFuncionario() {
         return matriculaFuncionario;
@@ -80,14 +76,6 @@ public class Funcionario extends Usuario {
 
     public void setDataDemissao(String dataDemissao) {
         this.dataDemissao = dataDemissao;
-    }
-
-    public PermissaoAcesso getPermissaoAcesso() {
-        return permissaoAcesso;
-    }
-
-    public void setPermissaoAcesso(PermissaoAcesso permissaoAcesso) {
-        this.permissaoAcesso = permissaoAcesso;
     }
 
     public AvaliacaoFisica getAvaliacaoFisica() {
@@ -137,6 +125,5 @@ public class Funcionario extends Usuario {
     public void setAdministrador(Funcionario administrador) {
         this.administrador = administrador;
     }
-    
-    
+
 }

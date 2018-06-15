@@ -1,6 +1,7 @@
 package model;
 
 public class Aluno extends Usuario {
+
     private int matriculaAluno;
     private String dataMatricula;
     private String status;
@@ -9,10 +10,9 @@ public class Aluno extends Usuario {
     private AvaliacaoFisica avaliacaoFisica;
     private Treino treino;
     private Fatura fatura;
-    private PermissaoAcesso permissaoAcesso;
 
-    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura, PermissaoAcesso permissaoAcesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, String dataNascimento, String estadoCivil, String foto) {
-        super(CPF, RG, nome, telefone, celular, email, sexo, dataNascimento, estadoCivil, foto);
+    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
+        super(CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
         this.matriculaAluno = matriculaAluno;
         this.dataMatricula = dataMatricula;
         this.status = status;
@@ -21,8 +21,9 @@ public class Aluno extends Usuario {
         this.avaliacaoFisica = avaliacaoFisica;
         this.treino = treino;
         this.fatura = fatura;
-        this.permissaoAcesso = permissaoAcesso;
     }
+
+ 
 
     public int getMatriculaAluno() {
         return matriculaAluno;
@@ -86,14 +87,6 @@ public class Aluno extends Usuario {
 
     public void setFatura(Fatura fatura) {
         this.fatura = fatura;
-    }
-
-    public PermissaoAcesso getPermissaoAcesso() {
-        return permissaoAcesso;
-    }
-
-    public void setPermissaoAcesso(PermissaoAcesso permissaoAcesso) {
-        this.permissaoAcesso = permissaoAcesso;
     }
 
 }
