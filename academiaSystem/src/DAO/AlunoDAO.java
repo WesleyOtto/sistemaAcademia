@@ -4,24 +4,23 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.Acesso;
+import model.Aluno;
 import utils.Connect;
 
-public class AcessoDAO {
+public class AlunoDAO {
 
-    //Metodo para inserção de login/senha
-    public AcessoDAO() {
-    }
-
-    public String insereAcesso(Acesso acesso) {
-        
+    // Insere aluno no BD
+    public int insereAcesso(Aluno aluno, int Usuario_idUsuario) {
+        int matricula = -1;
         try {
-            String login = acesso.getLogin();
+            matricula = aluno.getMatriculaAluno(); 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO acesso (usuario, senha) values";
-            strSQL = strSQL + "('" + login + "',";
-            strSQL = strSQL + "'" + acesso.getSenha() + "');";
+            strSQL = "INSERT INTO aluno (dataMatricula, profissao, status, Usuario_idUsuario) values";
+            strSQL = strSQL + "('" + matricula + "',";
+            strSQL = strSQL + "'" + aluno.getProfissao() + "',";
+            strSQL = strSQL + "'" + aluno.getStatus() + "',";
+            strSQL = strSQL + "'" + Usuario_idUsuario + "');";
 
             //Criando objeto da conexão
             Connect connect = new Connect();
@@ -33,25 +32,25 @@ public class AcessoDAO {
                 stmt.execute(strSQL);
                 connect.desconectaBaseDados(con);
 
-                return login;
+                return matricula;
             } else {
-                return "Erro no banco";
+                return -1;
             }
         } catch (SQLException e) {
             System.err.println(e);
-            return "Erro!!!";
+            return -1;
         }
     }
-
-    //Metodo para deletar/acesso
-    public boolean deletaAcesso(Acesso acesso) {
+    
+    //Metodo para deletar/Aluno
+    public boolean deletaAcesso(Aluno aluno) {
         
         try {
            
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "DELETE FROM acesso WHERE usuario = ";
-            strSQL = strSQL + "'" + acesso.getLogin() + "';";
+            strSQL = "DELETE FROM aluno WHERE matricula = ";
+            strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -73,16 +72,18 @@ public class AcessoDAO {
         }
 
     }
-
-    //Metodo para atualização da senha
-    public boolean atualizaSenha(Acesso acesso, String login) {
+    
+    //Metodo para atualização dos dados do Aluno
+    public boolean atualizaAluno(Aluno aluno, int matricula) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE acesso SET senha = '" + acesso.getSenha() + "'";
-            strSQL = strSQL + "WHERE" + "usuario = '" + login +"';";
-            
+            strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
+            strSQL = strSQL + "status = '" + aluno.getStatus()+ "',";
+            strSQL = strSQL + "status = '" + aluno.getDataMatricula()+ "'";
+            strSQL = strSQL + "WHERE matriculaAluno = '" + matricula+ "';";
+
             //Criando objeto da conexão
             Connect conect = new Connect();
             Connection con = conect.conectaBaseDados();
@@ -104,18 +105,17 @@ public class AcessoDAO {
 
     }
     
-    //Metodo para retornar o acesso desejado
-     public ResultSet buscaDadosPessoa(Acesso acesso){
+     //Metodo para retornar a matricula do aluno desejada
+     public ResultSet buscaDadosPessoa(Aluno aluno){
        
        try{
            Connect conexao = new Connect();
            ResultSet rs = null;
            //Montar a instrução sql
            String strSQL = "";
-           String strSql = "SELECT * FROM acesso";
-           strSQL = strSQL + "WHERE usario = '" + acesso.getLogin()+ "';";
+           String strSql = "SELECT * FROM aluno";
+           strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno()+ "';";
            
-            
             //Realiza a conexao com o banco
            Connection con = conexao.conectaBaseDados();
            if (con != null)
@@ -136,5 +136,4 @@ public class AcessoDAO {
        }   
         
     } 
-    
 }
