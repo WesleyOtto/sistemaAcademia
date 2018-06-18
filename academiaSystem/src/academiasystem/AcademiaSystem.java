@@ -23,7 +23,7 @@ public class AcademiaSystem {
         AcessoDAO acesso = new AcessoDAO();
                
         a = new Acesso();
-        a.setLogin("Wesley1");
+        a.setLogin("Wesley1w2");
         a.setSenha("12345");
         acesso.insereAcesso(a);  
     

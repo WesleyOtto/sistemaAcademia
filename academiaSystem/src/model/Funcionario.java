@@ -12,7 +12,8 @@ package model;
 public class Funcionario extends Usuario {
 
     private int matriculaFuncionario;
-    private Cargo cargo;
+    private int cargo;
+    private String descricaoCargo;
     private double salario;
     private String dataAdmissao;
     private String dataDemissao;
@@ -23,10 +24,10 @@ public class Funcionario extends Usuario {
     private Aluno aluno;
     private Funcionario administrador;
 
-    public Funcionario(int matriculaFuncionario, Cargo cargo, double salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
-        super(CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
+    public Funcionario(int matriculaFuncionario, int cargo, String descricaoCargo, double salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador) {
         this.matriculaFuncionario = matriculaFuncionario;
         this.cargo = cargo;
+        this.descricaoCargo = descricaoCargo;
         this.salario = salario;
         this.dataAdmissao = dataAdmissao;
         this.dataDemissao = dataDemissao;
@@ -37,10 +38,10 @@ public class Funcionario extends Usuario {
         this.aluno = aluno;
         this.administrador = administrador;
     }
-    
-    public Funcionario(){
+
+    public Funcionario() {
     }
-    
+
     public int getMatriculaFuncionario() {
         return matriculaFuncionario;
     }
@@ -49,13 +50,22 @@ public class Funcionario extends Usuario {
         this.matriculaFuncionario = matriculaFuncionario;
     }
 
-    public Cargo getCargo() {
+    public int getCargo() {
         return cargo;
     }
 
-    public void setCargo(Cargo cargo) {
+    public void setCargo(int cargo) {
         this.cargo = cargo;
     }
+
+    public String getDescricaoCargo() {
+        return descricaoCargo;
+    }
+
+    public void setDescricaoCargo(String descricaoCargo) {
+        this.descricaoCargo = descricaoCargo;
+    }
+
 
     public double getSalario() {
         return salario;

@@ -1,29 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.Aluno;
+import model.Exercicio;
 import utils.Connect;
 
-public class AlunoDAO {
+/**
+ *
+ * @author wesle
+ */
+public class ExercicioDAO {
 
-    public AlunoDAO() {
+    public ExercicioDAO() {
     }
+    //Metodo para inserção de Exercicio
 
-    // Insere aluno no BD
-    public int insereAcesso(Aluno aluno, int Usuario_idUsuario) {
-        int matricula = -1;
+    public boolean insereExercicio(Exercicio exercicio, int PlanoTreino_codPlanoTreino) {
+
         try {
-            matricula = aluno.getMatriculaAluno();
+
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO aluno (dataMatricula, profissao, status, Usuario_idUsuario) values";
-            strSQL = strSQL + "('" + matricula + "',";
-            strSQL = strSQL + "'" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "'" + aluno.getStatus() + "',";
-            strSQL = strSQL + "'" + Usuario_idUsuario + "');";
+            strSQL = "INSERT INTO exercicio (grupoMuscular, descricaoExercicio, PlanoTreino_codPlanoTreino) values";
+            strSQL = strSQL + "('" + exercicio.getGrupoMuscular() + "',";
+            strSQL = strSQL + "'" + exercicio.getDescricaoExercicio() + "',";
+            strSQL = strSQL + "'" + PlanoTreino_codPlanoTreino + "');";
 
             //Criando objeto da conexão
             Connect connect = new Connect();
@@ -35,25 +43,25 @@ public class AlunoDAO {
                 stmt.execute(strSQL);
                 connect.desconectaBaseDados(con);
 
-                return matricula;
+                return true;
             } else {
-                return -1;
+                return false;
             }
         } catch (SQLException e) {
             System.err.println(e);
-            return -1;
+            return false;
         }
     }
 
-    //Metodo para deletar/Aluno
-    public boolean deletaAcesso(Aluno aluno) {
+    //Metodo para deletar/Exercicio
+    public boolean deletaExercicio(Exercicio exercicio, int codExercicio) {
 
         try {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "DELETE FROM aluno WHERE matricula = ";
-            strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
+            strSQL = "DELETE FROM exercicio WHERE codExercicio = ";
+            strSQL = strSQL + "'" + codExercicio + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -76,16 +84,16 @@ public class AlunoDAO {
 
     }
 
-    //Metodo para atualização dos dados do Aluno
-    public boolean atualizaAluno(Aluno aluno) {
+    //Metodo para atualização Exercicio
+    public boolean atualizaExercicio(Exercicio exercicio, int codExercicio) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "status = '" + aluno.getStatus() + "',";
-            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "'";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = "UPDATE exercicio SET grupoMuscular = '" + exercicio.getGrupoMuscular() + "'";
+            strSQL = strSQL + "carga = " + "'" + exercicio.getCarga() + "',";
+            strSQL = strSQL + "descricaoExercicio = " + "'" + exercicio.getDescricaoExercicio() + "',";
+            strSQL = strSQL + "WHERE" + "codExercicio = '" + codExercicio + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -108,16 +116,16 @@ public class AlunoDAO {
 
     }
 
-    //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosPessoa(Aluno aluno) {
+    //Metodo para retornar o Exercicio desejado
+    public ResultSet buscaExercicio(Exercicio exercicio, int codExercicio) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM aluno";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            String strSql = "SELECT * FROM exercicio";
+            strSQL = strSQL + "WHERE codExercicio = '" + codExercicio + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados();

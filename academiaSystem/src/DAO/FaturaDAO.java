@@ -1,29 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.Aluno;
+import model.Fatura;
 import utils.Connect;
 
-public class AlunoDAO {
+/**
+ *
+ * @author wesle
+ */
+public class FaturaDAO {
 
-    public AlunoDAO() {
+    public FaturaDAO() {
     }
+    // Metodo para inserir dados da Fatura 
 
-    // Insere aluno no BD
-    public int insereAcesso(Aluno aluno, int Usuario_idUsuario) {
-        int matricula = -1;
+    public boolean insereFatura(Fatura fatura, int Funcionario_matriculaFuncionario, int Aluno_matriculaAluno) {
+
         try {
-            matricula = aluno.getMatriculaAluno();
+
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO aluno (dataMatricula, profissao, status, Usuario_idUsuario) values";
-            strSQL = strSQL + "('" + matricula + "',";
-            strSQL = strSQL + "'" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "'" + aluno.getStatus() + "',";
-            strSQL = strSQL + "'" + Usuario_idUsuario + "');";
+            strSQL = "INSERT INTO exercicio(valor, dataVencimento, dataPagamento, formaPg, "
+                    + "status,Funcionario_matriculaFuncionario, Funcionario_matriculaFuncionario) values";
+            strSQL = strSQL + "('" + fatura.getValor() + "',";
+            strSQL = strSQL + "'" + fatura.getDataVencimento() + "',";
+            strSQL = strSQL + "'" + fatura.getDataPagamento() + "',";
+            strSQL = strSQL + "'" + fatura.getFormaPg() + "',";
+            strSQL = strSQL + "'" + fatura.getStatus() + "',";
+            strSQL = strSQL + "'" + Funcionario_matriculaFuncionario + "',";
+            strSQL = strSQL + "'" + Aluno_matriculaAluno + "');";
 
             //Criando objeto da conexão
             Connect connect = new Connect();
@@ -35,25 +48,25 @@ public class AlunoDAO {
                 stmt.execute(strSQL);
                 connect.desconectaBaseDados(con);
 
-                return matricula;
+                return true;
             } else {
-                return -1;
+                return false;
             }
         } catch (SQLException e) {
             System.err.println(e);
-            return -1;
+            return false;
         }
     }
-
-    //Metodo para deletar/Aluno
-    public boolean deletaAcesso(Aluno aluno) {
+    
+    //Metodo para deletar/Fatura
+    public boolean deletaFatura(Fatura fatura, int idFatura) {
 
         try {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "DELETE FROM aluno WHERE matricula = ";
-            strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
+            strSQL = "DELETE FROM fatura WHERE idFatura = ";
+            strSQL = strSQL + "'" + idFatura + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -75,17 +88,19 @@ public class AlunoDAO {
         }
 
     }
-
-    //Metodo para atualização dos dados do Aluno
-    public boolean atualizaAluno(Aluno aluno) {
+    
+     //Metodo para atualização Exercicio
+    public boolean atualizaExercicio(Fatura fatura, int idFatura) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "status = '" + aluno.getStatus() + "',";
-            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "'";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = "UPDATE fatura SET valor = '" + fatura.getValor() + "'";
+            strSQL = strSQL + "dataVencimento = " + "'" + fatura.getDataVencimento() + "',";
+            strSQL = strSQL + "dataPagamento  = " + "'" + fatura.getDataPagamento()+ "',";
+            strSQL = strSQL + "formaPg  = " + "'" + fatura.getFormaPg()+ "',";
+            strSQL = strSQL + "status  = " + "'" + fatura.getStatus()+ "',";
+            strSQL = strSQL + "WHERE" + "idFatura = '" + idFatura + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -107,17 +122,17 @@ public class AlunoDAO {
         }
 
     }
-
-    //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosPessoa(Aluno aluno) {
+    
+    //Metodo para retornar o Exercicio desejado
+    public ResultSet buscaExercicio(Fatura fatura, int idFatura) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM aluno";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            String strSql = "SELECT * FROM fatura";
+            strSQL = strSQL + "WHERE idFatura = '" + idFatura + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados();

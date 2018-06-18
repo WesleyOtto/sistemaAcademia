@@ -1,28 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.Aluno;
+import model.Endereco;
 import utils.Connect;
 
-public class AlunoDAO {
+/**
+ *
+ * @author wesle
+ */
+public class EnderecoDAO {
 
-    public AlunoDAO() {
+    public EnderecoDAO() {
     }
 
-    // Insere aluno no BD
-    public int insereAcesso(Aluno aluno, int Usuario_idUsuario) {
-        int matricula = -1;
+    //Metodo para inserção de Endereco
+    public boolean insereEndereco(Endereco endereco, int Usuario_idUsuario) {
+
         try {
-            matricula = aluno.getMatriculaAluno();
+
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO aluno (dataMatricula, profissao, status, Usuario_idUsuario) values";
-            strSQL = strSQL + "('" + matricula + "',";
-            strSQL = strSQL + "'" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "'" + aluno.getStatus() + "',";
+            strSQL = "INSERT INTO endereco (rua, numero, bairro, CEP, cidade, estado, Usuario_idUsuario) values";
+            strSQL = strSQL + "('" + endereco.getRua() + "',";
+            strSQL = strSQL + "'" + endereco.getNumero() + "',";
+            strSQL = strSQL + "'" + endereco.getBairro() + "',";
+            strSQL = strSQL + "'" + endereco.getCEP() + "',";
+            strSQL = strSQL + "'" + endereco.getCidade() + "',";
+            strSQL = strSQL + "'" + endereco.getEstado() + "',";
             strSQL = strSQL + "'" + Usuario_idUsuario + "');";
 
             //Criando objeto da conexão
@@ -35,25 +47,25 @@ public class AlunoDAO {
                 stmt.execute(strSQL);
                 connect.desconectaBaseDados(con);
 
-                return matricula;
+                return true;
             } else {
-                return -1;
+                return false;
             }
         } catch (SQLException e) {
             System.err.println(e);
-            return -1;
+            return false;
         }
     }
 
-    //Metodo para deletar/Aluno
-    public boolean deletaAcesso(Aluno aluno) {
+    //Metodo para deletar/Endereco
+    public boolean deletaEndereco(Endereco endereco, int idEndereco) {
 
         try {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "DELETE FROM aluno WHERE matricula = ";
-            strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
+            strSQL = "DELETE FROM endereco WHERE idEndereco = ";
+            strSQL = strSQL + "'" + idEndereco + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -76,16 +88,19 @@ public class AlunoDAO {
 
     }
 
-    //Metodo para atualização dos dados do Aluno
-    public boolean atualizaAluno(Aluno aluno) {
+    //Metodo para atualização da Endereco
+    public boolean atualizaEndereco(Endereco endereco, int Usuario_idUsuario) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "status = '" + aluno.getStatus() + "',";
-            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "'";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = "UPDATE endereco SET rua = '" + endereco.getRua() + "',";
+            strSQL = strSQL + "numero = " + "'" + endereco.getNumero() + "',";
+            strSQL = strSQL + "bairro = " + "'" + endereco.getBairro() + "',";
+            strSQL = strSQL + "CEP    = " + "'" + endereco.getCEP() + "',";
+            strSQL = strSQL + "cidade = " + "'" + endereco.getCidade() + "',";
+            strSQL = strSQL + "estado = " + "'" + endereco.getEstado() + "',";
+            strSQL = strSQL + "WHERE Usuario_idUsuario = '" + Usuario_idUsuario + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -107,17 +122,17 @@ public class AlunoDAO {
         }
 
     }
-
-    //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosPessoa(Aluno aluno) {
+    
+     //Metodo para retornar Endereco dado o id do usuario
+    public ResultSet buscaEndereco(Endereco endereco, int Usuario_idUsuario) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM aluno";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            String strSql = "SELECT * FROM endereco";
+            strSQL = strSQL + "WHERE Usuario_idUsuario = '" + Usuario_idUsuario + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados();

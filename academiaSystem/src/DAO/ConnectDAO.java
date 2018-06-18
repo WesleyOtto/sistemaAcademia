@@ -1,33 +1,41 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.sql.Statement;
-import model.Aluno;
-import utils.Connect;
+import model.Connect;
 
-public class AlunoDAO {
+/**
+ *
+ * @author wesle
+ */
+public class ConnectDAO {
 
-    public AlunoDAO() {
+    public ConnectDAO() {
     }
+    //Metodo para inserção de dados do BD
 
-    // Insere aluno no BD
-    public int insereAcesso(Aluno aluno, int Usuario_idUsuario) {
-        int matricula = -1;
+    public boolean insereDadosBD(String usuario, String senha, String url, String driver) {
+
         try {
-            matricula = aluno.getMatriculaAluno();
+
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO aluno (dataMatricula, profissao, status, Usuario_idUsuario) values";
-            strSQL = strSQL + "('" + matricula + "',";
-            strSQL = strSQL + "'" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "'" + aluno.getStatus() + "',";
-            strSQL = strSQL + "'" + Usuario_idUsuario + "');";
+            strSQL = "INSERT INTO acesso (usuario, senha, url, driver) values";
+            strSQL = strSQL + "('" + usuario + "',";
+            strSQL = strSQL + "'" + senha + "',";
+            strSQL = strSQL + "'" + url + "',";
+            strSQL = strSQL + "'" + driver + "');";
 
             //Criando objeto da conexão
             Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados();
+            Connection con = connect.conectaBaseDados(usuario, senha, url, driver);
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
@@ -35,29 +43,29 @@ public class AlunoDAO {
                 stmt.execute(strSQL);
                 connect.desconectaBaseDados(con);
 
-                return matricula;
+                return true;
             } else {
-                return -1;
+                return false;
             }
         } catch (SQLException e) {
             System.err.println(e);
-            return -1;
+            return false;
         }
     }
 
-    //Metodo para deletar/Aluno
-    public boolean deletaAcesso(Aluno aluno) {
+    //Metodo para deletar dados do BD
+    public boolean deletaAcesso(int idConnection, String usuario, String senha, String url, String driver) {
 
         try {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "DELETE FROM aluno WHERE matricula = ";
-            strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
+            strSQL = "DELETE FROM connection WHERE idConnection = ";
+            strSQL = strSQL + "'" + idConnection + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conect.conectaBaseDados(usuario, senha, url, driver);
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
@@ -76,20 +84,21 @@ public class AlunoDAO {
 
     }
 
-    //Metodo para atualização dos dados do Aluno
-    public boolean atualizaAluno(Aluno aluno) {
+    //Metodo para atualização dados do BD
+    public boolean atualizaSenha(int idConnection, String usuario, String senha, String url, String driver) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "status = '" + aluno.getStatus() + "',";
-            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "'";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = "UPDATE connection SET usuario = '" + usuario + "'";
+            strSQL = strSQL + "senha = " + "'" + senha + "',";
+            strSQL = strSQL + "url = " + "'" + url + "',";
+            strSQL = strSQL + "DRIVER = " + "'" + driver + "');";
+            strSQL = strSQL + "WHERE" + "idConnection = '" + idConnection + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conect.conectaBaseDados(usuario, senha, url, driver);
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
@@ -108,19 +117,19 @@ public class AlunoDAO {
 
     }
 
-    //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosPessoa(Aluno aluno) {
+    //Metodo para retornar o dados do BD
+    public ResultSet buscaDadosPessoa(int idConnection, String usuario, String senha, String url, String driver) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM aluno";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            String strSql = "SELECT * FROM connection";
+            strSQL = strSQL + "WHERE idConnection = '" + idConnection+ "';";
 
             //Realiza a conexao com o banco
-            Connection con = conexao.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(usuario, senha, url, driver);
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 

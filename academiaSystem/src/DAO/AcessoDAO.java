@@ -9,10 +9,9 @@ import utils.Connect;
 
 public class AcessoDAO {
 
-    //Metodo para inserção de login/senha
     public AcessoDAO() {
     }
-
+     //Metodo para inserção de login/senha
     public String insereAcesso(Acesso acesso) {
         
         try {
@@ -75,13 +74,13 @@ public class AcessoDAO {
     }
 
     //Metodo para atualização da senha
-    public boolean atualizaSenha(Acesso acesso, String login) {
+    public boolean atualizaSenha(Acesso acesso) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
             strSQL = "UPDATE acesso SET senha = '" + acesso.getSenha() + "'";
-            strSQL = strSQL + "WHERE" + "usuario = '" + login +"';";
+            strSQL = strSQL + "WHERE" + "usuario = '" + acesso.getLogin() +"';";
             
             //Criando objeto da conexão
             Connect conect = new Connect();
