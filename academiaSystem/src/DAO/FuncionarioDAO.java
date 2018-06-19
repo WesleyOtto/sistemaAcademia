@@ -1,29 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.Aluno;
+import model.Funcionario;
 import utils.Connect;
 
-public class AlunoDAO {
+/**
+ *
+ * @author wesle
+ */
+public class FuncionarioDAO {
 
-    public AlunoDAO() {
+    public FuncionarioDAO() {
     }
 
-    // Insere aluno no BD
-    public int insereAluno(Aluno aluno, int Usuario_idUsuario) {
-        int matricula = -1;
+    // Metodo para inserir dados da funcionario 
+    public int insereFuncionario(Funcionario funcionario, int Usuario_idUsuario) {
+        int matriculaFuncionario = -1;
+        matriculaFuncionario = funcionario.getMatriculaFuncionario();
+
         try {
-            matricula = aluno.getMatriculaAluno();
+
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO aluno (matriculaAluno, dataMatricula, profissao, status, Usuario_idUsuario) values";
-            strSQL = strSQL + "('" + matricula + "',";
-            strSQL = strSQL + "'" + aluno.getDataMatricula()+ "',";
-            strSQL = strSQL + "'" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "'" + aluno.getStatus() + "',";
+            strSQL = "INSERT INTO funcionario(matriculaFuncionario, cargo,  "
+                    + " salario, dataAdmissao, dataDemissao) values";
+            strSQL = strSQL + "('" + matriculaFuncionario + "',";
+            strSQL = strSQL + "'" + funcionario.getCargo() + "',";
+            strSQL = strSQL + "'" + funcionario.getSalario() + "',";
+            strSQL = strSQL + "'" + funcionario.getDataAdmissao() + "',";
+            strSQL = strSQL + "'" + funcionario.getDataDemissao() + "',";
             strSQL = strSQL + "'" + Usuario_idUsuario + "');";
 
             //Criando objeto da conexão
@@ -36,7 +49,7 @@ public class AlunoDAO {
                 stmt.execute(strSQL);
                 connect.desconectaBaseDados(con);
 
-                return matricula;
+                return matriculaFuncionario;
             } else {
                 return -1;
             }
@@ -46,15 +59,15 @@ public class AlunoDAO {
         }
     }
 
-    //Metodo para deletar/Aluno
-    public boolean deletaAluno(Aluno aluno) {
+    //Metodo para deletar/funcionario
+    public boolean deletaFuncionario(Funcionario funcionario) {
 
         try {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "DELETE FROM aluno WHERE matricula = ";
-            strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
+            strSQL = "DELETE FROM funcionario WHERE matriculaFuncionario = ";
+            strSQL = strSQL + "'" + funcionario.getMatriculaFuncionario() + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -77,16 +90,17 @@ public class AlunoDAO {
 
     }
 
-    //Metodo para atualização dos dados do Aluno
-    public boolean atualizaAluno(Aluno aluno) {
+    //Metodo para atualização dos dados do funcionario
+    public boolean atualizaFuncionario(Funcionario funcionario) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "status = '" + aluno.getStatus() + "',";
-            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "'";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = "UPDATE funcionario SET cargo = '" + funcionario.getCargo() + "',";
+            strSQL = strSQL + "salario = '" + funcionario.getSalario() + "'";
+            strSQL = strSQL + "dataAdmissao = '" + funcionario.getDataAdmissao() + "'";
+            strSQL = strSQL + "dataDemissao = '" + funcionario.getDataDemissao() + "'";
+            strSQL = strSQL + "WHERE matriculaFuncionario = '" + funcionario.getMatriculaFuncionario() + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -109,16 +123,16 @@ public class AlunoDAO {
 
     }
 
-    //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosPessoa(Aluno aluno) {
+    //Metodo para retornar funcionario
+    public ResultSet buscaFuncionario(Funcionario funcionario) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM aluno";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            String strSql = "SELECT * FROM funcionario";
+            strSQL = strSQL + "WHERE matriculaFuncionario = '" + funcionario.getMatriculaFuncionario() + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados();
@@ -137,4 +151,5 @@ public class AlunoDAO {
         }
 
     }
+
 }

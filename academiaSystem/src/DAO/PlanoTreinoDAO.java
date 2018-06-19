@@ -1,30 +1,41 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.Aluno;
+import model.PlanoTreino;
 import utils.Connect;
 
-public class AlunoDAO {
+/**
+ *
+ * @author wesle
+ */
+public class PlanoTreinoDAO {
 
-    public AlunoDAO() {
+    public PlanoTreinoDAO() {
     }
-
-    // Insere aluno no BD
-    public int insereAluno(Aluno aluno, int Usuario_idUsuario) {
-        int matricula = -1;
+    
+    //Insere PlanoTreino 
+    public int insereTreino(PlanoTreino plano, int Treino_codTreino) {
+        int codPlanoTreino = -1;
         try {
-            matricula = aluno.getMatriculaAluno();
+            codPlanoTreino = plano.getCodPlano();
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO aluno (matriculaAluno, dataMatricula, profissao, status, Usuario_idUsuario) values";
-            strSQL = strSQL + "('" + matricula + "',";
-            strSQL = strSQL + "'" + aluno.getDataMatricula()+ "',";
-            strSQL = strSQL + "'" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "'" + aluno.getStatus() + "',";
-            strSQL = strSQL + "'" + Usuario_idUsuario + "');";
+            strSQL = "INSERT INTO planotreino (codPlanoTreino ,series, repeticao, tempoDescanso, observacao, diaSemana, Treino_codTreino) values";
+            strSQL = strSQL + "('" + codPlanoTreino + "',";
+            strSQL = strSQL + "'" + plano.getSeries()+ "',";
+            strSQL = strSQL + "'" + plano.getRepeticoes() + "',";
+            strSQL = strSQL + "'" + plano.getTempoDescanso() + "',";
+            strSQL = strSQL + "'" + plano.getObservacao() + "',";
+            strSQL = strSQL + "'" + plano.getDiaSemana() + "',";
+            strSQL = strSQL + "'" + Treino_codTreino + "');";
 
             //Criando objeto da conexão
             Connect connect = new Connect();
@@ -36,7 +47,7 @@ public class AlunoDAO {
                 stmt.execute(strSQL);
                 connect.desconectaBaseDados(con);
 
-                return matricula;
+                return codPlanoTreino;
             } else {
                 return -1;
             }
@@ -45,16 +56,16 @@ public class AlunoDAO {
             return -1;
         }
     }
-
-    //Metodo para deletar/Aluno
-    public boolean deletaAluno(Aluno aluno) {
+    
+     //Metodo para deletar/Treino
+    public boolean deletaTreino(PlanoTreino plano) {
 
         try {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "DELETE FROM aluno WHERE matricula = ";
-            strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
+            strSQL = "DELETE FROM planotreino WHERE codPlanoTreino = ";
+            strSQL = strSQL + "'" + plano.getCodPlano() + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -76,17 +87,19 @@ public class AlunoDAO {
         }
 
     }
-
-    //Metodo para atualização dos dados do Aluno
-    public boolean atualizaAluno(Aluno aluno) {
+    
+    //Metodo para atualização dos dados do Treino
+    public boolean atualizaTreino(PlanoTreino plano) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "status = '" + aluno.getStatus() + "',";
-            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "'";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = "UPDATE planotreino SET series = '" + plano.getSeries()+ "',";
+            strSQL = strSQL + "repeticao = '" + plano.getRepeticoes()+ "',";
+            strSQL = strSQL + "tempoDescanso = '" + plano.getTempoDescanso() + "'";
+            strSQL = strSQL + "observaicao = '" + plano.getObservacao() + "'";
+            strSQL = strSQL + "diaSemana = '" + plano.getDiaSemana() + "'";
+            strSQL = strSQL + "WHERE codPlanoTreino = '" + plano.getCodPlano() + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -108,17 +121,17 @@ public class AlunoDAO {
         }
 
     }
-
-    //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosPessoa(Aluno aluno) {
+    
+    //Metodo para retornar a matricula do Treino desejada
+    public ResultSet buscaDadosTreino(PlanoTreino plano) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM aluno";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            String strSql = "SELECT * FROM planotreino ";
+            strSQL = strSQL + "WHERE codPlanoTreino = '" + plano.getCodPlano()+ "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados();
@@ -137,4 +150,5 @@ public class AlunoDAO {
         }
 
     }
+
 }

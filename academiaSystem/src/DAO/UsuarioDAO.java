@@ -1,30 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.Aluno;
+import model.Usuario;
 import utils.Connect;
 
-public class AlunoDAO {
+/**
+ *
+ * @author wesle
+ */
+public class UsuarioDAO {
 
-    public AlunoDAO() {
+    public UsuarioDAO() {
     }
-
     // Insere aluno no BD
-    public int insereAluno(Aluno aluno, int Usuario_idUsuario) {
-        int matricula = -1;
+
+    public int insereAluno(Usuario usuario, String Acesso_usuario) {
+        int idUsuario = -1;
         try {
-            matricula = aluno.getMatriculaAluno();
+            idUsuario = usuario.getIdUsuario();
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO aluno (matriculaAluno, dataMatricula, profissao, status, Usuario_idUsuario) values";
-            strSQL = strSQL + "('" + matricula + "',";
-            strSQL = strSQL + "'" + aluno.getDataMatricula()+ "',";
-            strSQL = strSQL + "'" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "'" + aluno.getStatus() + "',";
-            strSQL = strSQL + "'" + Usuario_idUsuario + "');";
+            strSQL = "INSERT INTO aluno (idUsuario, nome, CPF, RG, telefone, celular, email, nivelAcesso, Acesso_usuario) values";
+            strSQL = strSQL + "('" + idUsuario + "',";
+            strSQL = strSQL + "'" + usuario.getNome() + "',";
+            strSQL = strSQL + "'" + usuario.getCPF() + "',";
+            strSQL = strSQL + "'" + usuario.getRG() + "',";
+            strSQL = strSQL + "'" + usuario.getTelefone() + "',";
+            strSQL = strSQL + "'" + usuario.getCelular() + "',";
+            strSQL = strSQL + "'" + usuario.getEmail() + "',";
+            strSQL = strSQL + "'" + usuario.getNivelAcesso() + "',";
+            strSQL = strSQL + "'" + Acesso_usuario + "');";
 
             //Criando objeto da conexão
             Connect connect = new Connect();
@@ -36,7 +49,7 @@ public class AlunoDAO {
                 stmt.execute(strSQL);
                 connect.desconectaBaseDados(con);
 
-                return matricula;
+                return idUsuario;
             } else {
                 return -1;
             }
@@ -47,14 +60,14 @@ public class AlunoDAO {
     }
 
     //Metodo para deletar/Aluno
-    public boolean deletaAluno(Aluno aluno) {
+    public boolean deletaAluno(Usuario usuario) {
 
         try {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "DELETE FROM aluno WHERE matricula = ";
-            strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
+            strSQL = "DELETE FROM usuario WHERE idUsuario = ";
+            strSQL = strSQL + "'" + usuario.getIdUsuario() + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -78,15 +91,19 @@ public class AlunoDAO {
     }
 
     //Metodo para atualização dos dados do Aluno
-    public boolean atualizaAluno(Aluno aluno) {
+    public boolean atualizaAluno(Usuario usuario) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
-            strSQL = strSQL + "status = '" + aluno.getStatus() + "',";
-            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "'";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = "UPDATE usuario SET nome = '" + usuario.getNome() + "',";
+            strSQL = strSQL + "CPF = '" + usuario.getCPF() + "',";
+            strSQL = strSQL + "RG = '" + usuario.getRG() + "'";
+            strSQL = strSQL + "telefone = '" + usuario.getTelefone() + "'";
+            strSQL = strSQL + "celular = '" + usuario.getCelular() + "'";
+            strSQL = strSQL + "email = '" + usuario.getEmail() + "'";
+            strSQL = strSQL + "nivelAcesso = '" + usuario.getNivelAcesso() + "'";
+            strSQL = strSQL + "WHERE idUsuario = '" + usuario.getIdUsuario() + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
@@ -110,7 +127,7 @@ public class AlunoDAO {
     }
 
     //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosPessoa(Aluno aluno) {
+    public ResultSet buscaDadosPessoa(Usuario usuario) {
 
         try {
             Connect conexao = new Connect();
@@ -118,7 +135,7 @@ public class AlunoDAO {
             //Montar a instrução sql
             String strSQL = "";
             String strSql = "SELECT * FROM aluno";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = strSQL + "WHERE idUsuario = '" + usuario.getIdUsuario() + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados();

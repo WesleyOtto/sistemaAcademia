@@ -11,8 +11,19 @@ public class Aluno extends Usuario {
     private Treino treino;
     private Fatura fatura;
 
-    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
-        super(CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
+    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura, int idUsuario, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
+        super(idUsuario, CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
+        this.matriculaAluno = matriculaAluno;
+        this.dataMatricula = dataMatricula;
+        this.status = status;
+        this.profissao = profissao;
+        this.funcionario = funcionario;
+        this.avaliacaoFisica = avaliacaoFisica;
+        this.treino = treino;
+        this.fatura = fatura;
+    }
+
+    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura) {
         this.matriculaAluno = matriculaAluno;
         this.dataMatricula = dataMatricula;
         this.status = status;
@@ -25,7 +36,7 @@ public class Aluno extends Usuario {
 
     public Aluno() {
     }
-    
+
     public int getMatriculaAluno() {
         return matriculaAluno;
     }
