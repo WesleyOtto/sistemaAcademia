@@ -131,7 +131,7 @@ public class FuncionarioDAO {
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM funcionario";
+            strSQL = "SELECT * FROM funcionario";
             strSQL = strSQL + "WHERE matriculaFuncionario = '" + funcionario.getMatriculaFuncionario() + "';";
 
             //Realiza a conexao com o banco
@@ -140,7 +140,7 @@ public class FuncionarioDAO {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

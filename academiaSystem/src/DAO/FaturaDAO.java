@@ -28,7 +28,7 @@ public class FaturaDAO {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO exercicio(valor, dataVencimento, dataPagamento, formaPg, "
+            strSQL = "INSERT INTO fatura(valor, dataVencimento, dataPagamento, formaPg, "
                     + "status,Funcionario_matriculaFuncionario, Funcionario_matriculaFuncionario) values";
             strSQL = strSQL + "('" + fatura.getValor() + "',";
             strSQL = strSQL + "'" + fatura.getDataVencimento() + "',";
@@ -90,7 +90,7 @@ public class FaturaDAO {
     }
     
      //Metodo para atualização Exercicio
-    public boolean atualizaExercicio(Fatura fatura, int idFatura) {
+    public boolean atualizaFatura(Fatura fatura, int idFatura) {
 
         try {
             //Montar instrução sql
@@ -124,14 +124,14 @@ public class FaturaDAO {
     }
     
     //Metodo para retornar o Exercicio desejado
-    public ResultSet buscaExercicio(Fatura fatura, int idFatura) {
+    public ResultSet buscaFatura(Fatura fatura, int idFatura) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM fatura";
+            strSQL = "SELECT * FROM fatura";
             strSQL = strSQL + "WHERE idFatura = '" + idFatura + "';";
 
             //Realiza a conexao com o banco
@@ -140,7 +140,7 @@ public class FaturaDAO {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

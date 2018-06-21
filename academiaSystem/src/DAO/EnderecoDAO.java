@@ -131,7 +131,7 @@ public class EnderecoDAO {
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM endereco";
+            strSQL = "SELECT * FROM endereco";
             strSQL = strSQL + "WHERE Usuario_idUsuario = '" + Usuario_idUsuario + "';";
 
             //Realiza a conexao com o banco
@@ -140,7 +140,7 @@ public class EnderecoDAO {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

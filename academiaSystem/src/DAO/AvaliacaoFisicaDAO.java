@@ -95,15 +95,15 @@ public class AvaliacaoFisicaDAO {
     }
 
     //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int matriculaAluno) {
+    public ResultSet buscaAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int idAvaliacaoFisica) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM aluno";
-            strSQL = strSQL + "WHERE Aluno_matriculaAluno = '" + matriculaAluno + "';";
+            strSQL = "SELECT * FROM avaliacaofisica";
+            strSQL = strSQL + "WHERE idAvaliacaoFisica = '" + idAvaliacaoFisica + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados();
@@ -111,7 +111,7 @@ public class AvaliacaoFisicaDAO {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

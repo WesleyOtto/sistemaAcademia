@@ -1,20 +1,20 @@
 package model;
 
 public class Acesso {
-    
+
     private String login;
     private String senha;
-    private Usuario usuario; 
+    private Usuario usuario;
 
     public Acesso(String login, String senha, Usuario usuario) {
         this.login = login;
         this.senha = senha;
         this.usuario = usuario;
     }
-    
-    public Acesso(){
+
+    public Acesso() {
     }
-    
+
     public String getLogin() {
         return login;
     }
@@ -38,5 +38,9 @@ public class Acesso {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
+    public boolean acessarSistema(String usuario, String senha, String usuarioBD, String senhaBD) {
+        return usuario.equals(usuarioBD) && senha.equals(senhaBD);
+    }
+
 }

@@ -124,7 +124,7 @@ public class ExercicioDAO {
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM exercicio";
+            strSQL = "SELECT * FROM exercicio";
             strSQL = strSQL + "WHERE codExercicio = '" + codExercicio + "';";
 
             //Realiza a conexao com o banco
@@ -133,7 +133,7 @@ public class ExercicioDAO {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

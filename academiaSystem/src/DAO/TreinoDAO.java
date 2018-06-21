@@ -25,7 +25,7 @@ public class TreinoDAO {
             codTreino = treino.getCodTreino();
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO aluno (codTreino, descricaoTreino, tipoTreino, objetivo, Aluno_matriculaAluno) values";
+            strSQL = "INSERT INTO treino (codTreino, descricaoTreino, tipoTreino, objetivo, Aluno_matriculaAluno) values";
             strSQL = strSQL + "('" + codTreino + "',";
             strSQL = strSQL + "'" + treino.getDescricaoTreino() + "',";
             strSQL = strSQL + "'" + treino.getTipoTreino() + "',";
@@ -89,7 +89,7 @@ public class TreinoDAO {
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE aluno SET descricaoTreino = '" + treino.getDescricaoTreino() + "',";
+            strSQL = "UPDATE treino SET descricaoTreino = '" + treino.getDescricaoTreino() + "',";
             strSQL = strSQL + "tipoTreino = '" + treino.getTipoTreino() + "',";
             strSQL = strSQL + "objetivo = '" + treino.getObjetivo() + "'";
             strSQL = strSQL + "WHERE codTreino = '" + treino.getCodTreino() + "';";
@@ -123,7 +123,7 @@ public class TreinoDAO {
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM treino";
+            strSQL = "SELECT * FROM treino";
             strSQL = strSQL + "WHERE codTreino = '" + treino.getCodTreino()+ "';";
 
             //Realiza a conexao com o banco
@@ -132,7 +132,7 @@ public class TreinoDAO {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

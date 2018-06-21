@@ -22,7 +22,7 @@ public class PlanoTreinoDAO {
     }
     
     //Insere PlanoTreino 
-    public int insereTreino(PlanoTreino plano, int Treino_codTreino) {
+    public int inserePlanoTreino(PlanoTreino plano, int Treino_codTreino) {
         int codPlanoTreino = -1;
         try {
             codPlanoTreino = plano.getCodPlano();
@@ -57,8 +57,8 @@ public class PlanoTreinoDAO {
         }
     }
     
-     //Metodo para deletar/Treino
-    public boolean deletaTreino(PlanoTreino plano) {
+     //Metodo para deletar/PlanoTreino
+    public boolean deletaPlanoTreino(PlanoTreino plano) {
 
         try {
 
@@ -89,7 +89,7 @@ public class PlanoTreinoDAO {
     }
     
     //Metodo para atualização dos dados do Treino
-    public boolean atualizaTreino(PlanoTreino plano) {
+    public boolean atualizaPlanoTreino(PlanoTreino plano) {
 
         try {
             //Montar instrução sql
@@ -123,14 +123,14 @@ public class PlanoTreinoDAO {
     }
     
     //Metodo para retornar a matricula do Treino desejada
-    public ResultSet buscaDadosTreino(PlanoTreino plano) {
+    public ResultSet buscaDadosPlanoTreino(PlanoTreino plano) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM planotreino ";
+            strSQL = "SELECT * FROM planotreino ";
             strSQL = strSQL + "WHERE codPlanoTreino = '" + plano.getCodPlano()+ "';";
 
             //Realiza a conexao com o banco
@@ -139,7 +139,7 @@ public class PlanoTreinoDAO {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

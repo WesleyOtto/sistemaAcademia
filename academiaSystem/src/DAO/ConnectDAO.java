@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import model.Connect;
 
 /**
@@ -27,7 +28,7 @@ public class ConnectDAO {
 
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO acesso (usuario, senha, url, driver) values";
+            strSQL = "INSERT INTO connection (usuario, senha, url, driver) values";
             strSQL = strSQL + "('" + usuario + "',";
             strSQL = strSQL + "'" + senha + "',";
             strSQL = strSQL + "'" + url + "',";
@@ -35,13 +36,13 @@ public class ConnectDAO {
 
             //Criando objeto da conexão
             Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados(usuario, senha, url, driver);
+            Connection con = connect.conectaBaseDados(driver, url, usuario, senha);
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                connect.desconectaBaseDados(con);
+                //connect.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -54,7 +55,7 @@ public class ConnectDAO {
     }
 
     //Metodo para deletar dados do BD
-    public boolean deletaAcesso(int idConnection, String usuario, String senha, String url, String driver) {
+    public boolean deletaDadosBD(int idConnection, String usuario, String senha, String url, String driver) {
 
         try {
 
@@ -65,7 +66,7 @@ public class ConnectDAO {
 
             //Criando objeto da conexão
             Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados(usuario, senha, url, driver);
+            Connection con = conect.conectaBaseDados(driver, url, usuario, senha);
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
@@ -79,13 +80,14 @@ public class ConnectDAO {
             }
         } catch (Exception e) {
             System.err.println(e);
+            JOptionPane.showMessageDialog(null, e);
             return false;
         }
 
     }
 
     //Metodo para atualização dados do BD
-    public boolean atualizaSenha(int idConnection, String usuario, String senha, String url, String driver) {
+    public boolean atualizaDadosBD(int idConnection, String usuario, String senha, String url, String driver) {
 
         try {
             //Montar instrução sql
@@ -93,12 +95,12 @@ public class ConnectDAO {
             strSQL = "UPDATE connection SET usuario = '" + usuario + "'";
             strSQL = strSQL + "senha = " + "'" + senha + "',";
             strSQL = strSQL + "url = " + "'" + url + "',";
-            strSQL = strSQL + "DRIVER = " + "'" + driver + "');";
+            strSQL = strSQL + "driver = " + "'" + driver + "');";
             strSQL = strSQL + "WHERE" + "idConnection = '" + idConnection + "';";
 
             //Criando objeto da conexão
             Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados(usuario, senha, url, driver);
+            Connection con = conect.conectaBaseDados(driver, url, usuario, senha);
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
@@ -118,23 +120,23 @@ public class ConnectDAO {
     }
 
     //Metodo para retornar o dados do BD
-    public ResultSet buscaDadosPessoa(int idConnection, String usuario, String senha, String url, String driver) {
+    public ResultSet buscaDadosBD(String usuario, String senha, String url, String driver) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM connection";
-            strSQL = strSQL + "WHERE idConnection = '" + idConnection+ "';";
+            strSQL = "SELECT * FROM connection";
+            strSQL = strSQL + "WHERE usuario = '" + usuario + "';";
 
             //Realiza a conexao com o banco
-            Connection con = conexao.conectaBaseDados(usuario, senha, url, driver);
+            Connection con = conexao.conectaBaseDados(driver, url, usuario, senha);
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

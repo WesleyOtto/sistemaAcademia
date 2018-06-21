@@ -51,11 +51,12 @@ public class Connect {
         try {
             Class.forName(Driver);
             Connection conn = DriverManager.getConnection(url, usuario, senha);
+            
             return conn;
         } catch (Exception e) {
 
             System.out.println("Erro ao realizar a conexÃ£o");
-            e.printStackTrace();
+            System.err.println(e);;
             return null;
 
         }
@@ -72,6 +73,10 @@ public class Connect {
             System.out.println("Problemas ao fechar o banco!!");
 
         }
+    }
+    
+    public Connect retornaConnect (Connect con){
+       return con;
     }
 
 }

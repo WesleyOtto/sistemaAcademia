@@ -110,14 +110,14 @@ public class AlunoDAO {
     }
 
     //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosPessoa(Aluno aluno) {
+    public ResultSet buscaDadosAluno(Aluno aluno) {
 
         try {
             Connect conexao = new Connect();
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            String strSql = "SELECT * FROM aluno";
+            strSQL = "SELECT * FROM aluno";
             strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
 
             //Realiza a conexao com o banco
@@ -126,7 +126,7 @@ public class AlunoDAO {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
-                rs = stmt.executeQuery(strSql);
+                rs = stmt.executeQuery(strSQL);
                 conexao.desconectaBaseDados(con);
 
             }

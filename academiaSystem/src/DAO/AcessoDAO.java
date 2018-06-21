@@ -5,15 +5,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Acesso;
-import utils.Connect;
+import model.Connect;
 
 public class AcessoDAO {
 
     public AcessoDAO() {
     }
-     //Metodo para inserção de login/senha
-    public String insereAcesso(Acesso acesso) {
-        
+    //Metodo para inserção de login/senha
+
+    public String insereAcesso(Acesso acesso, Connect conexao) {
+
         try {
             String login = acesso.getLogin();
             //Montar instrução sql
@@ -23,14 +24,14 @@ public class AcessoDAO {
             strSQL = strSQL + "'" + acesso.getSenha() + "');";
 
             //Criando objeto da conexão
-            Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados();
+            
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                connect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return login;
             } else {
@@ -43,24 +44,24 @@ public class AcessoDAO {
     }
 
     //Metodo para deletar/acesso
-    public boolean deletaAcesso(Acesso acesso) {
-        
+    public boolean deletaAcesso(Acesso acesso, Connect conexao) {
+
         try {
-           
+
             //Montar instrução sql
             String strSQL = "";
             strSQL = "DELETE FROM acesso WHERE usuario = ";
             strSQL = strSQL + "'" + acesso.getLogin() + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -74,23 +75,23 @@ public class AcessoDAO {
     }
 
     //Metodo para atualização da senha
-    public boolean atualizaSenha(Acesso acesso) {
+    public boolean atualizaSenha(Acesso acesso, Connect conexao) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
             strSQL = "UPDATE acesso SET senha = '" + acesso.getSenha() + "'";
-            strSQL = strSQL + "WHERE" + "usuario = '" + acesso.getLogin() +"';";
-            
+            strSQL = strSQL + "WHERE" + "usuario = '" + acesso.getLogin() + "';";
+
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.executeUpdate(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -102,38 +103,34 @@ public class AcessoDAO {
         }
 
     }
-    
+
     //Metodo para retornar o acesso desejado
-     public ResultSet buscaDadosPessoa(Acesso acesso){
-       
-       try{
-           Connect conexao = new Connect();
-           ResultSet rs = null;
-           //Montar a instrução sql
-           String strSQL = "";
-           String strSql = "SELECT * FROM acesso";
-           strSQL = strSQL + "WHERE usario = '" + acesso.getLogin()+ "';";
-           
+    public ResultSet buscaDadosPessoa(String login, Connect conexao) {
+
+        try {
             
-            //Realiza a conexao com o banco
-           Connection con = conexao.conectaBaseDados();
-           if (con != null)
-           {
-               Statement stmt = (Statement)con.createStatement();
-               
-               //Executar a instrução sql
-               
-               rs = stmt.executeQuery(strSql);
-               conexao.desconectaBaseDados(con);
-             
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT * FROM acesso ";
+            strSQL = strSQL + "WHERE usuario = '" + login + "';";
+
+            //Realiza a conexao com o banco 
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+                return rs;
             }
-           return rs;
-       }
-       catch (Exception e){
-           System.err.println(e);
-           return null;
-       }   
-        
-    } 
-    
+            return rs;
+        } 
+        catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
+
+    }
+
 }
