@@ -20,9 +20,9 @@ public class PlanoTreinoDAO {
 
     public PlanoTreinoDAO() {
     }
-    
+
     //Insere PlanoTreino 
-    public int inserePlanoTreino(PlanoTreino plano, int Treino_codTreino) {
+    public int inserePlanoTreino(PlanoTreino plano, int Treino_codTreino, Connect conexao) {
         int codPlanoTreino = -1;
         try {
             codPlanoTreino = plano.getCodPlano();
@@ -30,7 +30,7 @@ public class PlanoTreinoDAO {
             String strSQL = "";
             strSQL = "INSERT INTO planotreino (codPlanoTreino ,series, repeticao, tempoDescanso, observacao, diaSemana, Treino_codTreino) values";
             strSQL = strSQL + "('" + codPlanoTreino + "',";
-            strSQL = strSQL + "'" + plano.getSeries()+ "',";
+            strSQL = strSQL + "'" + plano.getSeries() + "',";
             strSQL = strSQL + "'" + plano.getRepeticoes() + "',";
             strSQL = strSQL + "'" + plano.getTempoDescanso() + "',";
             strSQL = strSQL + "'" + plano.getObservacao() + "',";
@@ -38,14 +38,13 @@ public class PlanoTreinoDAO {
             strSQL = strSQL + "'" + Treino_codTreino + "');";
 
             //Criando objeto da conexão
-            Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                connect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return codPlanoTreino;
             } else {
@@ -56,9 +55,9 @@ public class PlanoTreinoDAO {
             return -1;
         }
     }
-    
-     //Metodo para deletar/PlanoTreino
-    public boolean deletaPlanoTreino(PlanoTreino plano) {
+
+    //Metodo para deletar/PlanoTreino
+    public boolean deletaPlanoTreino(PlanoTreino plano, Connect conexao) {
 
         try {
 
@@ -68,14 +67,13 @@ public class PlanoTreinoDAO {
             strSQL = strSQL + "'" + plano.getCodPlano() + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -87,29 +85,28 @@ public class PlanoTreinoDAO {
         }
 
     }
-    
+
     //Metodo para atualização dos dados do Treino
-    public boolean atualizaPlanoTreino(PlanoTreino plano) {
+    public boolean atualizaPlanoTreino(PlanoTreino plano, Connect conexao) {
 
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE planotreino SET series = '" + plano.getSeries()+ "',";
-            strSQL = strSQL + "repeticao = '" + plano.getRepeticoes()+ "',";
+            strSQL = "UPDATE planotreino SET series = '" + plano.getSeries() + "',";
+            strSQL = strSQL + "repeticao = '" + plano.getRepeticoes() + "',";
             strSQL = strSQL + "tempoDescanso = '" + plano.getTempoDescanso() + "'";
             strSQL = strSQL + "observaicao = '" + plano.getObservacao() + "'";
             strSQL = strSQL + "diaSemana = '" + plano.getDiaSemana() + "'";
             strSQL = strSQL + "WHERE codPlanoTreino = '" + plano.getCodPlano() + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.executeUpdate(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -121,26 +118,25 @@ public class PlanoTreinoDAO {
         }
 
     }
-    
+
     //Metodo para retornar a matricula do Treino desejada
-    public ResultSet buscaDadosPlanoTreino(PlanoTreino plano) {
+    public ResultSet buscaDadosPlanoTreino(PlanoTreino plano, Connect conexao) {
 
         try {
-            Connect conexao = new Connect();
+
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
             strSQL = "SELECT * FROM planotreino ";
-            strSQL = strSQL + "WHERE codPlanoTreino = '" + plano.getCodPlano()+ "';";
+            strSQL = strSQL + "WHERE codPlanoTreino = '" + plano.getCodPlano() + "';";
 
             //Realiza a conexao com o banco
-            Connection con = conexao.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 rs = stmt.executeQuery(strSQL);
-                conexao.desconectaBaseDados(con);
 
             }
             return rs;

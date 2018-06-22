@@ -5,11 +5,12 @@
  */
 package view;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.Connect;
-import javax.swing.JFrame;
-import jdk.nashorn.internal.ir.BreakNode;
-import view.FrmTelaLogin;
+import utils.Connect;
+import utils.LeituraEscritaObj;
 
 /**
  *
@@ -18,6 +19,8 @@ import view.FrmTelaLogin;
 public class FrmConnect extends javax.swing.JFrame {
 
     public Connect con = new Connect();
+    private String args[] = {""};
+    LeituraEscritaObj escrever = new LeituraEscritaObj();
 
     /**
      * Creates new form FrmConnect
@@ -143,7 +146,7 @@ public class FrmConnect extends javax.swing.JFrame {
 
 
     private void jButtonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKActionPerformed
-        
+
         //Pego os dados do Formulario e faço a coneccao com o banco de dados
         con.setUsuario(jTextUsuario.getText());
         con.setSenha(String.valueOf(jPassword.getPassword()));
@@ -153,7 +156,17 @@ public class FrmConnect extends javax.swing.JFrame {
         if (con.conectaBaseDados(con.getDriver(), con.getUrl(), con.getUsuario(), con.getSenha()) != null) {
 
             JOptionPane.showMessageDialog(this, "Banco conectado com sucesso", "Conectado", JOptionPane.INFORMATION_MESSAGE);
-            FrmTelaLogin.main(con);
+            try {
+                
+                escrever.salvar(con);
+                
+            } catch (IOException ex) {
+                
+                Logger.getLogger(FrmConnect.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+            FrmTelaLogin.main(args);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Driver, Url, Usuario ou senha errada", "ERRO!", JOptionPane.ERROR_MESSAGE);

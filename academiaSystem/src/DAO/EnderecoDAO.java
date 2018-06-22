@@ -22,8 +22,7 @@ public class EnderecoDAO {
     }
 
     //Metodo para inserção de Endereco
-    public boolean insereEndereco(Endereco endereco, int Usuario_idUsuario) {
-
+    public boolean insereEndereco(Endereco endereco, int Usuario_idUsuario, Connect conexao) {
         try {
 
             //Montar instrução sql
@@ -38,14 +37,13 @@ public class EnderecoDAO {
             strSQL = strSQL + "'" + Usuario_idUsuario + "');";
 
             //Criando objeto da conexão
-            Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                connect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -58,7 +56,7 @@ public class EnderecoDAO {
     }
 
     //Metodo para deletar/Endereco
-    public boolean deletaEndereco(Endereco endereco, int idEndereco) {
+    public boolean deletaEndereco(Endereco endereco, int idEndereco, Connect conexao) {
 
         try {
 
@@ -68,14 +66,13 @@ public class EnderecoDAO {
             strSQL = strSQL + "'" + idEndereco + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -89,7 +86,7 @@ public class EnderecoDAO {
     }
 
     //Metodo para atualização da Endereco
-    public boolean atualizaEndereco(Endereco endereco, int Usuario_idUsuario) {
+    public boolean atualizaEndereco(Endereco endereco, int Usuario_idUsuario, Connect conexao) {
 
         try {
             //Montar instrução sql
@@ -103,14 +100,13 @@ public class EnderecoDAO {
             strSQL = strSQL + "WHERE Usuario_idUsuario = '" + Usuario_idUsuario + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.executeUpdate(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -122,26 +118,25 @@ public class EnderecoDAO {
         }
 
     }
-    
-     //Metodo para retornar Endereco dado o id do usuario
-    public ResultSet buscaEndereco(Endereco endereco, int Usuario_idUsuario) {
+
+    //Metodo para retornar Endereco dado o id do usuario
+    public ResultSet buscaEndereco(Endereco endereco, int Usuario_idUsuario, Connect conexao) {
 
         try {
-            Connect conexao = new Connect();
+
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            strSQL = "SELECT * FROM endereco";
+            strSQL = "SELECT * FROM endereco ";
             strSQL = strSQL + "WHERE Usuario_idUsuario = '" + Usuario_idUsuario + "';";
 
             //Realiza a conexao com o banco
-            Connection con = conexao.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 rs = stmt.executeQuery(strSQL);
-                conexao.desconectaBaseDados(con);
 
             }
             return rs;

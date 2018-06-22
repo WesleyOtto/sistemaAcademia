@@ -27,21 +27,88 @@ public class FrmPrincipalSecretaria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuCadastrar = new javax.swing.JMenu();
+        jMenuCadastrarItemCadastrarAluno = new javax.swing.JMenuItem();
+        jMenuCadastrarItemAlterarAluno = new javax.swing.JMenuItem();
+        jMenuCadastrarItemDeletarAluno = new javax.swing.JMenuItem();
+        jMenuCadastrarItemBuscarAluno = new javax.swing.JMenuItem();
+        jMenuFaturaItemEmitirFatura = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuSair = new javax.swing.JMenu();
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem4.setText("jMenuItem4");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenuCadastrar.setText("Cadastrar");
+
+        jMenuCadastrarItemCadastrarAluno.setText("Cadastrar aluno");
+        jMenuCadastrarItemCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastrarItemCadastrarAlunoActionPerformed(evt);
+            }
+        });
+        jMenuCadastrar.add(jMenuCadastrarItemCadastrarAluno);
+
+        jMenuCadastrarItemAlterarAluno.setText("Alterar Aluno");
+        jMenuCadastrar.add(jMenuCadastrarItemAlterarAluno);
+
+        jMenuCadastrarItemDeletarAluno.setText("Deletar Aluno");
+        jMenuCadastrar.add(jMenuCadastrarItemDeletarAluno);
+
+        jMenuCadastrarItemBuscarAluno.setText("Buscar Aluno");
+        jMenuCadastrar.add(jMenuCadastrarItemBuscarAluno);
+
+        jMenuBar1.add(jMenuCadastrar);
+
+        jMenuFaturaItemEmitirFatura.setText("Fatura");
+
+        jMenuItem1.setText("Emitir Fatura");
+        jMenuFaturaItemEmitirFatura.add(jMenuItem1);
+
+        jMenuBar1.add(jMenuFaturaItemEmitirFatura);
+
+        jMenu2.setText("Sobre");
+        jMenuBar1.add(jMenu2);
+
+        jMenuSair.setText("Sair");
+        jMenuBar1.add(jMenuSair);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 755, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuCadastrarItemCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrarItemCadastrarAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuCadastrarItemCadastrarAlunoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +146,20 @@ public class FrmPrincipalSecretaria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuCadastrar;
+    private javax.swing.JMenuItem jMenuCadastrarItemAlterarAluno;
+    private javax.swing.JMenuItem jMenuCadastrarItemBuscarAluno;
+    private javax.swing.JMenuItem jMenuCadastrarItemCadastrarAluno;
+    private javax.swing.JMenuItem jMenuCadastrarItemDeletarAluno;
+    private javax.swing.JMenu jMenuFaturaItemEmitirFatura;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenu jMenuSair;
     // End of variables declaration//GEN-END:variables
 }

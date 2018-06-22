@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Usuario;
-import model.Connect;
+import utils.Connect;
 
 /**
  *
@@ -22,7 +22,7 @@ public class UsuarioDAO {
     }
     // Insere aluno no BD
 
-    public int insereUsuario(Usuario usuario, Connect conexao, String Acesso_usuario) {
+    public int insereUsuario(Usuario usuario, String Acesso_usuario, Connect conexao) {
         int idUsuario = -1;
         try {
             idUsuario = usuario.getIdUsuario();

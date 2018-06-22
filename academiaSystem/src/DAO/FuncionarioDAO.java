@@ -22,7 +22,7 @@ public class FuncionarioDAO {
     }
 
     // Metodo para inserir dados da funcionario 
-    public int insereFuncionario(Funcionario funcionario, int Usuario_idUsuario) {
+    public int insereFuncionario(Funcionario funcionario, int Usuario_idUsuario, Connect conexao) {
         int matriculaFuncionario = -1;
         matriculaFuncionario = funcionario.getMatriculaFuncionario();
 
@@ -40,14 +40,13 @@ public class FuncionarioDAO {
             strSQL = strSQL + "'" + Usuario_idUsuario + "');";
 
             //Criando objeto da conexão
-            Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                connect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return matriculaFuncionario;
             } else {
@@ -60,7 +59,7 @@ public class FuncionarioDAO {
     }
 
     //Metodo para deletar/funcionario
-    public boolean deletaFuncionario(Funcionario funcionario) {
+    public boolean deletaFuncionario(Funcionario funcionario, Connect conexao) {
 
         try {
 
@@ -70,14 +69,13 @@ public class FuncionarioDAO {
             strSQL = strSQL + "'" + funcionario.getMatriculaFuncionario() + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -91,7 +89,7 @@ public class FuncionarioDAO {
     }
 
     //Metodo para atualização dos dados do funcionario
-    public boolean atualizaFuncionario(Funcionario funcionario) {
+    public boolean atualizaFuncionario(Funcionario funcionario, Connect conexao) {
 
         try {
             //Montar instrução sql
@@ -103,14 +101,13 @@ public class FuncionarioDAO {
             strSQL = strSQL + "WHERE matriculaFuncionario = '" + funcionario.getMatriculaFuncionario() + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.executeUpdate(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -124,24 +121,23 @@ public class FuncionarioDAO {
     }
 
     //Metodo para retornar funcionario
-    public ResultSet buscaFuncionario(Funcionario funcionario) {
+    public ResultSet buscaFuncionario(Funcionario funcionario, Connect conexao) {
 
         try {
-            Connect conexao = new Connect();
+
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            strSQL = "SELECT * FROM funcionario";
+            strSQL = "SELECT * FROM funcionario ";
             strSQL = strSQL + "WHERE matriculaFuncionario = '" + funcionario.getMatriculaFuncionario() + "';";
 
             //Realiza a conexao com o banco
-            Connection con = conexao.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 rs = stmt.executeQuery(strSQL);
-                conexao.desconectaBaseDados(con);
 
             }
             return rs;

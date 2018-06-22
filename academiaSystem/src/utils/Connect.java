@@ -1,28 +1,63 @@
 package utils;
+
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class Connect {
-    
-    private static final String USUARIO = "root";
-    private static final String SENHA = "otto1305";
-    private static final String URL = "jdbc:mysql://localhost:3306/mydb";
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
-            
+public class Connect implements Serializable {
+
+    private String usuario;
+    private String senha;
+    private String url;
+    private String driver;
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
     public Connect() {
     }
 
     //Metodo de acesso ao banco de dados 
-    public Connection conectaBaseDados() {
+    public  Connection conectaBaseDados(String Driver, String url, String usuario, String senha) {
 
         try {
-            Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(URL, USUARIO, SENHA);
+            Class.forName(Driver);
+            Connection conn = DriverManager.getConnection(url, usuario, senha);
+
             return conn;
         } catch (Exception e) {
 
             System.out.println("Erro ao realizar a conexÃ£o");
-            e.printStackTrace();
+            System.err.println(e);;
             return null;
 
         }
@@ -30,7 +65,7 @@ public class Connect {
     }
 
     //Metodo para fechamento do banco de dados
-    public void desconectaBaseDados(Connection con) {
+    public  void desconectaBaseDados(Connection con) {
 
         try {
             con.close();

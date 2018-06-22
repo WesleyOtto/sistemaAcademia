@@ -22,7 +22,7 @@ public class ExercicioDAO {
     }
     //Metodo para inserção de Exercicio
 
-    public boolean insereExercicio(Exercicio exercicio, int PlanoTreino_codPlanoTreino) {
+    public boolean insereExercicio(Exercicio exercicio, int PlanoTreino_codPlanoTreino, Connect conexao) {
 
         try {
 
@@ -34,14 +34,13 @@ public class ExercicioDAO {
             strSQL = strSQL + "'" + PlanoTreino_codPlanoTreino + "');";
 
             //Criando objeto da conexão
-            Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                connect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -54,7 +53,7 @@ public class ExercicioDAO {
     }
 
     //Metodo para deletar/Exercicio
-    public boolean deletaExercicio(Exercicio exercicio, int codExercicio) {
+    public boolean deletaExercicio(Exercicio exercicio, int codExercicio, Connect conexao) {
 
         try {
 
@@ -64,14 +63,13 @@ public class ExercicioDAO {
             strSQL = strSQL + "'" + codExercicio + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -85,7 +83,7 @@ public class ExercicioDAO {
     }
 
     //Metodo para atualização Exercicio
-    public boolean atualizaExercicio(Exercicio exercicio, int codExercicio) {
+    public boolean atualizaExercicio(Exercicio exercicio, int codExercicio, Connect conexao) {
 
         try {
             //Montar instrução sql
@@ -96,14 +94,13 @@ public class ExercicioDAO {
             strSQL = strSQL + "WHERE" + "codExercicio = '" + codExercicio + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.executeUpdate(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -117,24 +114,23 @@ public class ExercicioDAO {
     }
 
     //Metodo para retornar o Exercicio desejado
-    public ResultSet buscaExercicio(Exercicio exercicio, int codExercicio) {
+    public ResultSet buscaExercicio(Exercicio exercicio, int codExercicio, Connect conexao) {
 
         try {
-            Connect conexao = new Connect();
+
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            strSQL = "SELECT * FROM exercicio";
+            strSQL = "SELECT * FROM exercicio ";
             strSQL = strSQL + "WHERE codExercicio = '" + codExercicio + "';";
 
             //Realiza a conexao com o banco
-            Connection con = conexao.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 rs = stmt.executeQuery(strSQL);
-                conexao.desconectaBaseDados(con);
 
             }
             return rs;

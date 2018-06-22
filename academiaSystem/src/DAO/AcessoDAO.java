@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Acesso;
-import model.Connect;
+import utils.Connect;
 
 public class AcessoDAO {
 
@@ -105,7 +105,7 @@ public class AcessoDAO {
     }
 
     //Metodo para retornar o acesso desejado
-    public ResultSet buscaDadosPessoa(String login, Connect conexao) {
+    public static ResultSet buscaDadosPessoa(String login, Connect conexao) {
 
         try {
             

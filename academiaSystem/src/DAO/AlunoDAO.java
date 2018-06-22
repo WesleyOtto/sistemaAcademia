@@ -13,7 +13,7 @@ public class AlunoDAO {
     }
 
     // Insere aluno no BD
-    public int insereAluno(Aluno aluno, int Usuario_idUsuario) {
+    public int insereAluno(Aluno aluno, int Usuario_idUsuario, Connect conexao) {
         int matricula = -1;
         try {
             matricula = aluno.getMatriculaAluno();
@@ -21,20 +21,20 @@ public class AlunoDAO {
             String strSQL = "";
             strSQL = "INSERT INTO aluno (matriculaAluno, dataMatricula, profissao, status, Usuario_idUsuario) values";
             strSQL = strSQL + "('" + matricula + "',";
-            strSQL = strSQL + "'" + aluno.getDataMatricula()+ "',";
+            strSQL = strSQL + "'" + aluno.getDataMatricula() + "',";
             strSQL = strSQL + "'" + aluno.getProfissao() + "',";
             strSQL = strSQL + "'" + aluno.getStatus() + "',";
             strSQL = strSQL + "'" + Usuario_idUsuario + "');";
 
             //Criando objeto da conexão
-            Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados();
+            
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                connect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return matricula;
             } else {
@@ -47,7 +47,7 @@ public class AlunoDAO {
     }
 
     //Metodo para deletar/Aluno
-    public boolean deletaAluno(Aluno aluno) {
+    public boolean deletaAluno(Aluno aluno, Connect conexao) {
 
         try {
 
@@ -57,14 +57,13 @@ public class AlunoDAO {
             strSQL = strSQL + "'" + aluno.getMatriculaAluno() + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -78,7 +77,7 @@ public class AlunoDAO {
     }
 
     //Metodo para atualização dos dados do Aluno
-    public boolean atualizaAluno(Aluno aluno) {
+    public boolean atualizaAluno(Aluno aluno, Connect conexao) {
 
         try {
             //Montar instrução sql
@@ -89,14 +88,13 @@ public class AlunoDAO {
             strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.executeUpdate(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -110,24 +108,23 @@ public class AlunoDAO {
     }
 
     //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosAluno(Aluno aluno) {
+    public ResultSet buscaDadosAluno(Aluno aluno, Connect conexao) {
 
         try {
-            Connect conexao = new Connect();
+
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            strSQL = "SELECT * FROM aluno";
+            strSQL = "SELECT * FROM aluno ";
             strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
 
             //Realiza a conexao com o banco
-            Connection con = conexao.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 rs = stmt.executeQuery(strSQL);
-                conexao.desconectaBaseDados(con);
 
             }
             return rs;

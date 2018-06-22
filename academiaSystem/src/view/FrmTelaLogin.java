@@ -6,11 +6,12 @@
 package view;
 
 import model.Acesso;
-import model.Connect;
+import utils.Connect;
 import DAO.AcessoDAO;
 import DAO.UsuarioDAO;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import utils.LeituraEscritaObj;
 
 
 /**
@@ -20,7 +21,8 @@ import javax.swing.JOptionPane;
 public class FrmTelaLogin extends javax.swing.JFrame {
 
     private String args[] = {""};
-    static Connect con = new Connect();
+    public Connect con = new Connect();
+    LeituraEscritaObj ler = new LeituraEscritaObj();
     /**
      * Creates new form TelaLogin
      */
@@ -159,7 +161,9 @@ public class FrmTelaLogin extends javax.swing.JFrame {
             String senha = String.valueOf(TXTpassword.getPassword());
             String usuarioBD = "";
             String senhaBD = "";
-
+            
+            con = ler.restaurar();
+            
             ResultSet dadosAcesso = acessaDAO.buscaDadosPessoa(usuario, con);
 
             while (dadosAcesso.next()) {
@@ -217,9 +221,7 @@ public class FrmTelaLogin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(Connect conexao) {
-        
-        conexao = con ;
+    public static void main(String args[]) {
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

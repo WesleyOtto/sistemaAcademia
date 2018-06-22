@@ -17,7 +17,7 @@ public class AvaliacaoFisicaDAO {
     }
 
     //Metodo para inserção de avaliacaoFisica
-    public boolean insereAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int Funcionario_matriculaFuncionario, int Aluno_matriculaAluno) {
+    public boolean insereAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int Funcionario_matriculaFuncionario, int Aluno_matriculaAluno, Connect conexao) {
 
         try {
 
@@ -44,14 +44,13 @@ public class AvaliacaoFisicaDAO {
             strSQL = strSQL + "'" + avaliacaoFisica.getSubEscapular() + "');";
 
             //Criando objeto da conexão
-            Connect connect = new Connect();
-            Connection con = connect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                connect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -64,7 +63,7 @@ public class AvaliacaoFisicaDAO {
     }
 
     //Metodo para deletar/Aluno
-    public boolean deletaAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int idAvaliacaoFisica) {
+    public boolean deletaAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int idAvaliacaoFisica, Connect conexao) {
 
         try {
 
@@ -74,14 +73,13 @@ public class AvaliacaoFisicaDAO {
             strSQL = strSQL + "'" + idAvaliacaoFisica + "';";
 
             //Criando objeto da conexão
-            Connect conect = new Connect();
-            Connection con = conect.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 stmt.execute(strSQL);
-                conect.desconectaBaseDados(con);
+                conexao.desconectaBaseDados(con);
 
                 return true;
             } else {
@@ -95,24 +93,23 @@ public class AvaliacaoFisicaDAO {
     }
 
     //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int idAvaliacaoFisica) {
+    public ResultSet buscaAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int idAvaliacaoFisica, Connect conexao) {
 
         try {
-            Connect conexao = new Connect();
+
             ResultSet rs = null;
             //Montar a instrução sql
             String strSQL = "";
-            strSQL = "SELECT * FROM avaliacaofisica";
+            strSQL = "SELECT * FROM avaliacaofisica ";
             strSQL = strSQL + "WHERE idAvaliacaoFisica = '" + idAvaliacaoFisica + "';";
 
             //Realiza a conexao com o banco
-            Connection con = conexao.conectaBaseDados();
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
 
                 //Executar a instrução sql
                 rs = stmt.executeQuery(strSQL);
-                conexao.desconectaBaseDados(con);
 
             }
             return rs;
