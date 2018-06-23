@@ -30,28 +30,35 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jCadastroAluno = new javax.swing.JMenu();
-        jAlunoItemCadastrar = new javax.swing.JMenuItem();
-        jAlunoItemAlterarAluno = new javax.swing.JMenuItem();
-        jAlunoItemDeletarAluno = new javax.swing.JMenuItem();
+        jAlunoItemCadastrarAlterarDeletar = new javax.swing.JMenuItem();
         jFuncionario = new javax.swing.JMenu();
-        jFuncionarioItemCadastrar = new javax.swing.JMenuItem();
-        jFuncionarioItemAlterar = new javax.swing.JMenuItem();
-        jFuncionarioItemDeletar = new javax.swing.JMenuItem();
+        jFuncionarioItemCadastrarAlterarDeletar = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu1 = new javax.swing.JMenu();
+        jFaturaItemEmitir = new javax.swing.JMenuItem();
+        jFaturaItemBaixaFatura = new javax.swing.JMenuItem();
         jTreinos = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        jTreinosItemCadastrar = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jExercicios = new javax.swing.JMenu();
+        jExercicioItemCadastrar = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jGerenciarNivelAcesso = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jConfigBD = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem8 = new javax.swing.JMenuItem();
         Jsair = new javax.swing.JMenu();
+        jSairItemLogout = new javax.swing.JMenuItem();
+        jSairItemSairSistema = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -61,60 +68,99 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Tela ADM");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homem1.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jCadastroAluno.setText("Aluno");
 
-        jAlunoItemCadastrar.setText("Cadastrar Aluno");
-        jAlunoItemCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        jAlunoItemCadastrarAlterarDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
+        jAlunoItemCadastrarAlterarDeletar.setText("Cadastrar/Alterar/Deletar");
+        jAlunoItemCadastrarAlterarDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAlunoItemCadastrarActionPerformed(evt);
+                jAlunoItemCadastrarAlterarDeletarActionPerformed(evt);
             }
         });
-        jCadastroAluno.add(jAlunoItemCadastrar);
-
-        jAlunoItemAlterarAluno.setText("Alterar Aluno");
-        jCadastroAluno.add(jAlunoItemAlterarAluno);
-
-        jAlunoItemDeletarAluno.setText("Deletar Aluno");
-        jAlunoItemDeletarAluno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAlunoItemDeletarAlunoActionPerformed(evt);
-            }
-        });
-        jCadastroAluno.add(jAlunoItemDeletarAluno);
+        jCadastroAluno.add(jAlunoItemCadastrarAlterarDeletar);
 
         jMenuBar1.add(jCadastroAluno);
 
         jFuncionario.setText("Funcionário");
 
-        jFuncionarioItemCadastrar.setText("Cadastrar");
-        jFuncionarioItemCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        jFuncionarioItemCadastrarAlterarDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
+        jFuncionarioItemCadastrarAlterarDeletar.setText("Cadastrar/Alterar/Deletar");
+        jFuncionarioItemCadastrarAlterarDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFuncionarioItemCadastrarActionPerformed(evt);
+                jFuncionarioItemCadastrarAlterarDeletarActionPerformed(evt);
             }
         });
-        jFuncionario.add(jFuncionarioItemCadastrar);
-
-        jFuncionarioItemAlterar.setText("Alterar");
-        jFuncionario.add(jFuncionarioItemAlterar);
-
-        jFuncionarioItemDeletar.setText("Deletar");
-        jFuncionario.add(jFuncionarioItemDeletar);
+        jFuncionario.add(jFuncionarioItemCadastrarAlterarDeletar);
         jFuncionario.add(jSeparator2);
 
         jMenuBar1.add(jFuncionario);
 
         jMenu1.setText("Fatura");
+
+        jFaturaItemEmitir.setText("Emitir");
+        jMenu1.add(jFaturaItemEmitir);
+
+        jFaturaItemBaixaFatura.setText("Baixa Fatura");
+        jMenu1.add(jFaturaItemBaixaFatura);
+
         jMenuBar1.add(jMenu1);
 
         jTreinos.setText("Treinos");
+
+        jTreinosItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
+        jTreinosItemCadastrar.setText("Cadastrar");
+        jTreinos.add(jTreinosItemCadastrar);
+
+        jMenuItem6.setText("Buscar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jTreinos.add(jMenuItem6);
+
         jMenuBar1.add(jTreinos);
 
-        jMenu3.setText("Exercicios");
-        jMenuBar1.add(jMenu3);
+        jExercicios.setText("Exercicios");
+
+        jExercicioItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
+        jExercicioItemCadastrar.setText("Cadastrar");
+        jExercicios.add(jExercicioItemCadastrar);
+
+        jMenuBar1.add(jExercicios);
 
         jMenu4.setText("Avaliação Fisica");
+
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
+        jMenuItem5.setText("Cadastrar");
+        jMenu4.add(jMenuItem5);
+
+        jMenuItem7.setText("Emitir");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem7);
+
         jMenuBar1.add(jMenu4);
 
         jGerenciarNivelAcesso.setText("Gerenciar Usuários");
@@ -139,9 +185,19 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jMenu5.setText("Sobre");
         jMenu5.add(jSeparator1);
 
+        jMenuItem8.setText("About");
+        jMenu5.add(jMenuItem8);
+
         jMenuBar1.add(jMenu5);
 
         Jsair.setText("Sair");
+
+        jSairItemLogout.setText("Logout");
+        Jsair.add(jSairItemLogout);
+
+        jSairItemSairSistema.setText("Desligar");
+        Jsair.add(jSairItemSairSistema);
+
         jMenuBar1.add(Jsair);
 
         setJMenuBar(jMenuBar1);
@@ -151,36 +207,37 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(666, Short.MAX_VALUE))
+                .addGap(157, 157, 157)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(389, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jAlunoItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoItemCadastrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jAlunoItemCadastrarActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jAlunoItemDeletarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoItemDeletarAlunoActionPerformed
+    private void jAlunoItemCadastrarAlterarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoItemCadastrarAlterarDeletarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jAlunoItemDeletarAlunoActionPerformed
+    }//GEN-LAST:event_jAlunoItemCadastrarAlterarDeletarActionPerformed
 
-    private void jFuncionarioItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemCadastrarActionPerformed
+    private void jFuncionarioItemCadastrarAlterarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemCadastrarAlterarDeletarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFuncionarioItemCadastrarActionPerformed
+    }//GEN-LAST:event_jFuncionarioItemCadastrarAlterarDeletarActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,20 +276,19 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Jsair;
-    private javax.swing.JMenuItem jAlunoItemAlterarAluno;
-    private javax.swing.JMenuItem jAlunoItemCadastrar;
-    private javax.swing.JMenuItem jAlunoItemDeletarAluno;
+    private javax.swing.JMenuItem jAlunoItemCadastrarAlterarDeletar;
     private javax.swing.JMenu jCadastroAluno;
     private javax.swing.JMenu jConfigBD;
+    private javax.swing.JMenuItem jExercicioItemCadastrar;
+    private javax.swing.JMenu jExercicios;
+    private javax.swing.JMenuItem jFaturaItemBaixaFatura;
+    private javax.swing.JMenuItem jFaturaItemEmitir;
     private javax.swing.JMenu jFuncionario;
-    private javax.swing.JMenuItem jFuncionarioItemAlterar;
-    private javax.swing.JMenuItem jFuncionarioItemCadastrar;
-    private javax.swing.JMenuItem jFuncionarioItemDeletar;
+    private javax.swing.JMenuItem jFuncionarioItemCadastrarAlterarDeletar;
     private javax.swing.JMenu jGerenciarNivelAcesso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
@@ -240,8 +296,16 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenuItem jSairItemLogout;
+    private javax.swing.JMenuItem jSairItemSairSistema;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenu jTreinos;
+    private javax.swing.JMenuItem jTreinosItemCadastrar;
     // End of variables declaration//GEN-END:variables
 }
