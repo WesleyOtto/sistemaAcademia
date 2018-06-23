@@ -39,13 +39,13 @@ public class FrmFaturaCadastrar extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jDataVencimento = new javax.swing.JTextField();
-        jFormaPagamento = new javax.swing.JTextField();
         jDataPagamento = new javax.swing.JTextField();
         jComboBoxStatus = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jNumeroMatricula = new javax.swing.JTextField();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jComboBoxFormaPG = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +70,7 @@ public class FrmFaturaCadastrar extends javax.swing.JFrame {
 
         jLabel6.setText("Data de Pagamento: ");
 
-        jLabel7.setText("Forma de Pagamento");
+        jLabel7.setText("Forma de Pagamento:");
 
         jLabel8.setText("Status: ");
 
@@ -83,6 +83,13 @@ public class FrmFaturaCadastrar extends javax.swing.JFrame {
         jButtonCadastrar.setText("Cadastrar");
 
         jButtonCancelar.setText("Cancelar");
+
+        jComboBoxFormaPG.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "débito", "crédito", "cheque" }));
+        jComboBoxFormaPG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFormaPGActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,9 +113,9 @@ public class FrmFaturaCadastrar extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel7))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDataVencimento)
-                                    .addComponent(jFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxFormaPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jButtonCadastrar, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,8 +173,8 @@ public class FrmFaturaCadastrar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(jFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxFormaPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar)
@@ -181,6 +188,10 @@ public class FrmFaturaCadastrar extends javax.swing.JFrame {
     private void jValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jValorActionPerformed
+
+    private void jComboBoxFormaPGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFormaPGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxFormaPGActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,10 +232,10 @@ public class FrmFaturaCadastrar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JComboBox<String> jComboBoxFormaPG;
     private javax.swing.JComboBox<String> jComboBoxStatus;
     private javax.swing.JTextField jDataPagamento;
     private javax.swing.JTextField jDataVencimento;
-    private javax.swing.JTextField jFormaPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

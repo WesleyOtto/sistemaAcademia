@@ -9,12 +9,12 @@ package view;
  *
  * @author wesle
  */
-public class FrmFaturaEmitir extends javax.swing.JFrame {
+public class FrmFaturaBaixa extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmFatura
      */
-    public FrmFaturaEmitir() {
+    public FrmFaturaBaixa() {
         initComponents();
     }
 
@@ -39,15 +39,16 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jDataVencimento = new javax.swing.JTextField();
-        jFormaPagamento = new javax.swing.JTextField();
         jDataPagamento = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jNumeroMatricula = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
-        jTextStatus = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextFatura = new javax.swing.JTextField();
+        jComboBoxStatus = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jComboBoxFormaPG = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,13 +76,11 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
 
         jLabel6.setText("Data de Pagamento: ");
 
-        jLabel7.setText("Forma de Pagamento");
+        jLabel7.setText("Forma de Pagamento:");
 
         jLabel8.setText("Status: ");
 
         jDataVencimento.setEditable(false);
-
-        jFormaPagamento.setEditable(false);
 
         jDataPagamento.setEditable(false);
 
@@ -93,9 +92,18 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
 
         jButtonSair.setText("Sair");
 
-        jTextStatus.setEditable(false);
-
         jLabel10.setText("Pesquisar Fatura:");
+
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aguardando Pg", "Pago" }));
+
+        jButton1.setText("Dar Baixa");
+
+        jComboBoxFormaPG.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "débito", "crédito", "cheque" }));
+        jComboBoxFormaPG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFormaPGActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,25 +114,16 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(262, 262, 262))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDataPagamento)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jDataPagamento))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -147,22 +146,30 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jNumeroMatricula))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFatura, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonPesquisar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(301, 301, 301)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextStatus)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFatura, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonPesquisar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(301, 301, 301)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBoxFormaPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(77, 77, 77)))
+                                .addGap(67, 67, 67)
+                                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(232, 232, 232))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +180,7 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jTextFatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonPesquisar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNumerFatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
@@ -193,14 +200,17 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
                     .addComponent(jDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(jComboBoxFormaPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
-                        .addComponent(jTextStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addComponent(jButtonSair)
-                .addGap(27, 27, 27))
+                        .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSair)
+                    .addComponent(jButton1))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -209,6 +219,10 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
     private void jValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jValorActionPerformed
+
+    private void jComboBoxFormaPGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFormaPGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxFormaPGActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,14 +241,18 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmFaturaEmitir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFaturaBaixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmFaturaEmitir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFaturaBaixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmFaturaEmitir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFaturaBaixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmFaturaEmitir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFaturaBaixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -243,17 +261,19 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmFaturaEmitir().setVisible(true);
+                new FrmFaturaBaixa().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JComboBox<String> jComboBoxFormaPG;
+    private javax.swing.JComboBox<String> jComboBoxStatus;
     private javax.swing.JTextField jDataPagamento;
     private javax.swing.JTextField jDataVencimento;
-    private javax.swing.JTextField jFormaPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -268,7 +288,6 @@ public class FrmFaturaEmitir extends javax.swing.JFrame {
     private javax.swing.JTextField jNumerFatura;
     private javax.swing.JTextField jNumeroMatricula;
     private javax.swing.JTextField jTextFatura;
-    private javax.swing.JTextField jTextStatus;
     private javax.swing.JTextField jValor;
     // End of variables declaration//GEN-END:variables
 }

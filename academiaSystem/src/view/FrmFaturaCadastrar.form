@@ -44,9 +44,9 @@
                                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jDataVencimento" max="32767" attributes="0"/>
-                                  <Component id="jFormaPagamento" pref="176" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jDataVencimento" min="-2" pref="176" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxFormaPG" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jButtonCadastrar" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -120,8 +120,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jFormaPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBoxStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxFormaPG" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="58" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -181,7 +181,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Forma de Pagamento"/>
+        <Property name="text" type="java.lang.String" value="Forma de Pagamento:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
@@ -190,8 +190,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jDataVencimento">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jFormaPagamento">
     </Component>
     <Component class="javax.swing.JTextField" name="jDataPagamento">
     </Component>
@@ -227,6 +225,24 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxFormaPG">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Dinheiro"/>
+            <StringItem index="1" value="d&#xe9;bito"/>
+            <StringItem index="2" value="cr&#xe9;dito"/>
+            <StringItem index="3" value="cheque"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxFormaPGActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

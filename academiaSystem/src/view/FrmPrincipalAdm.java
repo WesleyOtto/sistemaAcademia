@@ -10,11 +10,13 @@ package view;
  * @author wesle
  */
 public class FrmPrincipalAdm extends javax.swing.JFrame {
-
+        
+    private String args[] = {""};
     /**
      * Creates new form FrmPrincipalAdm
      */
     public FrmPrincipalAdm() {
+        
         initComponents();
     }
 
@@ -46,7 +48,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jFuncionarioItemBuscarDeletar = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu1 = new javax.swing.JMenu();
-        jFaturaItemEmitir = new javax.swing.JMenuItem();
+        jFaturaItemCadastrar = new javax.swing.JMenuItem();
         jFaturaItemBaixaFatura = new javax.swing.JMenuItem();
         jTreinos = new javax.swing.JMenu();
         jTreinosItemCadastrar = new javax.swing.JMenuItem();
@@ -153,10 +155,15 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
         jMenu1.setText("Fatura");
 
-        jFaturaItemEmitir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_MASK));
-        jFaturaItemEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Emitir.jpg"))); // NOI18N
-        jFaturaItemEmitir.setText("Emitir");
-        jMenu1.add(jFaturaItemEmitir);
+        jFaturaItemCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_MASK));
+        jFaturaItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Emitir.jpg"))); // NOI18N
+        jFaturaItemCadastrar.setText("Cadastrar");
+        jFaturaItemCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFaturaItemCadastrarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jFaturaItemCadastrar);
 
         jFaturaItemBaixaFatura.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_MASK));
         jFaturaItemBaixaFatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BaixaFatura.jpg"))); // NOI18N
@@ -226,6 +233,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jSobreItemAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_8, java.awt.event.InputEvent.ALT_MASK));
         jSobreItemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/infoimages.jpg"))); // NOI18N
         jSobreItemAbout.setText("About");
+        jSobreItemAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSobreItemAboutActionPerformed(evt);
+            }
+        });
         jMenu5.add(jSobreItemAbout);
 
         jMenuBar1.add(jMenu5);
@@ -290,6 +302,15 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jAlunoItemBuscarDeletarActionPerformed
 
+    private void jFaturaItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFaturaItemCadastrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFaturaItemCadastrarActionPerformed
+
+    private void jSobreItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSobreItemAboutActionPerformed
+        // TODO add your handling code here:
+        FrmSobre.main(args);
+    }//GEN-LAST:event_jSobreItemAboutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -341,7 +362,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jExercicioItemCadastrar;
     private javax.swing.JMenu jExercicios;
     private javax.swing.JMenuItem jFaturaItemBaixaFatura;
-    private javax.swing.JMenuItem jFaturaItemEmitir;
+    private javax.swing.JMenuItem jFaturaItemCadastrar;
     private javax.swing.JMenu jFuncionario;
     private javax.swing.JMenuItem jFuncionarioItemAlterar;
     private javax.swing.JMenuItem jFuncionarioItemBuscarDeletar;
