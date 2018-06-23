@@ -5,14 +5,7 @@
  */
 package view;
 
-import model.Acesso;
-import utils.Connect;
-import DAO.AcessoDAO;
-import DAO.UsuarioDAO;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import utils.LeituraEscritaObj;
-
+import Controller.FrmLoginController;
 
 /**
  *
@@ -20,9 +13,8 @@ import utils.LeituraEscritaObj;
  */
 public class FrmTelaLogin extends javax.swing.JFrame {
 
-    private String args[] = {""};
-    public Connect con = new Connect();
-    LeituraEscritaObj ler = new LeituraEscritaObj();
+    FrmLoginController controller = new FrmLoginController();
+
     /**
      * Creates new form TelaLogin
      */
@@ -145,78 +137,19 @@ public class FrmTelaLogin extends javax.swing.JFrame {
 
     private void buttonEntrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarLoginActionPerformed
 
-        try {
+        //Verifica se o Login e a senha Estão corretas !
+        String usuario = TXTLogin.getText();
+        String senha = String.valueOf(TXTpassword.getPassword());
+        controller.loginAcesso(usuario, senha);
+        this.dispose();
 
-            //Verifica se o Login e a senha Estão corretas !
-            boolean login = false;
-            AcessoDAO acessaDAO = new AcessoDAO();
-            Acesso acesso = new Acesso();
-            String usuario = TXTLogin.getText();
-            String senha = String.valueOf(TXTpassword.getPassword());
-            String usuarioBD = "";
-            String senhaBD = "";
-            
-            con = ler.restaurar();
-            
-            ResultSet dadosAcesso = acessaDAO.buscaDadosPessoa(usuario, con);
-
-            while (dadosAcesso.next()) {
-                usuarioBD = dadosAcesso.getString("usuario");
-                senhaBD = dadosAcesso.getString("senha");
-            }
-
-            login = acesso.acessarSistema(usuario, senha, usuarioBD, senhaBD);
-
-            if (login) {
-
-                JOptionPane.showMessageDialog(this, "Usuario: " + usuario + System.lineSeparator() + System.lineSeparator() + "Seja, Bem Vindo!!", "Bem Vindo", JOptionPane.INFORMATION_MESSAGE);
-
-                UsuarioDAO usuarioDAO = new UsuarioDAO();
-                ResultSet nivel = usuarioDAO.buscaDadosUsuario(usuarioBD, con);
-                int nivelAcesso = -1;
-
-                while (nivel.next()) {
-                    nivelAcesso = nivel.getInt("nivelAcesso");
-                }
-
-                switch (nivelAcesso) {
-
-                    case 1:
-                        FrmPrincipalAdm.main(args);
-                        this.dispose();
-                        break;
-                    case 2:
-                        FrmPrincipalSecretaria.main(args);
-                        this.dispose();
-                        break;
-                    case 3:
-                        FrmPrincipalInstrutor.main(args);
-                        this.dispose();
-                        break;
-                    case 4:
-                        FrmPrincipalAluno.main(args);
-                        this.dispose();
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(this, "Error!!!" + JOptionPane.ERROR_MESSAGE);
-                        break;
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Usuario ou senha incorreta", "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
-
-            this.dispose();
-        } catch (Exception e) {
-            System.err.println(e);;
-        }
     }//GEN-LAST:event_buttonEntrarLoginActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
