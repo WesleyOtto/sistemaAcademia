@@ -50,7 +50,7 @@ public class FrmConnect extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jPassword = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("FrmConnect"); // NOI18N
 

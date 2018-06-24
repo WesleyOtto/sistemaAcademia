@@ -11,8 +11,8 @@ public class Aluno extends Usuario {
     private Treino treino;
     private Fatura fatura;
 
-    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura, int idUsuario, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
-        super(idUsuario, CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
+    public Aluno(int matriculaAluno, String dataMatricula, String status, String profissao, Funcionario funcionario, AvaliacaoFisica avaliacaoFisica, Treino treino, Fatura fatura, int idUsuario, String acesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
+        super(idUsuario, acesso, CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
         this.matriculaAluno = matriculaAluno;
         this.dataMatricula = dataMatricula;
         this.status = status;

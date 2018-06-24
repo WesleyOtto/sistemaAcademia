@@ -24,6 +24,22 @@ public class Funcionario extends Usuario {
     private Aluno aluno;
     private Funcionario administrador;
 
+    public Funcionario(int matriculaFuncionario, int cargo, String descricaoCargo, double salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador, int idUsuario, String acesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
+        super(idUsuario, acesso, CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
+        this.matriculaFuncionario = matriculaFuncionario;
+        this.cargo = cargo;
+        this.descricaoCargo = descricaoCargo;
+        this.salario = salario;
+        this.dataAdmissao = dataAdmissao;
+        this.dataDemissao = dataDemissao;
+        this.avaliacaoFisica = avaliacaoFisica;
+        this.exercicio = exercicio;
+        this.treino = treino;
+        this.fatura = fatura;
+        this.aluno = aluno;
+        this.administrador = administrador;
+    }
+
     public Funcionario(int matriculaFuncionario, int cargo, String descricaoCargo, double salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador) {
         this.matriculaFuncionario = matriculaFuncionario;
         this.cargo = cargo;
@@ -65,7 +81,6 @@ public class Funcionario extends Usuario {
     public void setDescricaoCargo(String descricaoCargo) {
         this.descricaoCargo = descricaoCargo;
     }
-
 
     public double getSalario() {
         return salario;

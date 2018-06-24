@@ -136,12 +136,13 @@ public class FrmTelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     private void buttonEntrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarLoginActionPerformed
-
+        boolean verificar; 
         //Verifica se o Login e a senha Estão corretas !
         String usuario = TXTLogin.getText();
         String senha = String.valueOf(TXTpassword.getPassword());
-        controller.loginAcesso(usuario, senha);
-        this.dispose();
+        verificar = controller.loginAcesso(usuario, senha);
+        
+        if(verificar) this.dispose();
 
     }//GEN-LAST:event_buttonEntrarLoginActionPerformed
 

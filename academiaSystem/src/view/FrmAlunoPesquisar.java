@@ -77,14 +77,14 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
         jTextNivelAcesso = new javax.swing.JTextField();
         jTextStatus = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nome: ");
 
         jTextNome.setEditable(false);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Aluno");
+        jLabel2.setText("Pesquisar Aluno");
 
         jLabel3.setText("CPF :");
 
@@ -166,10 +166,10 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
 
         jTextNumeroMatricula.setEditable(false);
         jTextNumeroMatricula.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTextNumeroMatriculaInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jTextNumeroMatricula.addActionListener(new java.awt.event.ActionListener() {
@@ -256,21 +256,21 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
                                                     .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel21)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(275, 275, 275)
+                                        .addComponent(jLabel2))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel21)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
-                                            .addComponent(jLabel3))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(275, 275, 275)
-                                            .addComponent(jLabel2))))
+                                            .addComponent(jLabel3))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(185, 185, 185)
                                         .addComponent(jButton3)
-                                        .addGap(0, 99, Short.MAX_VALUE))
+                                        .addGap(0, 53, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(136, 136, 136)
                                         .addComponent(jLabel4)

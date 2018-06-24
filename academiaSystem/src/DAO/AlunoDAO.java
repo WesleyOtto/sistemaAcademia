@@ -27,7 +27,6 @@ public class AlunoDAO {
             strSQL = strSQL + "'" + Usuario_idUsuario + "');";
 
             //Criando objeto da conexão
-            
             Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
                 Statement stmt = (Statement) con.createStatement();
@@ -108,7 +107,7 @@ public class AlunoDAO {
     }
 
     //Metodo para retornar a matricula do aluno desejada
-    public ResultSet buscaDadosAluno(Aluno aluno, Connect conexao) {
+    public ResultSet buscaDadosAluno(int matriculaAluno, Connect conexao) {
 
         try {
 
@@ -116,7 +115,7 @@ public class AlunoDAO {
             //Montar a instrução sql
             String strSQL = "";
             strSQL = "SELECT * FROM aluno ";
-            strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
+            strSQL = strSQL + "WHERE matriculaAluno = '" + matriculaAluno + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
@@ -131,6 +130,35 @@ public class AlunoDAO {
         } catch (Exception e) {
             System.err.println(e);
             return null;
+        }
+    }
+
+    //Retorna o próximo Id a ser Adicionado 
+    public int retonaIdAluno(Connect conexao) {
+        int idAluno = -1;
+        try {
+
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT (max(matriculaAluno) + 1) as id from aluno";
+
+            //Realiza a conexao com o banco
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+
+            }
+            rs.next();
+            idAluno = rs.getInt("id");
+
+            return idAluno;
+        } catch (Exception e) {
+            System.err.println(e);
+            return idAluno;
         }
 
     }

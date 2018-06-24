@@ -5,20 +5,41 @@
  */
 package view;
 
+import model.Aluno;
+import model.Endereco;
+import model.Acesso;
+import DAO.AlunoDAO;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import utils.Connect;
+import utils.LeituraEscritaObj;
+import Controller.FrmAlunoCadastrarController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author wesle
  */
 public class FrmAlunoCadastrar extends javax.swing.JFrame {
 
+    private String args[] = {""};
+    AlunoDAO alunoID = new AlunoDAO();
+    public Connect con = new Connect();
+    LeituraEscritaObj ler = new LeituraEscritaObj();
+    Aluno aluno = new Aluno();
+    Endereco endereco = new Endereco();
+    Acesso acesso = new Acesso();
+    FrmAlunoCadastrarController cadastrar = new FrmAlunoCadastrarController();
+    Boolean confere = false;
+
     /**
      * Creates new form FrmCadastroAluno
      */
-    public FrmAlunoCadastrar() {
+    public FrmAlunoCadastrar() throws IOException {
         initComponents();
-        
-        jTextNumeroMatricula.setText("1");
-
+        con = ler.restaurar();
+        jTextNumeroMatricula.setText(String.valueOf(alunoID.retonaIdAluno(con)));
     }
 
     /**
@@ -64,9 +85,9 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jComboBoxStatus = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextLogin = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextSenha = new javax.swing.JTextField();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
@@ -74,12 +95,12 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nome: ");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Aluno");
+        jLabel2.setText("Cadastrar Aluno");
 
         jLabel3.setText("CPF :");
 
@@ -105,7 +126,7 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
 
         jLabel8.setText("Nivel de Acesso");
 
-        jComboBoxNivelAcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        jComboBoxNivelAcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4" }));
         jComboBoxNivelAcesso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxNivelAcessoActionPerformed(evt);
@@ -144,15 +165,20 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
         });
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Número Matricula: ");
 
         jTextNumeroMatricula.setEditable(false);
         jTextNumeroMatricula.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTextNumeroMatriculaInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jTextNumeroMatricula.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +187,7 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText("1- Administrador\n2- Secretaria\n3- Instrutor\n4- Aluno\n");
@@ -183,9 +210,6 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextNumeroMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextBairro, javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,33 +234,23 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextEmail)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jTextNumero)
+                                        .addComponent(jTextNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 199, Short.MAX_VALUE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(275, 275, 275)
-                                .addComponent(jLabel2)))
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextRG))
+                                        .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextRG))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(jTextLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                     .addComponent(jTextData, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -246,7 +260,7 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
                                             .addComponent(jLabel19))
                                         .addGap(23, 23, 23)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                            .addComponent(jTextSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                                             .addComponent(jTextProfissao)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,7 +279,18 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jComboBoxNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextNumeroMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(275, 275, 275)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -319,9 +344,9 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jComboBoxNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,8 +391,45 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
+        //acesso 
+        acesso.setLogin(jTextLogin.getText());
+        acesso.setSenha(jTextSenha.getText());
 
+        //Aluno 
+        aluno.setNome(jTextNome.getText());
+        aluno.setCPF(jTextCPF.getText());
+        aluno.setRG(jTextRG.getText());
+        aluno.setTelefone(jTextTelefone.getText());
+        aluno.setCelular(jTextCelular.getText());
+        aluno.setEmail(jTextEmail.getText());
+        aluno.setNivelAcesso(Integer.parseInt((String) jComboBoxNivelAcesso.getSelectedItem()));
+        aluno.setDataMatricula(jTextData.getText());
+        aluno.setProfissao(jTextProfissao.getText());
+        aluno.setStatus((String) jComboBoxStatus.getSelectedItem());
+
+        //endereço 
+        endereco.setRua(jTextRua.getText());
+        endereco.setNumero(Integer.parseInt(jTextNumero.getText()));
+        endereco.setBairro(jTextBairro.getText());
+        endereco.setCEP(jTextCEP.getText());
+        endereco.setCidade(jTextCidade.getText());
+        endereco.setEstado(jTextEstado.getText());
+
+        try {
+            cadastrar.cadastroAluno(acesso, aluno, endereco);
+
+            FrmFaturaCadastrar.main(args);
+            this.dispose();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,7 +465,11 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAlunoCadastrar().setVisible(true);
+                try {
+                    new FrmAlunoCadastrar().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(FrmAlunoCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -443,14 +509,14 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextData;
     private javax.swing.JTextField jTextEmail;
     private javax.swing.JTextField jTextEstado;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextLogin;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextNumero;
     private javax.swing.JTextField jTextNumeroMatricula;
     private javax.swing.JTextField jTextProfissao;
     private javax.swing.JTextField jTextRG;
     private javax.swing.JTextField jTextRua;
+    private javax.swing.JTextField jTextSenha;
     private javax.swing.JTextField jTextTelefone;
     // End of variables declaration//GEN-END:variables
 }

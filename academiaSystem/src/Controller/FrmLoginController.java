@@ -13,9 +13,9 @@ import model.Acesso;
 import utils.Connect;
 import utils.LeituraEscritaObj;
 import view.FrmPrincipalAdm;
-import view.FrmPrincipalAluno;
-import view.FrmPrincipalInstrutor;
-import view.FrmPrincipalSecretaria;
+//import view.FrmPrincipalAluno;
+//import view.FrmPrincipalInstrutor;
+//import view.FrmPrincipalSecretaria;
 
 /**
  *
@@ -36,7 +36,7 @@ public class FrmLoginController {
     }
 
     //Verifica se o Login e a senha Estão corretas !
-    public void loginAcesso(String usuario, String senha) {
+    public boolean loginAcesso(String usuario, String senha) {
         try {
             String usuarioBD = "";
             String senhaBD = "";
@@ -74,15 +74,15 @@ public class FrmLoginController {
                         break;
                     //Se nivel de acesso = 2, chamo a tela de secretária
                     case 2:
-                        FrmPrincipalSecretaria.main(args);
+                      //  FrmPrincipalSecretaria.main(args);
                         break;
                         //Se nivel de acesso = 3, chamo a tela de instrutor
                     case 3:
-                        FrmPrincipalInstrutor.main(args);
+                     //   FrmPrincipalInstrutor.main(args);
                         break;
                         //Se nivel de acesso = 4, chamo a tela de aluno
                     case 4:
-                        FrmPrincipalAluno.main(args);
+                     //   FrmPrincipalAluno.main(args);
 
                         break;
                     default:
@@ -93,9 +93,10 @@ public class FrmLoginController {
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario ou senha incorreta", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
-
+            return login; 
         } catch (Exception e) {
             System.err.println(e);;
         }
+        return login;
     }
 }

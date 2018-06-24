@@ -120,7 +120,7 @@ public class EnderecoDAO {
     }
 
     //Metodo para retornar Endereco dado o id do usuario
-    public ResultSet buscaEndereco(Endereco endereco, int Usuario_idUsuario, Connect conexao) {
+    public ResultSet buscaEndereco(int Usuario_idUsuario, Connect conexao) {
 
         try {
 

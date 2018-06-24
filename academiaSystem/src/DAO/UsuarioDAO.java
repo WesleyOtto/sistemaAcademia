@@ -124,6 +124,33 @@ public class UsuarioDAO {
     }
 
     //Metodo para retornar o Usuario
+    public ResultSet buscaDadosUsuarioId(int idUsuario, Connect conexao) {
+
+        try {
+
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT * FROM usuario ";
+            strSQL = strSQL + "WHERE idUsuario = '" + idUsuario + "';";
+
+            //Realiza a conexao com o banco
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+
+            }
+            return rs;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
+    }
+
+    //Metodo para retornar o Usuario
     public ResultSet buscaDadosUsuario(String Acesso_usuario, Connect conexao) {
 
         try {

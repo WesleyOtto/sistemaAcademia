@@ -12,6 +12,7 @@ package model;
 public class Usuario {
 
     private int idUsuario;
+    private String acesso;
     private String CPF;
     private String RG;
     private String nome;
@@ -24,8 +25,9 @@ public class Usuario {
     private String estadoCivil;
     private String foto; //Nao sei como colocar foto procurar!!!
 
-    public Usuario(int idUsuario, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
+    public Usuario(int idUsuario, String acesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
         this.idUsuario = idUsuario;
+        this.acesso = acesso;
         this.CPF = CPF;
         this.RG = RG;
         this.nome = nome;
@@ -136,6 +138,14 @@ public class Usuario {
 
     public void setNivelAcesso(int nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
+    }
+
+    public String getAcesso() {
+        return acesso;
+    }
+
+    public void setAcesso(String acesso) {
+        this.acesso = acesso;
     }
 
 }

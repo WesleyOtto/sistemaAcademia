@@ -109,6 +109,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jAlunoItemAlterar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         jAlunoItemAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Alterar.jpg"))); // NOI18N
         jAlunoItemAlterar.setText("Alterar");
+        jAlunoItemAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAlunoItemAlterarActionPerformed(evt);
+            }
+        });
         jCadastroAluno.add(jAlunoItemAlterar);
 
         jAlunoItemBuscarDeletar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK));
@@ -148,6 +153,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jFuncionarioItemBuscarDeletar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK));
         jFuncionarioItemBuscarDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
         jFuncionarioItemBuscarDeletar.setText("Buscar/Deletar");
+        jFuncionarioItemBuscarDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFuncionarioItemBuscarDeletarActionPerformed(evt);
+            }
+        });
         jFuncionario.add(jFuncionarioItemBuscarDeletar);
         jFuncionario.add(jSeparator2);
 
@@ -168,6 +178,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jFaturaItemBaixaFatura.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_MASK));
         jFaturaItemBaixaFatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BaixaFatura.jpg"))); // NOI18N
         jFaturaItemBaixaFatura.setText("Baixa Fatura");
+        jFaturaItemBaixaFatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFaturaItemBaixaFaturaActionPerformed(evt);
+            }
+        });
         jMenu1.add(jFaturaItemBaixaFatura);
 
         jMenuBar1.add(jMenu1);
@@ -179,6 +194,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jTreinosItemCadastrar.setText("Cadastrar");
         jTreinos.add(jTreinosItemCadastrar);
 
+        jTreinosItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_SLASH, java.awt.event.InputEvent.ALT_MASK));
         jTreinosItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
         jTreinosItemBuscar.setText("Buscar");
         jTreinosItemBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -223,6 +239,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jConfiguraçãoItemBancodeDados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_7, java.awt.event.InputEvent.ALT_MASK));
         jConfiguraçãoItemBancodeDados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BDimagens1.jpg"))); // NOI18N
         jConfiguraçãoItemBancodeDados.setText("Banco de dados");
+        jConfiguraçãoItemBancodeDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConfiguraçãoItemBancodeDadosActionPerformed(evt);
+            }
+        });
         jConfigBD.add(jConfiguraçãoItemBancodeDados);
 
         jMenuBar1.add(jConfigBD);
@@ -247,11 +268,21 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jSairItemLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_MASK));
         jSairItemLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logout.jpg"))); // NOI18N
         jSairItemLogout.setText("Logout");
+        jSairItemLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSairItemLogoutActionPerformed(evt);
+            }
+        });
         Jsair.add(jSairItemLogout);
 
         jSairItemSairSistema.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
         jSairItemSairSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Desligar.jpg"))); // NOI18N
         jSairItemSairSistema.setText("Desligar");
+        jSairItemSairSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSairItemSairSistemaActionPerformed(evt);
+            }
+        });
         Jsair.add(jSairItemSairSistema);
 
         jMenuBar1.add(Jsair);
@@ -280,10 +311,12 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
     private void jAlunoItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoItemCadastrarActionPerformed
         // TODO add your handling code here:
+        FrmAlunoCadastrar.main(args);
     }//GEN-LAST:event_jAlunoItemCadastrarActionPerformed
 
     private void jFuncionarioItemCadastrarAlterarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemCadastrarAlterarDeletarActionPerformed
         // TODO add your handling code here:
+        FrmFuncionarioCadastrar.main(args);
     }//GEN-LAST:event_jFuncionarioItemCadastrarAlterarDeletarActionPerformed
 
     private void jTreinosItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTreinosItemBuscarActionPerformed
@@ -296,20 +329,54 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
     private void jFuncionarioItemAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemAlterarActionPerformed
         // TODO add your handling code here:
+        FrmFuncionarioAlterar.main(args);
     }//GEN-LAST:event_jFuncionarioItemAlterarActionPerformed
 
     private void jAlunoItemBuscarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoItemBuscarDeletarActionPerformed
         // TODO add your handling code here:
+        FrmAlunoPesquisar.main(args);
     }//GEN-LAST:event_jAlunoItemBuscarDeletarActionPerformed
 
     private void jFaturaItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFaturaItemCadastrarActionPerformed
         // TODO add your handling code here:
+        FrmFaturaCadastrar.main(args);
     }//GEN-LAST:event_jFaturaItemCadastrarActionPerformed
 
     private void jSobreItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSobreItemAboutActionPerformed
         // TODO add your handling code here:
         FrmSobre.main(args);
     }//GEN-LAST:event_jSobreItemAboutActionPerformed
+
+    private void jAlunoItemAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoItemAlterarActionPerformed
+        // TODO add your handling code here:
+        FrmAlunoAlterar.main(args);
+    }//GEN-LAST:event_jAlunoItemAlterarActionPerformed
+
+    private void jFuncionarioItemBuscarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemBuscarDeletarActionPerformed
+        // TODO add your handling code here:
+        FrmFuncionarioPesquisar.main(args);
+    }//GEN-LAST:event_jFuncionarioItemBuscarDeletarActionPerformed
+
+    private void jFaturaItemBaixaFaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFaturaItemBaixaFaturaActionPerformed
+        // TODO add your handling code here:
+        FrmPagarFatura.main(args);
+    }//GEN-LAST:event_jFaturaItemBaixaFaturaActionPerformed
+
+    private void jConfiguraçãoItemBancodeDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfiguraçãoItemBancodeDadosActionPerformed
+        // TODO add your handling code here:
+        FrmConnect.main(args);
+    }//GEN-LAST:event_jConfiguraçãoItemBancodeDadosActionPerformed
+
+    private void jSairItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairItemLogoutActionPerformed
+        // TODO add your handling code here:
+        FrmTelaLogin.main(args);
+        this.dispose();
+    }//GEN-LAST:event_jSairItemLogoutActionPerformed
+
+    private void jSairItemSairSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairItemSairSistemaActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jSairItemSairSistemaActionPerformed
 
     /**
      * @param args the command line arguments
