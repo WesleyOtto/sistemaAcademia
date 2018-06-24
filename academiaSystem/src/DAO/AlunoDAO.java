@@ -162,4 +162,30 @@ public class AlunoDAO {
         }
 
     }
+
+    public ResultSet buscaTodosAluno(Connect conexao) {
+        try {
+
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT * FROM usuario INNER JOIN aluno ON usuario.idUsuario = aluno.Usuario_idUsuario; ";
+
+            //Realiza a conexao com o banco
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+
+            }
+            return rs;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
+
+    }
+
 }

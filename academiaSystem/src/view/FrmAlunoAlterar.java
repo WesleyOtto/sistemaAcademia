@@ -28,8 +28,6 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
     public FrmAlunoAlterar() {
         initComponents();
 
-        jTextNumeroMatricula.setText("1");
-
     }
 
     /**
@@ -73,9 +71,9 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
         jTextProfissao = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextLogin = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextSenha = new javax.swing.JTextField();
         jButtonCancelar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jTextNumeroMatricula = new javax.swing.JTextField();
@@ -85,8 +83,9 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButtonAlterar = new javax.swing.JButton();
-        jComboBoxStatus = new javax.swing.JComboBox<>();
-        jComboBoxNivelAcesso = new javax.swing.JComboBox<>();
+        jTextNivelAcesso = new javax.swing.JTextField();
+        jTextStatus = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -187,9 +186,13 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
-
-        jComboBoxNivelAcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        jTextField1.setEditable(false);
+        jTextField1.setText("Ativo/ Inativo");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,9 +253,10 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                                        .addComponent(jTextData))
-                                    .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                        .addComponent(jTextData)
+                                        .addComponent(jTextStatus, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -263,7 +267,7 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
                                                     .addComponent(jLabel19))
                                                 .addGap(23, 23, 23)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                                    .addComponent(jTextSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                                                     .addComponent(jTextProfissao)))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,9 +280,7 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jTextEstado)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jComboBoxNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                            .addComponent(jTextNivelAcesso)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -359,11 +361,11 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBoxNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -374,9 +376,11 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
                             .addComponent(jButtonAlterar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -416,17 +420,44 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
         matriculaAluno = Integer.parseInt(jTextPesquisarAluno.getText());
 
         try {
+
             aluno = alterar.pesquisaAluno(matriculaAluno);
+            endereco = alterar.pesquisaEndereco(aluno.getIdUsuario());
+            aluno = alterar.pesquisaUsuario();
+            acesso = alterar.pesquisaAcesso(aluno.getAcesso());
             
             
-            //PAREII AKIIIIIIIII
             
+            jTextNumeroMatricula.setText(String.valueOf(matriculaAluno));
+            jTextNome.setText(aluno.getNome());
+            jTextRG.setText(aluno.getRG());
+            jTextCPF.setText(aluno.getCPF());
+            jTextCelular.setText(aluno.getCelular());
+            jTextTelefone.setText(aluno.getTelefone());
+            jTextEmail.setText(aluno.getEmail());
+            jTextRua.setText(endereco.getRua());
+            jTextNumero.setText(String.valueOf(endereco.getNumero()));
+            jTextCEP.setText(endereco.getCEP());
+            jTextBairro.setText(endereco.getBairro());
+            jTextCidade.setText(endereco.getCidade());
+            jTextData.setText(aluno.getDataMatricula());
+            jTextProfissao.setText(aluno.getProfissao());
+            jTextEstado.setText(endereco.getEstado());
+            jTextLogin.setText(acesso.getLogin());
+            jTextSenha.setText(acesso.getSenha());
+            jTextNivelAcesso.setText(String.valueOf(aluno.getNivelAcesso()));
+            jTextStatus.setText(aluno.getStatus());
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+            
         }
 
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -475,8 +506,6 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonPesquisar;
-    private javax.swing.JComboBox<String> jComboBoxNivelAcesso;
-    private javax.swing.JComboBox<String> jComboBoxStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -509,7 +538,8 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextEmail;
     private javax.swing.JTextField jTextEstado;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextLogin;
+    private javax.swing.JTextField jTextNivelAcesso;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextNumero;
     private javax.swing.JTextField jTextNumeroMatricula;
@@ -517,6 +547,8 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextProfissao;
     private javax.swing.JTextField jTextRG;
     private javax.swing.JTextField jTextRua;
+    private javax.swing.JTextField jTextSenha;
+    private javax.swing.JTextField jTextStatus;
     private javax.swing.JTextField jTextTelefone;
     // End of variables declaration//GEN-END:variables
 }

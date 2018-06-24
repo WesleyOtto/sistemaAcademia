@@ -10,13 +10,14 @@ package view;
  * @author wesle
  */
 public class FrmPrincipalAdm extends javax.swing.JFrame {
-        
+
     private String args[] = {""};
+
     /**
      * Creates new form FrmPrincipalAdm
      */
     public FrmPrincipalAdm() {
-        
+
         initComponents();
     }
 
@@ -42,6 +43,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jAlunoItemCadastrar = new javax.swing.JMenuItem();
         jAlunoItemAlterar = new javax.swing.JMenuItem();
         jAlunoItemBuscarDeletar = new javax.swing.JMenuItem();
+        jAluniItemBuscar = new javax.swing.JMenuItem();
         jFuncionario = new javax.swing.JMenu();
         jFuncionarioItemCadastrarAlterarDeletar = new javax.swing.JMenuItem();
         jFuncionarioItemAlterar = new javax.swing.JMenuItem();
@@ -95,6 +97,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homem1.jpg"))); // NOI18N
 
         jCadastroAluno.setText("Aluno");
+        jCadastroAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastroAlunoActionPerformed(evt);
+            }
+        });
 
         jAlunoItemCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
         jAlunoItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
@@ -118,13 +125,22 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
         jAlunoItemBuscarDeletar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK));
         jAlunoItemBuscarDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
-        jAlunoItemBuscarDeletar.setText("Buscar/Deletar");
+        jAlunoItemBuscarDeletar.setText("Deletar");
         jAlunoItemBuscarDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAlunoItemBuscarDeletarActionPerformed(evt);
             }
         });
         jCadastroAluno.add(jAlunoItemBuscarDeletar);
+
+        jAluniItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
+        jAluniItemBuscar.setText("Buscar");
+        jAluniItemBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAluniItemBuscarActionPerformed(evt);
+            }
+        });
+        jCadastroAluno.add(jAluniItemBuscar);
 
         jMenuBar1.add(jCadastroAluno);
 
@@ -334,7 +350,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
     private void jAlunoItemBuscarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoItemBuscarDeletarActionPerformed
         // TODO add your handling code here:
-        FrmAlunoPesquisar.main(args);
+        FrmAlunoDeletar.main(args);
     }//GEN-LAST:event_jAlunoItemBuscarDeletarActionPerformed
 
     private void jFaturaItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFaturaItemCadastrarActionPerformed
@@ -378,6 +394,15 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jSairItemSairSistemaActionPerformed
 
+    private void jCadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCadastroAlunoActionPerformed
+
+    private void jAluniItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAluniItemBuscarActionPerformed
+        // TODO add your handling code here:
+        FrmAlunoBuscar.main(args);
+    }//GEN-LAST:event_jAluniItemBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -418,6 +443,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Jsair;
+    private javax.swing.JMenuItem jAluniItemBuscar;
     private javax.swing.JMenuItem jAlunoItemAlterar;
     private javax.swing.JMenuItem jAlunoItemBuscarDeletar;
     private javax.swing.JMenuItem jAlunoItemCadastrar;

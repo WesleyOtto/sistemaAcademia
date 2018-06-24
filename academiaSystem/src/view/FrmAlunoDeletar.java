@@ -5,16 +5,25 @@
  */
 package view;
 
+import Controller.FrmAlunoAlterarController;
+import javax.swing.JOptionPane;
+import model.Acesso;
+import model.Aluno;
+import model.Endereco;
+
 /**
  *
  * @author wesle
  */
-public class FrmAlunoPesquisar extends javax.swing.JFrame {
-
+public class FrmAlunoDeletar extends javax.swing.JFrame {
+    Acesso acesso = new Acesso();
+    Aluno aluno = new Aluno();
+    Endereco endereco = new Endereco();
+    FrmAlunoAlterarController alterar = new FrmAlunoAlterarController();
     /**
      * Creates new form FrmCadastroAluno
      */
-    public FrmAlunoPesquisar() {
+    public FrmAlunoDeletar() {
         initComponents();
         
         jTextNumeroMatricula.setText("1");
@@ -62,9 +71,9 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
         jTextProfissao = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextLogin = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextSenha = new javax.swing.JTextField();
         jButtonSair = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jTextNumeroMatricula = new javax.swing.JTextField();
@@ -154,11 +163,11 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
 
         jLabel18.setText("Login:");
 
-        jTextField1.setEditable(false);
+        jTextLogin.setEditable(false);
 
         jLabel19.setText("Senha:");
 
-        jTextField2.setEditable(false);
+        jTextSenha.setEditable(false);
 
         jButtonSair.setText("Sair");
 
@@ -181,6 +190,11 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
         jLabel21.setText("Pesquisar:");
 
         jButton3.setText("Pesquisar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -236,8 +250,8 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jTextCidade))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel7)
                                             .addComponent(jLabel10))
@@ -279,7 +293,7 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextStatus)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(jTextLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                     .addComponent(jTextData))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +305,7 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
                                                     .addComponent(jLabel19))
                                                 .addGap(23, 23, 23)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                                    .addComponent(jTextSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                                                     .addComponent(jTextProfissao)))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,9 +379,9 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jTextNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,6 +424,47 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int matriculaAluno;
+
+        matriculaAluno = Integer.parseInt(jTextPesquisarAluno.getText());
+
+        try {
+
+            aluno = alterar.pesquisaAluno(matriculaAluno);
+            endereco = alterar.pesquisaEndereco(aluno.getIdUsuario());
+            aluno = alterar.pesquisaUsuario();
+            acesso = alterar.pesquisaAcesso(aluno.getAcesso());
+            
+            
+            
+            jTextNumeroMatricula.setText(String.valueOf(matriculaAluno));
+            jTextNome.setText(aluno.getNome());
+            jTextRG.setText(aluno.getRG());
+            jTextCPF.setText(aluno.getCPF());
+            jTextCelular.setText(aluno.getCelular());
+            jTextTelefone.setText(aluno.getTelefone());
+            jTextEmail.setText(aluno.getEmail());
+            jTextRua.setText(endereco.getRua());
+            jTextNumero.setText(String.valueOf(endereco.getNumero()));
+            jTextCEP.setText(endereco.getCEP());
+            jTextBairro.setText(endereco.getBairro());
+            jTextCidade.setText(endereco.getCidade());
+            jTextData.setText(aluno.getDataMatricula());
+            jTextProfissao.setText(aluno.getProfissao());
+            jTextEstado.setText(endereco.getEstado());
+            jTextLogin.setText(acesso.getLogin());
+            jTextSenha.setText(acesso.getSenha());
+            jTextNivelAcesso.setText(String.valueOf(aluno.getNivelAcesso()));
+            jTextStatus.setText(aluno.getStatus());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -428,14 +483,18 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAlunoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAlunoDeletar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAlunoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAlunoDeletar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAlunoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAlunoDeletar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAlunoPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAlunoDeletar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -444,7 +503,7 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAlunoPesquisar().setVisible(true);
+                new FrmAlunoDeletar().setVisible(true);
             }
         });
     }
@@ -484,8 +543,7 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextData;
     private javax.swing.JTextField jTextEmail;
     private javax.swing.JTextField jTextEstado;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextLogin;
     private javax.swing.JTextField jTextNivelAcesso;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextNumero;
@@ -494,6 +552,7 @@ public class FrmAlunoPesquisar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextProfissao;
     private javax.swing.JTextField jTextRG;
     private javax.swing.JTextField jTextRua;
+    private javax.swing.JTextField jTextSenha;
     private javax.swing.JTextField jTextStatus;
     private javax.swing.JTextField jTextTelefone;
     // End of variables declaration//GEN-END:variables
