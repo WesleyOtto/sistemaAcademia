@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import utils.Connect;
-import utils.LeituraEscritaObj;
+import utils.LeituraEscritaConfigBanco;
 
 /**
  *
@@ -20,7 +20,7 @@ public class FrmConnect extends javax.swing.JFrame {
 
     public Connect con = new Connect();
     private String args[] = {""};
-    LeituraEscritaObj escrever = new LeituraEscritaObj();
+    LeituraEscritaConfigBanco escrever = new LeituraEscritaConfigBanco();
 
     /**
      * Creates new form FrmConnect

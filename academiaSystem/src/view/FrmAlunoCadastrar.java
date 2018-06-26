@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.Connect;
-import utils.LeituraEscritaObj;
+import utils.LeituraEscritaConfigBanco;
 import Controller.FrmAlunoCadastrarController;
 import javax.swing.JOptionPane;
 
@@ -24,15 +24,16 @@ import javax.swing.JOptionPane;
 public class FrmAlunoCadastrar extends javax.swing.JFrame {
 
     private String args[] = {""};
-    AlunoDAO alunoID = new AlunoDAO();
     public Connect con = new Connect();
-    LeituraEscritaObj ler = new LeituraEscritaObj();
-    Aluno aluno = new Aluno();
+    LeituraEscritaConfigBanco ler = new LeituraEscritaConfigBanco();
     Endereco endereco = new Endereco();
     Acesso acesso = new Acesso();
+    AlunoDAO alunoID = new AlunoDAO();
+    Aluno aluno = new Aluno();
+    
+    
     FrmAlunoCadastrarController cadastrar = new FrmAlunoCadastrarController();
-    Boolean confere = false;
-
+    
     /**
      * Creates new form FrmCadastroAluno
      */
@@ -391,38 +392,44 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
-        //acesso 
-        acesso.setLogin(jTextLogin.getText());
-        acesso.setSenha(jTextSenha.getText());
 
-        //Aluno 
-        aluno.setNome(jTextNome.getText());
-        aluno.setCPF(jTextCPF.getText());
-        aluno.setRG(jTextRG.getText());
-        aluno.setTelefone(jTextTelefone.getText());
-        aluno.setCelular(jTextCelular.getText());
-        aluno.setEmail(jTextEmail.getText());
-        aluno.setNivelAcesso(Integer.parseInt((String) jComboBoxNivelAcesso.getSelectedItem()));
-        aluno.setDataMatricula(jTextData.getText());
-        aluno.setProfissao(jTextProfissao.getText());
-        aluno.setStatus((String) jComboBoxStatus.getSelectedItem());
+        if ("".equals(jTextNome.getText())) {
+            JOptionPane.showMessageDialog(this, "Preencha os dados", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
 
-        //endereço 
-        endereco.setRua(jTextRua.getText());
-        endereco.setNumero(Integer.parseInt(jTextNumero.getText()));
-        endereco.setBairro(jTextBairro.getText());
-        endereco.setCEP(jTextCEP.getText());
-        endereco.setCidade(jTextCidade.getText());
-        endereco.setEstado(jTextEstado.getText());
+            //acesso 
+            acesso.setLogin(jTextLogin.getText());
+            acesso.setSenha(jTextSenha.getText());
 
-        try {
-            cadastrar.cadastroAluno(acesso, aluno, endereco);
+            //Aluno 
+            aluno.setNome(jTextNome.getText());
+            aluno.setCPF(jTextCPF.getText());
+            aluno.setRG(jTextRG.getText());
+            aluno.setTelefone(jTextTelefone.getText());
+            aluno.setCelular(jTextCelular.getText());
+            aluno.setEmail(jTextEmail.getText());
+            aluno.setNivelAcesso(Integer.parseInt((String) jComboBoxNivelAcesso.getSelectedItem()));
+            aluno.setDataMatricula(jTextData.getText());
+            aluno.setProfissao(jTextProfissao.getText());
+            aluno.setStatus((String) jComboBoxStatus.getSelectedItem());
 
-            FrmFaturaCadastrar.main(args);
-            this.dispose();
+            //endereço 
+            endereco.setRua(jTextRua.getText());
+            endereco.setNumero(Integer.parseInt(jTextNumero.getText()));
+            endereco.setBairro(jTextBairro.getText());
+            endereco.setCEP(jTextCEP.getText());
+            endereco.setCidade(jTextCidade.getText());
+            endereco.setEstado(jTextEstado.getText());
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+            try {
+                cadastrar.cadastroAluno(acesso, aluno, endereco);
+                JOptionPane.showMessageDialog(this, "Cadastrado com sucesso", "Cadastro Aluno", JOptionPane.INFORMATION_MESSAGE);
+                FrmFaturaCadastrar.main(args);
+                this.dispose();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 

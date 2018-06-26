@@ -96,13 +96,13 @@ public class UsuarioDAO {
             String strSQL = "";
             strSQL = "UPDATE usuario SET nome = '" + usuario.getNome() + "',";
             strSQL = strSQL + "CPF = '" + usuario.getCPF() + "',";
-            strSQL = strSQL + "RG = '" + usuario.getRG() + "'";
-            strSQL = strSQL + "telefone = '" + usuario.getTelefone() + "'";
-            strSQL = strSQL + "celular = '" + usuario.getCelular() + "'";
-            strSQL = strSQL + "email = '" + usuario.getEmail() + "'";
-            strSQL = strSQL + "nivelAcesso = '" + usuario.getNivelAcesso() + "'";
+            strSQL = strSQL + "RG = '" + usuario.getRG() + "',";
+            strSQL = strSQL + "telefone = '" + usuario.getTelefone() + "',";
+            strSQL = strSQL + "celular = '" + usuario.getCelular() + "',";
+            strSQL = strSQL + "email = '" + usuario.getEmail() + "',";
+            strSQL = strSQL + "nivelAcesso = '" + usuario.getNivelAcesso() + "' ";
             strSQL = strSQL + "WHERE idUsuario = '" + usuario.getIdUsuario() + "';";
-
+            
             //Criando objeto da conexão
             Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
             if (con != null) {
@@ -159,7 +159,7 @@ public class UsuarioDAO {
             //Montar a instrução sql
             String strSQL = "";
             strSQL = "SELECT * FROM usuario ";
-            strSQL = strSQL + "WHERE Acesso_usuario = '" + Acesso_usuario + "';";
+            strSQL = strSQL + " WHERE Acesso_usuario = '" + Acesso_usuario + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());

@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import model.Acesso;
 import utils.Connect;
-import utils.LeituraEscritaObj;
+import utils.LeituraEscritaConfigBanco;
 import view.FrmPrincipalAdm;
 //import view.FrmPrincipalAluno;
 //import view.FrmPrincipalInstrutor;
@@ -24,7 +24,7 @@ import view.FrmPrincipalAdm;
 public class FrmLoginController {
 
     public Connect con = new Connect();
-    LeituraEscritaObj ler = new LeituraEscritaObj();
+    LeituraEscritaConfigBanco ler = new LeituraEscritaConfigBanco();
     private String args[] = {""};
     AcessoDAO acessaDAO = new AcessoDAO();
     UsuarioDAO usuarioDAO = new UsuarioDAO();

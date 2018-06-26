@@ -5,20 +5,42 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import DAO.FuncionarioDAO;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import Controller.FrmFuncionarioCadastrarController;
+import model.Acesso;
+import model.Endereco;
+import model.Funcionario;
+import utils.Connect;
+import utils.LeituraEscritaConfigBanco;
+
 /**
  *
  * @author wesle
  */
 public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
 
+    private String args[] = {""};
+    public Connect con = new Connect();
+    LeituraEscritaConfigBanco ler = new LeituraEscritaConfigBanco();
+    Endereco endereco = new Endereco();
+    Acesso acesso = new Acesso();
+
+    Funcionario funcionario = new Funcionario();
+    FuncionarioDAO idFuncionario = new FuncionarioDAO();
+    FrmFuncionarioCadastrarController cadastrar = new FrmFuncionarioCadastrarController();
+
     /**
      * Creates new form FrmCadastroAluno
      */
-    public FrmFuncionarioCadastrar() {
+    public FrmFuncionarioCadastrar() throws IOException {
         initComponents();
-        
-        jTextNumeroMatricula.setText("1");
 
+        con = ler.restaurar();
+        jTextNumeroMatricula.setText(String.valueOf(idFuncionario.retonaIdFuncionario(con)));
     }
 
     /**
@@ -58,15 +80,15 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextEstado = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextData = new javax.swing.JTextField();
+        jTextDataAdmissao = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextProfissao = new javax.swing.JTextField();
+        jTextDataDemissao = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jComboBoxCargo = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextLogin = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextSenha = new javax.swing.JTextField();
         jButtonSair = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jTextNumeroMatricula = new javax.swing.JTextField();
@@ -144,6 +166,11 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
         jLabel19.setText("Senha:");
 
         jButtonSair.setText("Sair");
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Número Matricula: ");
 
@@ -169,6 +196,11 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
         jLabel22.setText("Salário:");
 
         jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,8 +256,8 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
                             .addComponent(jComboBoxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                                    .addComponent(jTextData, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jTextLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(jTextDataAdmissao, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -239,8 +271,8 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
                                             .addComponent(jLabel22))
                                         .addGap(23, 23, 23)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                                            .addComponent(jTextProfissao)
+                                            .addComponent(jTextSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                            .addComponent(jTextDataDemissao)
                                             .addComponent(jTextSalario))))))
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,16 +346,16 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel15)
-                        .addComponent(jTextData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel16)
-                        .addComponent(jTextProfissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextDataDemissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jComboBoxNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,6 +404,58 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxCargoActionPerformed
 
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        // TODO add your handling code here:
+
+        if ("".equals(jTextNome.getText())) {
+            JOptionPane.showMessageDialog(this, "Preencha os dados", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            //acesso 
+            acesso.setLogin(jTextLogin.getText());
+            acesso.setSenha(jTextSenha.getText());
+
+            //Aluno 
+            funcionario.setNome(jTextNome.getText());
+            funcionario.setCPF(jTextCPF.getText());
+            funcionario.setRG(jTextRG.getText());
+            funcionario.setTelefone(jTextTelefone.getText());
+            funcionario.setCelular(jTextCelular.getText());
+            funcionario.setEmail(jTextEmail.getText());
+            funcionario.setNivelAcesso(Integer.parseInt((String) jComboBoxNivelAcesso.getSelectedItem()));
+
+            // Funcionario 
+            funcionario.setCargo((String) jComboBoxCargo.getSelectedItem());
+            funcionario.setSalario((jTextSalario.getText()));
+            funcionario.setDataAdmissao(jTextDataAdmissao.getText());
+            funcionario.setDataDemissao(jTextDataDemissao.getText());
+
+            //endereço 
+            endereco.setRua(jTextRua.getText());
+            endereco.setNumero(Integer.parseInt(jTextNumero.getText()));
+            endereco.setBairro(jTextBairro.getText());
+            endereco.setCEP(jTextCEP.getText());
+            endereco.setCidade(jTextCidade.getText());
+            endereco.setEstado(jTextEstado.getText());
+
+            try {
+
+                cadastrar.cadastroFuncionario(acesso, funcionario, endereco);
+                this.dispose();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        // TODO add your handling code here:
+
+        this.dispose();
+    }//GEN-LAST:event_jButtonSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -398,43 +482,15 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmFuncionarioCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmFuncionarioCadastrar().setVisible(true);
+                try {
+                    new FrmFuncionarioCadastrar().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(FrmFuncionarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -472,18 +528,18 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextCelular;
     private javax.swing.JTextField jTextCidade;
-    private javax.swing.JTextField jTextData;
+    private javax.swing.JTextField jTextDataAdmissao;
+    private javax.swing.JTextField jTextDataDemissao;
     private javax.swing.JTextField jTextEmail;
     private javax.swing.JTextField jTextEstado;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextLogin;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextNumero;
     private javax.swing.JTextField jTextNumeroMatricula;
-    private javax.swing.JTextField jTextProfissao;
     private javax.swing.JTextField jTextRG;
     private javax.swing.JTextField jTextRua;
     private javax.swing.JTextField jTextSalario;
+    private javax.swing.JTextField jTextSenha;
     private javax.swing.JTextField jTextTelefone;
     // End of variables declaration//GEN-END:variables
 }

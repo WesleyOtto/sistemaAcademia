@@ -364,9 +364,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextEstado">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>
@@ -393,6 +390,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextLogin">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel19">
       <Properties>
@@ -463,6 +463,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextNivelAcesso">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextStatus">
     </Component>

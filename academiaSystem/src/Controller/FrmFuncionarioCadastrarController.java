@@ -5,16 +5,16 @@
  */
 package Controller;
 
-import model.Aluno;
-import model.Acesso;
-import model.Endereco;
-import DAO.AlunoDAO;
 import DAO.AcessoDAO;
+import DAO.FuncionarioDAO;
 import DAO.EnderecoDAO;
 import DAO.UsuarioDAO;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.Acesso;
+import model.Funcionario;
+import model.Endereco;
 import utils.Connect;
 import utils.LeituraEscritaConfigBanco;
 
@@ -22,17 +22,16 @@ import utils.LeituraEscritaConfigBanco;
  *
  * @author wesle
  */
-public class FrmAlunoCadastrarController {
-
+public class FrmFuncionarioCadastrarController {
     public Connect con = new Connect();
     LeituraEscritaConfigBanco ler = new LeituraEscritaConfigBanco();
 
-    public FrmAlunoCadastrarController() {
+    public FrmFuncionarioCadastrarController() {
     }
 
-    public void cadastroAluno(Acesso acesso, Aluno aluno, Endereco endereco) throws IOException, SQLException {
+    public void cadastroFuncionario(Acesso acesso, Funcionario funcionario, Endereco endereco) throws IOException, SQLException {
 
-        AlunoDAO alunoDAO = new AlunoDAO();
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         AcessoDAO acessoDAO = new AcessoDAO();
         EnderecoDAO enderecoDAO = new EnderecoDAO();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -45,18 +44,18 @@ public class FrmAlunoCadastrarController {
         String usuario = acessoDAO.insereAcesso(acesso, con);
 
         //Insiro o usuario 
-        usuarioDAO.insereUsuario(aluno, usuario, con);
+        usuarioDAO.insereUsuario(funcionario, usuario, con);
 
         //buscuo idusuario no BD
         ResultSet rs = usuarioDAO.buscaDadosUsuario(usuario, con);
         rs.next();
         idUsuario = rs.getInt("idUsuario");
 
-        //insere aluno 
-        alunoDAO.insereAluno(aluno, idUsuario, con);
-
+        //insere Funcionario
+         funcionarioDAO.insereFuncionario(funcionario, idUsuario, con);
+       
         //insere endereço
         enderecoDAO.insereEndereco(endereco, idUsuario, con);
     }
-
+    
 }

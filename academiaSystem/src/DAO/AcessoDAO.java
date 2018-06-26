@@ -80,9 +80,9 @@ public class AcessoDAO {
         try {
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "UPDATE acesso SET senha = '" + acesso.getSenha() + "'";
-            strSQL = strSQL + "WHERE" + "usuario = '" + acesso.getLogin() + "';";
-
+            strSQL = "UPDATE acesso SET senha = '" + acesso.getSenha() + "' ";
+            strSQL = strSQL + " WHERE " + " usuario = '" + acesso.getLogin() + "';";
+            
             //Criando objeto da conexão
             
             Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());

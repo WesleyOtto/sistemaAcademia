@@ -5,7 +5,8 @@
  */
 package academiasystem;
 
-import utils.LeituraEscritaObj;
+import java.io.File;
+import utils.LeituraEscritaConfigBanco;
 import view.FrmConnect;
 import view.FrmTelaLogin;
 
@@ -23,8 +24,8 @@ public class AcademiaSystem {
 
     public static void main(String[] args) {
 
-        LeituraEscritaObj existe = new LeituraEscritaObj();
-
+        LeituraEscritaConfigBanco existe = new LeituraEscritaConfigBanco();
+                
         if (existe.fileExist()) {
             FrmTelaLogin.main(args);
         } else {

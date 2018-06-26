@@ -12,9 +12,9 @@ package model;
 public class Funcionario extends Usuario {
 
     private int matriculaFuncionario;
-    private int cargo;
+    private String cargo;
     private String descricaoCargo;
-    private double salario;
+    private String salario;
     private String dataAdmissao;
     private String dataDemissao;
     private AvaliacaoFisica avaliacaoFisica;
@@ -24,7 +24,7 @@ public class Funcionario extends Usuario {
     private Aluno aluno;
     private Funcionario administrador;
 
-    public Funcionario(int matriculaFuncionario, int cargo, String descricaoCargo, double salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador, int idUsuario, String acesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
+    public Funcionario(int matriculaFuncionario, String cargo, String descricaoCargo, String salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador, int idUsuario, String acesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
         super(idUsuario, acesso, CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
         this.matriculaFuncionario = matriculaFuncionario;
         this.cargo = cargo;
@@ -40,7 +40,7 @@ public class Funcionario extends Usuario {
         this.administrador = administrador;
     }
 
-    public Funcionario(int matriculaFuncionario, int cargo, String descricaoCargo, double salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador) {
+    public Funcionario(int matriculaFuncionario, String cargo, String descricaoCargo, String salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador) {
         this.matriculaFuncionario = matriculaFuncionario;
         this.cargo = cargo;
         this.descricaoCargo = descricaoCargo;
@@ -66,11 +66,11 @@ public class Funcionario extends Usuario {
         this.matriculaFuncionario = matriculaFuncionario;
     }
 
-    public int getCargo() {
+    public String getCargo() {
         return cargo;
     }
 
-    public void setCargo(int cargo) {
+    public void setCargo(String cargo) {
         this.cargo = cargo;
     }
 
@@ -82,11 +82,11 @@ public class Funcionario extends Usuario {
         this.descricaoCargo = descricaoCargo;
     }
 
-    public double getSalario() {
+    public String getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(String salario) {
         this.salario = salario;
     }
 

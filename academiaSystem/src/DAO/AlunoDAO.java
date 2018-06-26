@@ -83,7 +83,7 @@ public class AlunoDAO {
             String strSQL = "";
             strSQL = "UPDATE aluno SET profissao = '" + aluno.getProfissao() + "',";
             strSQL = strSQL + "status = '" + aluno.getStatus() + "',";
-            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "'";
+            strSQL = strSQL + "dataMatricula = '" + aluno.getDataMatricula() + "' ";
             strSQL = strSQL + "WHERE matriculaAluno = '" + aluno.getMatriculaAluno() + "';";
 
             //Criando objeto da conexão

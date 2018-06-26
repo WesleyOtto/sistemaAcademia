@@ -7,7 +7,7 @@ package view;
 
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
-import DAO.AlunoDAO;
+import DAO.FuncionarioDAO;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +18,7 @@ import utils.LeituraEscritaConfigBanco;
  *
  * @author wesle
  */
-public class FrmAlunoBuscar extends javax.swing.JFrame {
+public class FrmFuncionarioBuscar extends javax.swing.JFrame {
 
     public Connect con = new Connect();
     LeituraEscritaConfigBanco ler = new LeituraEscritaConfigBanco();
@@ -26,7 +26,7 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
     /**
      * Creates new form FrmAlunoBuscar
      */
-    public FrmAlunoBuscar() {
+    public FrmFuncionarioBuscar() {
         initComponents();
     }
 
@@ -53,7 +53,7 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "idUsuario", "nome", "CPF", "RG", "telefone", "celular", "email", "nivelAcesso", "Acesso_usuario", "matriculaAluno", "dataMatricula", "profissao", "status"
+                "idUsuario", "nome", "CPF", "RG", "telefone", "celular", "email", "nivelAcesso", "Acesso_usuario", "matriculaFuncionario", "Cargo", "data Admissao", "Data Demissao"
             }
         ));
         jScrollPane1.setViewportView(jTableAluno);
@@ -69,7 +69,7 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Buscar Aluno:");
+        jLabel2.setText("Buscar Funcionario:");
 
         jButtonSair.setText("Sair");
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -83,15 +83,13 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1355, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1355, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -127,7 +125,7 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
             // TODO add your handling code here:
             con = ler.restaurar();
         } catch (IOException ex) {
-            Logger.getLogger(FrmAlunoBuscar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrmFuncionarioBuscar.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
@@ -143,10 +141,12 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
             modelo.addColumn("E-mail");
             modelo.addColumn("Nivel de Acesso");
             modelo.addColumn("Login");
-            modelo.addColumn("Matricula Aluno");
-            modelo.addColumn("Data Matricula");
-            modelo.addColumn("profissao");
-            modelo.addColumn("status");
+
+            modelo.addColumn("Matricula Funcionario");
+            modelo.addColumn("Cargo");
+            modelo.addColumn("Salario");
+            modelo.addColumn("Data Admissao");
+            modelo.addColumn("Data Demissao");
 
             jTableAluno.getColumnModel().getColumn(0).setPreferredWidth(0);   //Tamanho da Coluna 1
             jTableAluno.getColumnModel().getColumn(1).setPreferredWidth(40);    //Tamnaho da Coluna 2
@@ -163,11 +163,13 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
             jTableAluno.getColumnModel().getColumn(9).setPreferredWidth(20);   //Tamanho da Coluna 1
             jTableAluno.getColumnModel().getColumn(10).setPreferredWidth(20);    //Tamnaho da Coluna 2
             jTableAluno.getColumnModel().getColumn(11).setPreferredWidth(20);   //Tamanho da Coluna 3
+
             jTableAluno.getColumnModel().getColumn(12).setPreferredWidth(20);   //Tamanho da Coluna 3
+            jTableAluno.getColumnModel().getColumn(13).setPreferredWidth(20);   //Tamanho da Coluna 3
 
             //Pesquisa todos os Estados Cadastrados no banco de dados.
-            AlunoDAO aluno = new AlunoDAO();
-            ResultSet rs = aluno.buscaTodosAluno(con);
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+            ResultSet rs = funcionarioDAO.buscaTodosFuncionarios(con);
 
             //Apresenta todos os estados cadastrado no grid
             while (rs.next()) {
@@ -180,10 +182,12 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
                     rs.getString("email"),
                     rs.getString("nivelAcesso"),
                     rs.getString("Acesso_usuario"),
-                    rs.getString("matriculaAluno"),
-                    rs.getString("dataMatricula"),
-                    rs.getString("profissao"),
-                    rs.getString("status")});
+                    rs.getString("matriculaFuncionario"),
+                    rs.getString("cargo"),
+                    rs.getString("salario"),
+                    rs.getString("dataAdmissao"),
+                    rs.getString("dataDemissao")
+                });
             }
         } catch (Exception e) {
             System.out.println("Problemas com a carga do Grid ");
@@ -213,20 +217,21 @@ public class FrmAlunoBuscar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAlunoBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFuncionarioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAlunoBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFuncionarioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAlunoBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFuncionarioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAlunoBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFuncionarioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAlunoBuscar().setVisible(true);
+                new FrmFuncionarioBuscar().setVisible(true);
             }
         });
     }

@@ -82,8 +82,8 @@
                           <Component id="jComboBoxCargo" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jTextField1" alignment="0" pref="154" max="32767" attributes="0"/>
-                                  <Component id="jTextData" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextLogin" alignment="0" pref="154" max="32767" attributes="0"/>
+                                  <Component id="jTextDataAdmissao" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -100,8 +100,8 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField2" pref="207" max="32767" attributes="0"/>
-                                          <Component id="jTextProfissao" max="32767" attributes="0"/>
+                                          <Component id="jTextSenha" pref="207" max="32767" attributes="0"/>
+                                          <Component id="jTextDataDemissao" max="32767" attributes="0"/>
                                           <Component id="jTextSalario" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -198,18 +198,18 @@
                   <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextData" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextDataAdmissao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextProfissao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextDataDemissao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextSenha" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBoxNivelAcesso" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -365,14 +365,14 @@
         <Property name="text" type="java.lang.String" value="Data Admiss&#xe3;o:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextData">
+    <Component class="javax.swing.JTextField" name="jTextDataAdmissao">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel16">
       <Properties>
         <Property name="text" type="java.lang.String" value="Data Demiss&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextProfissao">
+    <Component class="javax.swing.JTextField" name="jTextDataDemissao">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
@@ -402,19 +402,22 @@
         <Property name="text" type="java.lang.String" value="Login:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="jTextLogin">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel19">
       <Properties>
         <Property name="text" type="java.lang.String" value="Senha:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="jTextSenha">
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSair">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSairActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel20">
       <Properties>
@@ -457,6 +460,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCadastrarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

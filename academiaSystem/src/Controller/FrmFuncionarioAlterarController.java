@@ -5,10 +5,10 @@
  */
 package Controller;
 
-import model.Aluno;
+import model.Funcionario;
 import model.Acesso;
 import model.Endereco;
-import DAO.AlunoDAO;
+import DAO.FuncionarioDAO;
 import DAO.AcessoDAO;
 import DAO.EnderecoDAO;
 import DAO.UsuarioDAO;
@@ -22,10 +22,10 @@ import utils.LeituraEscritaConfigBanco;
  *
  * @author wesle
  */
-public class FrmAlunoAlterarController {
+public class FrmFuncionarioAlterarController {
 
-    Aluno aluno = new Aluno();
-    AlunoDAO alunoDAO = new AlunoDAO();
+    Funcionario funcionario = new Funcionario();
+    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     Acesso acesso = new Acesso();
     AcessoDAO acessoDAO = new AcessoDAO();
@@ -34,10 +34,10 @@ public class FrmAlunoAlterarController {
     public Connect con = new Connect();
     LeituraEscritaConfigBanco ler = new LeituraEscritaConfigBanco();
 
-    public FrmAlunoAlterarController() {
+    public FrmFuncionarioAlterarController() {
     }
 
-    public Aluno pesquisaAluno(int matriculaAluno) throws IOException, SQLException {
+    public Funcionario pesquisaFuncionario(int matriculaFuncionario) throws IOException, SQLException {
 
         ResultSet rs = null;
 
@@ -45,18 +45,20 @@ public class FrmAlunoAlterarController {
         con = ler.restaurar();
 
         //Lendo o que tem no bd do aluno
-        rs = alunoDAO.buscaDadosAluno(matriculaAluno, con);
+        rs = funcionarioDAO.buscaFuncionario(matriculaFuncionario, con);
 
         if (rs != null) {
             rs.next();
-            aluno.setDataMatricula(rs.getString("dataMatricula"));
-            aluno.setProfissao(rs.getString("profissao"));
-            aluno.setStatus(rs.getString("status"));
-            aluno.setIdUsuario(Integer.parseInt(rs.getString("Usuario_idUsuario")));
-            return aluno;
+            funcionario.setCargo(rs.getString("cargo"));
+            funcionario.setSalario(rs.getString("salario"));
+            funcionario.setDataAdmissao(rs.getString("dataAdmissao"));
+            funcionario.setDataDemissao(rs.getString("dataDemissao"));
+            funcionario.setIdUsuario(Integer.parseInt(rs.getString("Usuario_idUsuario")));
+
+            return funcionario;
         } else {
-            aluno = null;
-            return aluno;
+            funcionario = null;
+            return funcionario;
         }
 
     }
@@ -98,32 +100,32 @@ public class FrmAlunoAlterarController {
 
     }
 
-    public Aluno pesquisaUsuario() throws SQLException, IOException {
+    public Funcionario pesquisaUsuario() throws SQLException, IOException {
         ResultSet rs = null;
         con = ler.restaurar();
 
         //Lendo usuario 
-        rs = usuarioDAO.buscaDadosUsuarioId(aluno.getIdUsuario(), con);
+        rs = usuarioDAO.buscaDadosUsuarioId(funcionario.getIdUsuario(), con);
         rs.next();
-        aluno.setNome(rs.getString("nome"));
-        aluno.setCPF(rs.getString("CPF"));
-        aluno.setRG(rs.getString("RG"));
-        aluno.setTelefone(rs.getString("telefone"));
-        aluno.setCelular(rs.getString("celular"));
-        aluno.setEmail(rs.getString("email"));
-        aluno.setNivelAcesso(Integer.parseInt(rs.getString("nivelAcesso")));
-        aluno.setAcesso(rs.getString("Acesso_usuario"));
+        funcionario.setNome(rs.getString("nome"));
+        funcionario.setCPF(rs.getString("CPF"));
+        funcionario.setRG(rs.getString("RG"));
+        funcionario.setTelefone(rs.getString("telefone"));
+        funcionario.setCelular(rs.getString("celular"));
+        funcionario.setEmail(rs.getString("email"));
+        funcionario.setNivelAcesso(Integer.parseInt(rs.getString("nivelAcesso")));
+        funcionario.setAcesso(rs.getString("Acesso_usuario"));
 
-        return aluno;
+        return funcionario;
     }
 
-    public void alterarAluno(Aluno aluno) throws IOException {
+    public void alterarFuncionario(Funcionario funcionario) throws IOException {
 
         // Leio o arquivo para Conexao
         con = ler.restaurar();
 
-        alunoDAO.atualizaAluno(aluno, con);
-        usuarioDAO.atualizaUsuario(aluno, con);
+        funcionarioDAO.atualizaFuncionario(funcionario, con);
+        usuarioDAO.atualizaUsuario(funcionario, con);
 
     }
 
@@ -148,4 +150,5 @@ public class FrmAlunoAlterarController {
         enderecoDAO.atualizaEndereco(endereco, idUsuario, con);
 
     }
+
 }

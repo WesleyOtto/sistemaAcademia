@@ -17,9 +17,9 @@ import java.io.IOException;
  *
  * @author wesle
  */
-public class LeituraEscritaObj {
+public class LeituraEscritaConfigBanco {
 
-    public LeituraEscritaObj() {
+    public LeituraEscritaConfigBanco() {
     }
 
     public static void salvar(Connect objeto) throws IOException {

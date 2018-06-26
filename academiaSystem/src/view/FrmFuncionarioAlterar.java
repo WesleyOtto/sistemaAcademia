@@ -5,19 +5,28 @@
  */
 package view;
 
+import model.Acesso;
+import model.Endereco;
+import model.Funcionario;
+import Controller.FrmFuncionarioAlterarController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author wesle
  */
 public class FrmFuncionarioAlterar extends javax.swing.JFrame {
 
+    Acesso acesso = new Acesso();
+    Endereco endereco = new Endereco();
+    Funcionario funcionario = new Funcionario();
+    FrmFuncionarioAlterarController alterar = new FrmFuncionarioAlterarController();
+
     /**
      * Creates new form FrmCadastroAluno
      */
     public FrmFuncionarioAlterar() {
         initComponents();
-        
-        jTextNumeroMatricula.setText("1");
 
     }
 
@@ -57,27 +66,27 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextEstado = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextData = new javax.swing.JTextField();
+        jTextDataAdmissao = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextProfissao = new javax.swing.JTextField();
+        jTextDataDemissao = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextLogin = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextSenha = new javax.swing.JTextField();
         jButtonAlterar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jTextNumeroMatricula = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jTextPesquisarAluno = new javax.swing.JTextField();
+        jTextPesquisarFuncionario = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel22 = new javax.swing.JLabel();
         jTextSalario = new javax.swing.JTextField();
         jButtonCancelar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jTextNivelAcesso = new javax.swing.JTextField();
+        jTextCargo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -133,6 +142,11 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
         jLabel19.setText("Senha:");
 
         jButtonAlterar.setText("Alterar");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Número Matricula: ");
 
@@ -153,6 +167,11 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
         jLabel21.setText("Pesquisar:");
 
         jButton3.setText("Pesquisar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -162,10 +181,11 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
         jLabel22.setText("Salário:");
 
         jButtonCancelar.setText("Cancelar");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Secretaria", "Instrutor", "Aluno" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,33 +238,28 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextCidade, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextPesquisarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jTextCidade, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                            .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextPesquisarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jButton3)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
-                                .addGap(67, 67, 67)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(185, 185, 185)
-                                        .addComponent(jButton3)
-                                        .addGap(0, 26, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(136, 136, 136)
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextRG))))
+                                .addGap(203, 203, 203)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextRG, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                                        .addComponent(jTextData, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(jTextDataAdmissao, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextCargo))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -254,8 +269,8 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
                                             .addComponent(jLabel22))
                                         .addGap(23, 23, 23)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                                            .addComponent(jTextProfissao)
+                                            .addComponent(jTextSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                            .addComponent(jTextDataDemissao)
                                             .addComponent(jTextSalario)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,14 +282,12 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
                                         .addComponent(jLabel14)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextEstado))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -291,7 +304,7 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
                     .addComponent(jLabel20)
                     .addComponent(jTextNumeroMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextPesquisarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextPesquisarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,25 +341,25 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel15)
-                        .addComponent(jTextData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel16)
-                        .addComponent(jTextProfissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextDataDemissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel17)
                         .addComponent(jLabel22)
                         .addComponent(jTextSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -374,6 +387,132 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
     private void jTextNumeroMatriculaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextNumeroMatriculaInputMethodTextChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNumeroMatriculaInputMethodTextChanged
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        int matriculaFuncionario;
+        String pesquisaInserido = jTextPesquisarFuncionario.getText();
+
+        if ("".equals(pesquisaInserido)) {
+            JOptionPane.showMessageDialog(this, "Insira o numero da Matricula", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            try {
+
+                //Pego minha matricula Funcinario inserido 
+                matriculaFuncionario = Integer.parseInt(jTextPesquisarFuncionario.getText());
+
+                //Pesquisa do meu Funcionario 
+                funcionario = alterar.pesquisaFuncionario(matriculaFuncionario);
+
+                //Pesquisa do meu endereco
+                endereco = alterar.pesquisaEndereco(funcionario.getIdUsuario());
+
+                //Pesquiso o meu usuario 
+                funcionario = alterar.pesquisaUsuario();
+
+                //Pesquiso o meu acesso
+                acesso = alterar.pesquisaAcesso(funcionario.getAcesso());
+
+                // Seto dados do Usuario
+                jTextNumeroMatricula.setText(String.valueOf(matriculaFuncionario));
+                jTextNome.setText(funcionario.getNome());
+                jTextRG.setText(funcionario.getRG());
+                jTextCPF.setText(funcionario.getCPF());
+                jTextCelular.setText(funcionario.getCelular());
+                jTextTelefone.setText(funcionario.getTelefone());
+                jTextEmail.setText(funcionario.getEmail());
+                jTextNivelAcesso.setText(String.valueOf(funcionario.getNivelAcesso()));
+
+                // Seto dados do Endereco
+                jTextRua.setText(endereco.getRua());
+                jTextNumero.setText(String.valueOf(endereco.getNumero()));
+                jTextCEP.setText(endereco.getCEP());
+                jTextBairro.setText(endereco.getBairro());
+                jTextCidade.setText(endereco.getCidade());
+                jTextEstado.setText(endereco.getEstado());
+
+                //Seto dados do Funcionario
+                jTextCargo.setText(funcionario.getCargo());
+                jTextSalario.setText(funcionario.getSalario());
+                jTextDataAdmissao.setText(funcionario.getDataAdmissao());
+                jTextDataDemissao.setText(funcionario.getDataDemissao());
+
+                //Seto dados do Acesso
+                jTextLogin.setText(acesso.getLogin());
+                jTextSenha.setText(acesso.getSenha());
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        // TODO add your handling code here:
+
+        int matriculaFuncionario = -1;
+        String pesquisaInserido = jTextPesquisarFuncionario.getText();
+
+        if ("".equals(pesquisaInserido)) {
+
+            JOptionPane.showMessageDialog(this, "Pesquise primeiro a matrcula do funcionario", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            try {
+                matriculaFuncionario = Integer.parseInt(jTextPesquisarFuncionario.getText());
+
+                //Dados usuario 
+                funcionario.setNome(jTextNome.getText());
+                funcionario.setRG(jTextRG.getText());
+                funcionario.setCPF(jTextCPF.getText());
+                funcionario.setTelefone(jTextTelefone.getText());
+                funcionario.setCelular(jTextCelular.getText());
+                funcionario.setEmail(jTextEmail.getText());
+                funcionario.setNivelAcesso(Integer.parseInt(jTextNivelAcesso.getText()));
+
+                //Dados do Funcionario  
+                funcionario.setMatriculaFuncionario(matriculaFuncionario);
+                funcionario.setCargo(jTextCargo.getText());
+                funcionario.setSalario(jTextSalario.getText());
+                funcionario.setDataAdmissao(jTextDataAdmissao.getText());
+                funcionario.setDataDemissao(jTextDataDemissao.getText());
+                
+                alterar.alterarFuncionario(funcionario);
+
+                //Dados do acesso
+                acesso.setLogin(jTextLogin.getText());
+                acesso.setSenha(jTextSenha.getText());
+
+                alterar.alterarAcesso(acesso);
+
+                // dados do Endereco
+                endereco.setRua(jTextRua.getText());
+                endereco.setNumero(Integer.parseInt(jTextNumero.getText()));
+                endereco.setEstado(jTextEstado.getText());
+                endereco.setBairro(jTextBairro.getText());
+                endereco.setCEP(jTextCEP.getText());
+                endereco.setCidade(jTextCidade.getText());
+
+                alterar.alterarEndereco(endereco, acesso);
+                JOptionPane.showMessageDialog(this, "Alterado com sucesso", "Alterar Funcionario", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,8 +585,6 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -475,21 +612,23 @@ public class FrmFuncionarioAlterar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextBairro;
     private javax.swing.JTextField jTextCEP;
     private javax.swing.JTextField jTextCPF;
+    private javax.swing.JTextField jTextCargo;
     private javax.swing.JTextField jTextCelular;
     private javax.swing.JTextField jTextCidade;
-    private javax.swing.JTextField jTextData;
+    private javax.swing.JTextField jTextDataAdmissao;
+    private javax.swing.JTextField jTextDataDemissao;
     private javax.swing.JTextField jTextEmail;
     private javax.swing.JTextField jTextEstado;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextLogin;
+    private javax.swing.JTextField jTextNivelAcesso;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextNumero;
     private javax.swing.JTextField jTextNumeroMatricula;
-    private javax.swing.JTextField jTextPesquisarAluno;
-    private javax.swing.JTextField jTextProfissao;
+    private javax.swing.JTextField jTextPesquisarFuncionario;
     private javax.swing.JTextField jTextRG;
     private javax.swing.JTextField jTextRua;
     private javax.swing.JTextField jTextSalario;
+    private javax.swing.JTextField jTextSenha;
     private javax.swing.JTextField jTextTelefone;
     // End of variables declaration//GEN-END:variables
 }

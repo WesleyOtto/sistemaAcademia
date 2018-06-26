@@ -96,7 +96,7 @@ public class EnderecoDAO {
             strSQL = strSQL + "bairro = " + "'" + endereco.getBairro() + "',";
             strSQL = strSQL + "CEP    = " + "'" + endereco.getCEP() + "',";
             strSQL = strSQL + "cidade = " + "'" + endereco.getCidade() + "',";
-            strSQL = strSQL + "estado = " + "'" + endereco.getEstado() + "',";
+            strSQL = strSQL + "estado = " + "'" + endereco.getEstado() + "' ";
             strSQL = strSQL + "WHERE Usuario_idUsuario = '" + Usuario_idUsuario + "';";
 
             //Criando objeto da conexão

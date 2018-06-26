@@ -18,8 +18,9 @@ import javax.swing.JOptionPane;
 public class FrmAlunoAlterar extends javax.swing.JFrame {
 
     Acesso acesso = new Acesso();
-    Aluno aluno = new Aluno();
     Endereco endereco = new Endereco();
+    Aluno aluno = new Aluno();
+    
     FrmAlunoAlterarController alterar = new FrmAlunoAlterarController();
 
     /**
@@ -130,8 +131,6 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
 
         jLabel14.setText("Estado:");
 
-        jTextEstado.setEditable(false);
-
         jLabel15.setText("Data Matricula:");
 
         jLabel16.setText("Profissão:");
@@ -139,6 +138,8 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
         jLabel17.setText("Status:");
 
         jLabel18.setText("Login:");
+
+        jTextLogin.setEditable(false);
 
         jLabel19.setText("Senha:");
 
@@ -185,6 +186,8 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
                 jButtonAlterarActionPerformed(evt);
             }
         });
+
+        jTextNivelAcesso.setEditable(false);
 
         jTextField1.setEditable(false);
         jTextField1.setText("Ativo/ Inativo");
@@ -406,6 +409,56 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
+        int matriculaAluno = -1;
+        String pesquisaInserido = jTextPesquisarAluno.getText();
+
+        if ("".equals(pesquisaInserido)) {
+
+            JOptionPane.showMessageDialog(this, "Pesquise primeiro a matrcula do aluno", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            try {
+                matriculaAluno = Integer.parseInt(jTextPesquisarAluno.getText());
+
+                //Dados usuario 
+                aluno.setNome(jTextNome.getText());
+                aluno.setRG(jTextRG.getText());
+                aluno.setCPF(jTextCPF.getText());
+                aluno.setTelefone(jTextTelefone.getText());
+                aluno.setCelular(jTextCelular.getText());
+                aluno.setEmail(jTextEmail.getText());
+                aluno.setNivelAcesso(Integer.parseInt(jTextNivelAcesso.getText()));
+
+                //Dados do ALuno 
+                aluno.setMatriculaAluno(matriculaAluno);
+                aluno.setProfissao(jTextProfissao.getText());
+                aluno.setStatus(jTextStatus.getText());
+                aluno.setDataMatricula(jTextData.getText());
+                alterar.alterarAluno(aluno);
+
+                //Dados do acesso
+                acesso.setLogin(jTextLogin.getText());
+                acesso.setSenha(jTextSenha.getText());
+
+                alterar.alterarAcesso(acesso);
+
+                // dados do Endereco
+                endereco.setRua(jTextRua.getText());
+                endereco.setNumero(Integer.parseInt(jTextNumero.getText()));
+                endereco.setEstado(jTextEstado.getText());
+                endereco.setBairro(jTextBairro.getText());
+                endereco.setCEP(jTextCEP.getText());
+                endereco.setCidade(jTextCidade.getText());
+
+                alterar.alterarEndereco(endereco, acesso);
+                
+                JOptionPane.showMessageDialog(this, "Alterado com sucesso", "Alterar Aluno", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -416,43 +469,44 @@ public class FrmAlunoAlterar extends javax.swing.JFrame {
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         // TODO add your handling code here:
         int matriculaAluno;
+        String pesquisaInserido = jTextPesquisarAluno.getText();
 
-        matriculaAluno = Integer.parseInt(jTextPesquisarAluno.getText());
+        if ("".equals(pesquisaInserido)) {
+            JOptionPane.showMessageDialog(this, "Insira o numero da Matricula", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
 
-        try {
+            try {
+                matriculaAluno = Integer.parseInt(jTextPesquisarAluno.getText());
+                aluno = alterar.pesquisaAluno(matriculaAluno);
+                endereco = alterar.pesquisaEndereco(aluno.getIdUsuario());
+                aluno = alterar.pesquisaUsuario();
+                acesso = alterar.pesquisaAcesso(aluno.getAcesso());
 
-            aluno = alterar.pesquisaAluno(matriculaAluno);
-            endereco = alterar.pesquisaEndereco(aluno.getIdUsuario());
-            aluno = alterar.pesquisaUsuario();
-            acesso = alterar.pesquisaAcesso(aluno.getAcesso());
-            
-            
-            
-            jTextNumeroMatricula.setText(String.valueOf(matriculaAluno));
-            jTextNome.setText(aluno.getNome());
-            jTextRG.setText(aluno.getRG());
-            jTextCPF.setText(aluno.getCPF());
-            jTextCelular.setText(aluno.getCelular());
-            jTextTelefone.setText(aluno.getTelefone());
-            jTextEmail.setText(aluno.getEmail());
-            jTextRua.setText(endereco.getRua());
-            jTextNumero.setText(String.valueOf(endereco.getNumero()));
-            jTextCEP.setText(endereco.getCEP());
-            jTextBairro.setText(endereco.getBairro());
-            jTextCidade.setText(endereco.getCidade());
-            jTextData.setText(aluno.getDataMatricula());
-            jTextProfissao.setText(aluno.getProfissao());
-            jTextEstado.setText(endereco.getEstado());
-            jTextLogin.setText(acesso.getLogin());
-            jTextSenha.setText(acesso.getSenha());
-            jTextNivelAcesso.setText(String.valueOf(aluno.getNivelAcesso()));
-            jTextStatus.setText(aluno.getStatus());
+                jTextNumeroMatricula.setText(String.valueOf(matriculaAluno));
+                jTextNome.setText(aluno.getNome());
+                jTextRG.setText(aluno.getRG());
+                jTextCPF.setText(aluno.getCPF());
+                jTextCelular.setText(aluno.getCelular());
+                jTextTelefone.setText(aluno.getTelefone());
+                jTextEmail.setText(aluno.getEmail());
+                jTextRua.setText(endereco.getRua());
+                jTextNumero.setText(String.valueOf(endereco.getNumero()));
+                jTextCEP.setText(endereco.getCEP());
+                jTextBairro.setText(endereco.getBairro());
+                jTextCidade.setText(endereco.getCidade());
+                jTextData.setText(aluno.getDataMatricula());
+                jTextProfissao.setText(aluno.getProfissao());
+                jTextEstado.setText(endereco.getEstado());
+                jTextLogin.setText(acesso.getLogin());
+                jTextSenha.setText(acesso.getSenha());
+                jTextNivelAcesso.setText(String.valueOf(aluno.getNivelAcesso()));
+                jTextStatus.setText(aluno.getStatus());
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
-            
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
+
+            }
         }
-
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

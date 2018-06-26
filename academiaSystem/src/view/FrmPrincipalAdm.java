@@ -42,12 +42,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jCadastroAluno = new javax.swing.JMenu();
         jAlunoItemCadastrar = new javax.swing.JMenuItem();
         jAlunoItemAlterar = new javax.swing.JMenuItem();
-        jAlunoItemBuscarDeletar = new javax.swing.JMenuItem();
         jAluniItemBuscar = new javax.swing.JMenuItem();
         jFuncionario = new javax.swing.JMenu();
         jFuncionarioItemCadastrarAlterarDeletar = new javax.swing.JMenuItem();
         jFuncionarioItemAlterar = new javax.swing.JMenuItem();
-        jFuncionarioItemBuscarDeletar = new javax.swing.JMenuItem();
+        jFuncionarioItemBuscar = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu1 = new javax.swing.JMenu();
         jFaturaItemCadastrar = new javax.swing.JMenuItem();
@@ -123,16 +122,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         });
         jCadastroAluno.add(jAlunoItemAlterar);
 
-        jAlunoItemBuscarDeletar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK));
-        jAlunoItemBuscarDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
-        jAlunoItemBuscarDeletar.setText("Deletar");
-        jAlunoItemBuscarDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAlunoItemBuscarDeletarActionPerformed(evt);
-            }
-        });
-        jCadastroAluno.add(jAlunoItemBuscarDeletar);
-
+        jAluniItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_MASK));
         jAluniItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
         jAluniItemBuscar.setText("Buscar");
         jAluniItemBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -166,15 +156,15 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         });
         jFuncionario.add(jFuncionarioItemAlterar);
 
-        jFuncionarioItemBuscarDeletar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK));
-        jFuncionarioItemBuscarDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
-        jFuncionarioItemBuscarDeletar.setText("Buscar/Deletar");
-        jFuncionarioItemBuscarDeletar.addActionListener(new java.awt.event.ActionListener() {
+        jFuncionarioItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.ALT_MASK));
+        jFuncionarioItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
+        jFuncionarioItemBuscar.setText("Buscar");
+        jFuncionarioItemBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFuncionarioItemBuscarDeletarActionPerformed(evt);
+                jFuncionarioItemBuscarActionPerformed(evt);
             }
         });
-        jFuncionario.add(jFuncionarioItemBuscarDeletar);
+        jFuncionario.add(jFuncionarioItemBuscar);
         jFuncionario.add(jSeparator2);
 
         jMenuBar1.add(jFuncionario);
@@ -348,11 +338,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         FrmFuncionarioAlterar.main(args);
     }//GEN-LAST:event_jFuncionarioItemAlterarActionPerformed
 
-    private void jAlunoItemBuscarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoItemBuscarDeletarActionPerformed
-        // TODO add your handling code here:
-        FrmAlunoDeletar.main(args);
-    }//GEN-LAST:event_jAlunoItemBuscarDeletarActionPerformed
-
     private void jFaturaItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFaturaItemCadastrarActionPerformed
         // TODO add your handling code here:
         FrmFaturaCadastrar.main(args);
@@ -367,11 +352,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmAlunoAlterar.main(args);
     }//GEN-LAST:event_jAlunoItemAlterarActionPerformed
-
-    private void jFuncionarioItemBuscarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemBuscarDeletarActionPerformed
-        // TODO add your handling code here:
-        FrmFuncionarioPesquisar.main(args);
-    }//GEN-LAST:event_jFuncionarioItemBuscarDeletarActionPerformed
 
     private void jFaturaItemBaixaFaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFaturaItemBaixaFaturaActionPerformed
         // TODO add your handling code here:
@@ -402,6 +382,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmAlunoBuscar.main(args);
     }//GEN-LAST:event_jAluniItemBuscarActionPerformed
+
+    private void jFuncionarioItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemBuscarActionPerformed
+        // TODO add your handling code here:
+        FrmFuncionarioBuscar.main(args);
+    }//GEN-LAST:event_jFuncionarioItemBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,7 +430,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenu Jsair;
     private javax.swing.JMenuItem jAluniItemBuscar;
     private javax.swing.JMenuItem jAlunoItemAlterar;
-    private javax.swing.JMenuItem jAlunoItemBuscarDeletar;
     private javax.swing.JMenuItem jAlunoItemCadastrar;
     private javax.swing.JMenuItem jAvaliacaoFisicaItemBuscar;
     private javax.swing.JMenuItem jAvaliacaoFisicaItemCadastrar;
@@ -458,7 +442,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jFaturaItemCadastrar;
     private javax.swing.JMenu jFuncionario;
     private javax.swing.JMenuItem jFuncionarioItemAlterar;
-    private javax.swing.JMenuItem jFuncionarioItemBuscarDeletar;
+    private javax.swing.JMenuItem jFuncionarioItemBuscar;
     private javax.swing.JMenuItem jFuncionarioItemCadastrarAlterarDeletar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
