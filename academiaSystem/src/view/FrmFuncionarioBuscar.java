@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.Connect;
 import utils.LeituraEscritaConfigBanco;
+import Controller.FrmFuncionarioBuscarController;
 
 /**
  *
@@ -22,6 +23,7 @@ public class FrmFuncionarioBuscar extends javax.swing.JFrame {
 
     public Connect con = new Connect();
     LeituraEscritaConfigBanco ler = new LeituraEscritaConfigBanco();
+    FrmFuncionarioBuscarController buscar = new FrmFuncionarioBuscarController();
 
     /**
      * Creates new form FrmAlunoBuscar
@@ -39,24 +41,17 @@ public class FrmFuncionarioBuscar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableAluno = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButtonBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButtonSair = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableAluno = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableEndereco = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTableAluno.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "idUsuario", "nome", "CPF", "RG", "telefone", "celular", "email", "nivelAcesso", "Acesso_usuario", "matriculaFuncionario", "Cargo", "data Admissao", "Data Demissao"
-            }
-        ));
-        jScrollPane1.setViewportView(jTableAluno);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Buscar Aluno");
@@ -78,21 +73,36 @@ public class FrmFuncionarioBuscar extends javax.swing.JFrame {
             }
         });
 
+        jTableAluno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "matriculaFuncionario", "nome", "CPF", "RG", "telefone", "celular", "email", "nivelAcesso", "Acesso_usuario", "Cargo", "data Admissao", "Data Demissao"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableAluno);
+
+        jTabbedPane2.addTab("Funcionario", jScrollPane1);
+
+        jTableEndereco.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "idUsuario", "MatriculaAluno", "rua", "Numero", "bairro", "CEP", "Cidade", "Estado"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableEndereco);
+
+        jTabbedPane2.addTab("Endereco", jScrollPane2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1355, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 705, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -100,6 +110,15 @@ public class FrmFuncionarioBuscar extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(546, 546, 546))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,9 +128,9 @@ public class FrmFuncionarioBuscar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jButtonBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jButtonSair)
                 .addGap(4, 4, 4))
         );
@@ -129,10 +148,12 @@ public class FrmFuncionarioBuscar extends javax.swing.JFrame {
         }
 
         try {
+            //Seto o modelo da minha coluna
             DefaultTableModel modelo = new DefaultTableModel();
             jTableAluno.setModel(modelo);     //é o nome da minha jTable
 
-            modelo.addColumn("idUsuario");
+            //Seto o nome das colunas
+            modelo.addColumn("Matricula Funcionario");
             modelo.addColumn("Nome");
             modelo.addColumn("CPF");
             modelo.addColumn("RG");
@@ -141,54 +162,52 @@ public class FrmFuncionarioBuscar extends javax.swing.JFrame {
             modelo.addColumn("E-mail");
             modelo.addColumn("Nivel de Acesso");
             modelo.addColumn("Login");
-
-            modelo.addColumn("Matricula Funcionario");
             modelo.addColumn("Cargo");
             modelo.addColumn("Salario");
             modelo.addColumn("Data Admissao");
             modelo.addColumn("Data Demissao");
 
-            jTableAluno.getColumnModel().getColumn(0).setPreferredWidth(0);   //Tamanho da Coluna 1
-            jTableAluno.getColumnModel().getColumn(1).setPreferredWidth(40);    //Tamnaho da Coluna 2
-            jTableAluno.getColumnModel().getColumn(2).setPreferredWidth(20);   //Tamanho da Coluna 3
+            //Seto o tamanho das colunas
+            jTableAluno.getColumnModel().getColumn(0).setPreferredWidth(0);
+            jTableAluno.getColumnModel().getColumn(1).setPreferredWidth(40);
+            jTableAluno.getColumnModel().getColumn(2).setPreferredWidth(20);
+            jTableAluno.getColumnModel().getColumn(3).setPreferredWidth(20);
+            jTableAluno.getColumnModel().getColumn(4).setPreferredWidth(20);
+            jTableAluno.getColumnModel().getColumn(5).setPreferredWidth(20);
+            jTableAluno.getColumnModel().getColumn(6).setPreferredWidth(20);
+            jTableAluno.getColumnModel().getColumn(9).setPreferredWidth(20);
+            jTableAluno.getColumnModel().getColumn(10).setPreferredWidth(20);
+            jTableAluno.getColumnModel().getColumn(11).setPreferredWidth(20);
+            jTableAluno.getColumnModel().getColumn(12).setPreferredWidth(20);
 
-            jTableAluno.getColumnModel().getColumn(3).setPreferredWidth(20);   //Tamanho da Coluna 1
-            jTableAluno.getColumnModel().getColumn(4).setPreferredWidth(20);    //Tamnaho da Coluna 2
-            jTableAluno.getColumnModel().getColumn(5).setPreferredWidth(20);   //Tamanho da Coluna 3
+            //Preencho a tabela
+            buscar.pesquisaFuncionario(modelo, con);
 
-            jTableAluno.getColumnModel().getColumn(6).setPreferredWidth(20);   //Tamanho da Coluna 1
-            jTableAluno.getColumnModel().getColumn(7).setPreferredWidth(20);    //Tamnaho da Coluna 2
-            jTableAluno.getColumnModel().getColumn(8).setPreferredWidth(0);   //Tamanho da Coluna 3
+            // Dados endereco 
+            DefaultTableModel modelo2 = new DefaultTableModel();
+            jTableEndereco.setModel(modelo2);     //é o nome da minha jTable
 
-            jTableAluno.getColumnModel().getColumn(9).setPreferredWidth(20);   //Tamanho da Coluna 1
-            jTableAluno.getColumnModel().getColumn(10).setPreferredWidth(20);    //Tamnaho da Coluna 2
-            jTableAluno.getColumnModel().getColumn(11).setPreferredWidth(20);   //Tamanho da Coluna 3
+            //Seto nome das colunas 
+            modelo2.addColumn("Matricula Funcionario");
+            modelo2.addColumn("Rua");
+            modelo2.addColumn("Numero");
+            modelo2.addColumn("Bairro");
+            modelo2.addColumn("CEP");
+            modelo2.addColumn("Cidade");
+            modelo2.addColumn("Estado");
 
-            jTableAluno.getColumnModel().getColumn(12).setPreferredWidth(20);   //Tamanho da Coluna 3
-            jTableAluno.getColumnModel().getColumn(13).setPreferredWidth(20);   //Tamanho da Coluna 3
+            //Defino tamanho 
+            jTableEndereco.getColumnModel().getColumn(0).setPreferredWidth(0);
+            jTableEndereco.getColumnModel().getColumn(1).setPreferredWidth(40);
+            jTableEndereco.getColumnModel().getColumn(2).setPreferredWidth(20);
+            jTableEndereco.getColumnModel().getColumn(3).setPreferredWidth(20);
+            jTableEndereco.getColumnModel().getColumn(4).setPreferredWidth(20);
+            jTableEndereco.getColumnModel().getColumn(5).setPreferredWidth(20);
+            jTableEndereco.getColumnModel().getColumn(6).setPreferredWidth(20);
 
-            //Pesquisa todos os Estados Cadastrados no banco de dados.
-            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            ResultSet rs = funcionarioDAO.buscaTodosFuncionarios(con);
+            //preencho tabela
+            buscar.pesquisaEndereco(modelo2, con);
 
-            //Apresenta todos os estados cadastrado no grid
-            while (rs.next()) {
-                modelo.addRow(new Object[]{rs.getString("idUsuario"),
-                    rs.getString("nome"),
-                    rs.getString("CPF"),
-                    rs.getString("RG"),
-                    rs.getString("telefone"),
-                    rs.getString("celular"),
-                    rs.getString("email"),
-                    rs.getString("nivelAcesso"),
-                    rs.getString("Acesso_usuario"),
-                    rs.getString("matriculaFuncionario"),
-                    rs.getString("cargo"),
-                    rs.getString("salario"),
-                    rs.getString("dataAdmissao"),
-                    rs.getString("dataDemissao")
-                });
-            }
         } catch (Exception e) {
             System.out.println("Problemas com a carga do Grid ");
         }
@@ -242,6 +261,9 @@ public class FrmFuncionarioBuscar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTableAluno;
+    private javax.swing.JTable jTableEndereco;
     // End of variables declaration//GEN-END:variables
 }

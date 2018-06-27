@@ -146,4 +146,57 @@ public class EnderecoDAO {
         }
 
     }
+
+    //Metodo para retornar Endereco Do aluno
+    public ResultSet buscaEnderecoAluno(Connect conexao) {
+
+        try {
+
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT * FROM endereco inner join aluno where aluno.Usuario_idUsuario = endereco.Usuario_idUsuario ;";
+
+            //Realiza a conexao com o banco
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+
+            }
+            return rs;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
+
+    }
+
+    //Metodo para retornar Endereco Do funcionario
+    public ResultSet buscaEnderecoFuncionario(Connect conexao) {
+
+        try {
+
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT * FROM endereco inner join funcionario where funcionario.Usuario_idUsuario = endereco.Usuario_idUsuario ;";
+
+            //Realiza a conexao com o banco
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+
+            }
+            return rs;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
+    }
 }
