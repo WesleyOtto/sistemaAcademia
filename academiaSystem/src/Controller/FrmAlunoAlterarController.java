@@ -46,7 +46,8 @@ public class FrmAlunoAlterarController {
 
         //Lendo o que tem no bd do aluno
         rs = alunoDAO.buscaDadosAluno(matriculaAluno, con);
-
+        
+        //Coloco em um obj aluno os dados do meu BD
         if (rs != null) {
             rs.next();
             aluno.setDataMatricula(rs.getString("dataMatricula"));

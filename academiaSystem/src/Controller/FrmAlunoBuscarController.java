@@ -26,7 +26,7 @@ public class FrmAlunoBuscarController {
         AlunoDAO aluno = new AlunoDAO();
         ResultSet rs = aluno.buscaTodosAluno(con);
 
-        //Apresenta todos os estados cadastrado no grid
+        //Apresenta todos os alunos cadastrado no grid
         while (rs.next()) {
             modelo.addRow(new Object[]{rs.getString("matriculaAluno"),
                 rs.getString("nome"),
@@ -51,7 +51,8 @@ public class FrmAlunoBuscarController {
         EnderecoDAO endereco = new EnderecoDAO();
         ResultSet rsEndereco = null;
         rsEndereco = endereco.buscaEnderecoAluno(con);
-                
+        
+        //Apresenta todos os enderecos cadastrado no grid
         while(rsEndereco.next()) {
             modelo2.addRow(new Object[]{
                 rsEndereco.getString("matriculaAluno"),

@@ -20,14 +20,12 @@ public class AvaliacaoFisicaDAO {
     public boolean insereAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int Funcionario_matriculaFuncionario, int Aluno_matriculaAluno, Connect conexao) {
 
         try {
-
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO AvaliacaoFisica (gluteos, status, dataAvaliacao, dataVencimentoAvaliacao, "
+            strSQL = "INSERT INTO AvaliacaoFisica (gluteos, dataAvaliacao, dataVencimentoAvaliacao, "
                     + "coxa, altura, braco, gorduraCorporal, frequenciaCardiaca, abdomem, peso, panturrilha, "
-                    + "torax, peito, triceps, supraIliada, subEscapular) VALUES";
+                    + "torax, peito, triceps, supraIliada, subEscapular, Aluno_matriculaAluno, Funcionario_matriculaFuncionario) VALUES";
             strSQL = strSQL + "('" + avaliacaoFisica.getGluteos() + "',";
-            strSQL = strSQL + "'" + avaliacaoFisica.getStatus() + "',";
             strSQL = strSQL + "'" + avaliacaoFisica.getDataAvaliacao() + "',";
             strSQL = strSQL + "'" + avaliacaoFisica.getDataVencimentoAvaliacao() + "',";
             strSQL = strSQL + "'" + avaliacaoFisica.getCoxa() + "',";
@@ -38,10 +36,13 @@ public class AvaliacaoFisicaDAO {
             strSQL = strSQL + "'" + avaliacaoFisica.getAbdomem() + "',";
             strSQL = strSQL + "'" + avaliacaoFisica.getPeso() + "',";
             strSQL = strSQL + "'" + avaliacaoFisica.getPanturrilha() + "',";
+            strSQL = strSQL + "'" + avaliacaoFisica.getTorax() + "',";
             strSQL = strSQL + "'" + avaliacaoFisica.getPeito() + "',";
             strSQL = strSQL + "'" + avaliacaoFisica.getTriceps() + "',";
             strSQL = strSQL + "'" + avaliacaoFisica.getSupraIliada() + "',";
-            strSQL = strSQL + "'" + avaliacaoFisica.getSubEscapular() + "');";
+            strSQL = strSQL + "'" + avaliacaoFisica.getSubEscapular() + "', ";
+            strSQL = strSQL + "'" + Aluno_matriculaAluno + "', ";
+            strSQL = strSQL + "'" + Funcionario_matriculaFuncionario + "');";
 
             //Criando objeto da conexão
             Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());

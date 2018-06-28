@@ -93,7 +93,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
             .addGap(0, 291, Short.MAX_VALUE)
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homem1.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adm.jpg"))); // NOI18N
 
         jCadastroAluno.setText("Aluno");
         jCadastroAluno.addActionListener(new java.awt.event.ActionListener() {
