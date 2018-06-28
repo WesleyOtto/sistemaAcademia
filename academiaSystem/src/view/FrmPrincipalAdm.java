@@ -226,6 +226,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jAvaliacaoFisicaItemCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_MASK));
         jAvaliacaoFisicaItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
         jAvaliacaoFisicaItemCadastrar.setText("Cadastrar");
+        jAvaliacaoFisicaItemCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAvaliacaoFisicaItemCadastrarActionPerformed(evt);
+            }
+        });
         jMenu4.add(jAvaliacaoFisicaItemCadastrar);
 
         jAvaliacaoFisicaItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.ALT_MASK));
@@ -331,6 +336,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
 
     private void jAvaliacaoFisicaItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAvaliacaoFisicaItemBuscarActionPerformed
         // TODO add your handling code here:
+        FrmAvaliacaoFisicaRelatorio.main(args);
     }//GEN-LAST:event_jAvaliacaoFisicaItemBuscarActionPerformed
 
     private void jFuncionarioItemAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemAlterarActionPerformed
@@ -387,6 +393,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmFuncionarioBuscar.main(args);
     }//GEN-LAST:event_jFuncionarioItemBuscarActionPerformed
+
+    private void jAvaliacaoFisicaItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAvaliacaoFisicaItemCadastrarActionPerformed
+        // TODO add your handling code here:
+        FrmAvaliacaoFisica.main(args);
+    }//GEN-LAST:event_jAvaliacaoFisicaItemCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

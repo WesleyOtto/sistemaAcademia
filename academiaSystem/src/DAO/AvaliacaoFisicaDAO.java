@@ -102,7 +102,7 @@ public class AvaliacaoFisicaDAO {
             //Montar a instrução sql
             String strSQL = "";
             strSQL = "SELECT * FROM avaliacaofisica ";
-            strSQL = strSQL + "WHERE idAvaliacaoFisica = '" + idAvaliacaoFisica + "';";
+            strSQL = strSQL + " WHERE idAvaliacaoFisica = '" + idAvaliacaoFisica + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
