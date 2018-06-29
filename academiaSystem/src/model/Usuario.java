@@ -19,13 +19,12 @@ public class Usuario {
     private String telefone;
     private String celular;
     private String email;
-    private char sexo;
     private int nivelAcesso;
     private String dataNascimento;
     private String estadoCivil;
     private String foto; //Nao sei como colocar foto procurar!!!
 
-    public Usuario(int idUsuario, String acesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
+    public Usuario(int idUsuario, String acesso, String CPF, String RG, String nome, String telefone, String celular, String email, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
         this.idUsuario = idUsuario;
         this.acesso = acesso;
         this.CPF = CPF;
@@ -34,7 +33,6 @@ public class Usuario {
         this.telefone = telefone;
         this.celular = celular;
         this.email = email;
-        this.sexo = sexo;
         this.nivelAcesso = nivelAcesso;
         this.dataNascimento = dataNascimento;
         this.estadoCivil = estadoCivil;
@@ -98,14 +96,6 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public char getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
     }
 
     public String getDataNascimento() {

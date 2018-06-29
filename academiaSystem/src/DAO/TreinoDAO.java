@@ -25,10 +25,8 @@ public class TreinoDAO {
             codTreino = treino.getCodTreino();
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO treino (codTreino, descricaoTreino, tipoTreino, objetivo, Aluno_matriculaAluno) values";
-            strSQL = strSQL + "('" + codTreino + "',";
-            strSQL = strSQL + "'" + treino.getDescricaoTreino() + "',";
-            strSQL = strSQL + "'" + treino.getTipoTreino() + "',";
+            strSQL = "INSERT INTO treino (descricaoTreino, objetivo, Aluno_matriculaAluno) values ";
+            strSQL = strSQL + "('" + treino.getDescricaoTreino() + "',";
             strSQL = strSQL + "'" + treino.getObjetivo() + "',";
             strSQL = strSQL + "'" + Aluno_matriculaAluno + "');";
 
@@ -112,6 +110,34 @@ public class TreinoDAO {
 
     }
 
+    public int retornacodTreino(Connect conexao) {
+        int matricula = -1;
+        try {
+
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT (max(codTreino) + 1) as id from treino";
+
+            //Realiza a conexao com o banco
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+
+            }
+            rs.next();
+            matricula = rs.getInt("id");
+            return matricula;
+        } catch (Exception e) {
+            System.err.println(e);
+            return matricula;
+        }
+
+    }
+
     //Metodo para retornar a matricula do treino desejada
     public ResultSet buscatreino(Treino treino, Connect conexao) {
 
@@ -139,5 +165,4 @@ public class TreinoDAO {
         }
 
     }
-
 }

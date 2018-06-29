@@ -25,7 +25,7 @@ public class Funcionario extends Usuario {
     private Funcionario administrador;
 
     public Funcionario(int matriculaFuncionario, String cargo, String descricaoCargo, String salario, String dataAdmissao, String dataDemissao, AvaliacaoFisica avaliacaoFisica, Exercicio exercicio, Treino treino, Fatura fatura, Aluno aluno, Funcionario administrador, int idUsuario, String acesso, String CPF, String RG, String nome, String telefone, String celular, String email, char sexo, int nivelAcesso, String dataNascimento, String estadoCivil, String foto) {
-        super(idUsuario, acesso, CPF, RG, nome, telefone, celular, email, sexo, nivelAcesso, dataNascimento, estadoCivil, foto);
+        super(idUsuario, acesso, CPF, RG, nome, telefone, celular, email, nivelAcesso, dataNascimento, estadoCivil, foto);
         this.matriculaFuncionario = matriculaFuncionario;
         this.cargo = cargo;
         this.descricaoCargo = descricaoCargo;

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import model.AvaliacaoFisica;
 import Controller.FrmAvaliacaoFisicaRelatorioController;
 
+
 /**
  *
  * @author wesle
@@ -67,16 +68,12 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
         JButtonCancelar = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jTextIMC = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jTextVolMaxO2 = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jTextPercentualGordura = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jTextPesoGordo = new javax.swing.JTextField();
         jTextPesoMagro = new javax.swing.JTextField();
-        jTextPesoResidual = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jTextIdAvaliacao = new javax.swing.JTextField();
         jTexGluteos = new javax.swing.JTextField();
@@ -190,10 +187,6 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
             }
         });
 
-        jLabel22.setText("Volume Máx. Oxigênio");
-
-        jTextVolMaxO2.setEditable(false);
-
         jLabel23.setText("Percentual de Gordura");
 
         jTextPercentualGordura.setEditable(false);
@@ -201,8 +194,6 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
         jLabel20.setText("Peso gordo");
 
         jLabel21.setText("Peso Magro");
-
-        jLabel24.setText("Peso Resídual");
 
         jTextPesoGordo.setEditable(false);
 
@@ -212,8 +203,6 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
                 jTextPesoMagroActionPerformed(evt);
             }
         });
-
-        jTextPesoResidual.setEditable(false);
 
         jLabel25.setText("ID Avaliacao:");
 
@@ -321,33 +310,28 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel17))
-                                .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextTorax)
-                                    .addComponent(jTextAbdomem)
-                                    .addComponent(jTextAltura)
-                                    .addComponent(jTexGluteos)
-                                    .addComponent(jTextSupraIliada))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel8)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jTextBraco))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel16)
-                                                    .addGap(10, 10, 10)
-                                                    .addComponent(jTextTriceps, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel15)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jTextPeito, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addContainerGap())
+                                        .addGap(104, 104, 104)
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel2)
+                                                    .addComponent(jLabel17))
+                                                .addGap(26, 26, 26)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jTextTorax)
+                                                    .addComponent(jTextAbdomem)
+                                                    .addComponent(jTextAltura)
+                                                    .addComponent(jTexGluteos)
+                                                    .addComponent(jTextSupraIliada)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(jLabel20)))
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel5)
@@ -372,46 +356,41 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
                                                             .addComponent(jTextPanturrilha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jTextFrequenciaCardiaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jTextSubEscapular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addContainerGap())))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addContainerGap())))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextBraco))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel16)
+                                                    .addGap(10, 10, 10)
+                                                    .addComponent(jTextTriceps, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel15)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jTextPeito, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addContainerGap())))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel19)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jTextPesoGordo, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jTextIMC, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGap(7, 7, 7))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addGap(31, 31, 31)))
-                                .addGap(42, 42, 42)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextVolMaxO2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jTextPesoMagro, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(114, 114, 114)
-                                                .addComponent(jTextPercentualGordura, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel24)
-                                                    .addComponent(jTextPesoResidual, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(114, 114, 114))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel22)
-                                        .addGap(0, 259, Short.MAX_VALUE))))))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel21)
+                                .addGap(119, 119, 119))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextIMC, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                    .addComponent(jTextPesoGordo))
+                                .addGap(59, 59, 59)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextPesoMagro, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                    .addComponent(jTextPercentualGordura))
+                                .addGap(57, 57, 57))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -506,23 +485,19 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel22)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextIMC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextVolMaxO2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextPercentualGordura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel24))
+                    .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextPesoGordo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextPesoMagro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextPesoResidual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextPesoMagro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(JButtonCancelar)
                 .addGap(36, 36, 36))
@@ -591,7 +566,12 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
               
                 mastriculaAluno = buscarAvaliacao.buscaAvaliacaoIdAvaliacaoAluno(Integer.parseInt(idAvaliacao));
                 jTextMatriculaAluno.setText(String.valueOf(mastriculaAluno));
-
+                
+                jTextIMC.setText(String.valueOf(avaliacao.imc(avaliacao.getPeso(), avaliacao.getAltura())));
+                jTextPercentualGordura.setText(String.valueOf(avaliacao.percentualGordura(avaliacao.getPeito(), avaliacao.getTriceps(), avaliacao.getSupraIliada(), avaliacao.getSubEscapular(), avaliacao.getAbdomem(), avaliacao.getCoxa())));
+                jTextPesoGordo.setText(String.valueOf(avaliacao.pesoGordo(avaliacao.getPeso(), avaliacao.getPeito(), avaliacao.getTriceps(), avaliacao.getSupraIliada(), avaliacao.getSubEscapular(), avaliacao.getAbdomem(),avaliacao.getCoxa() )));
+                jTextPesoMagro.setText(String.valueOf(avaliacao.pesoGordo(avaliacao.getPeso(), avaliacao.getPeito(), avaliacao.getTriceps(), avaliacao.getSupraIliada(), avaliacao.getSubEscapular(), avaliacao.getAbdomem(),avaliacao.getCoxa() )));
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e, "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -710,9 +690,7 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -747,11 +725,9 @@ public class FrmAvaliacaoFisicaRelatorio extends javax.swing.JFrame {
     private javax.swing.JTextField jTextPeso;
     private javax.swing.JTextField jTextPesoGordo;
     private javax.swing.JTextField jTextPesoMagro;
-    private javax.swing.JTextField jTextPesoResidual;
     private javax.swing.JTextField jTextSubEscapular;
     private javax.swing.JTextField jTextSupraIliada;
     private javax.swing.JTextField jTextTorax;
     private javax.swing.JTextField jTextTriceps;
-    private javax.swing.JTextField jTextVolMaxO2;
     // End of variables declaration//GEN-END:variables
 }

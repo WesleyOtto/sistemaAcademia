@@ -502,6 +502,7 @@ public class FrmFuncionarioCadastrar extends javax.swing.JFrame {
             try {
 
                 cadastrar.cadastroFuncionario(acesso, funcionario, endereco);
+                JOptionPane.showMessageDialog(this, "Cadastrado com sucesso", "Cadastro Funcionario", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
 
             } catch (Exception e) {

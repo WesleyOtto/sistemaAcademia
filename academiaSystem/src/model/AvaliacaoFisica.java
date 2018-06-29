@@ -205,15 +205,7 @@ public class AvaliacaoFisica {
         return ((peso) / (altura * altura));
     }
 
-    //Calcula o volume max de oxigênio de acordo com o sexo
-    public double volumeMaxOxigenio(String sexo, double frequenciaCardiaca) {
-        if (sexo == "masculino") {
-            return (111.33 - (0.42 * frequenciaCardiaca));
-        } else {
-            return (65.81 - (0.1847 * frequenciaCardiaca));
-        }
-    }
-
+    
     // calcula o percentualGordura
     public double percentualGordura(double peito, double triceps, double supraIliaca, double subEscapular, double abdominal, double coxa) {
 
@@ -235,12 +227,6 @@ public class AvaliacaoFisica {
 
     }
 
-    public double pesoResidual(double pesoAtual, String sexo) {
-        if (sexo == "masculino") {
-            return pesoAtual * 0.24;
-        } else {
-            return pesoAtual * 0.21;
-        }
-    }
+    
 
 }

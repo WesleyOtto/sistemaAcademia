@@ -6,6 +6,7 @@
 package view;
 
 import Controller.FrmLoginController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -136,12 +137,16 @@ public class FrmTelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     private void buttonEntrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarLoginActionPerformed
-        boolean verificar; 
+        boolean verificar = false; 
         //Verifica se o Login e a senha Estão corretas !
         String usuario = TXTLogin.getText();
         String senha = String.valueOf(TXTpassword.getPassword());
-        verificar = controller.loginAcesso(usuario, senha);
+        if(!usuario.equals("") && !senha.equals(""))
+            verificar = controller.loginAcesso(usuario, senha);
+        else{
         
+            JOptionPane.showMessageDialog(null, "Usuario ou senha incorreta", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
         if(verificar) this.dispose();
 
     }//GEN-LAST:event_buttonEntrarLoginActionPerformed

@@ -30,10 +30,9 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
     Acesso acesso = new Acesso();
     AlunoDAO alunoID = new AlunoDAO();
     Aluno aluno = new Aluno();
-    
-    
+
     FrmAlunoCadastrarController cadastrar = new FrmAlunoCadastrarController();
-    
+
     /**
      * Creates new form FrmCadastroAluno
      */
@@ -474,7 +473,6 @@ public class FrmAlunoCadastrar extends javax.swing.JFrame {
             try {
                 cadastrar.cadastroAluno(acesso, aluno, endereco);
                 JOptionPane.showMessageDialog(this, "Cadastrado com sucesso", "Cadastro Aluno", JOptionPane.INFORMATION_MESSAGE);
-                FrmFaturaCadastrar.main(args);
                 this.dispose();
 
             } catch (Exception e) {

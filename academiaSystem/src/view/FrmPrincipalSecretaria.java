@@ -9,14 +9,14 @@ package view;
  *
  * @author wesle
  */
-public class FrmPrincipalAdm extends javax.swing.JFrame {
+public class FrmPrincipalSecretaria extends javax.swing.JFrame {
 
     private String args[] = {""};
 
     /**
      * Creates new form FrmPrincipalAdm
      */
-    public FrmPrincipalAdm() {
+    public FrmPrincipalSecretaria() {
 
         initComponents();
     }
@@ -43,20 +43,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jAlunoItemCadastrar = new javax.swing.JMenuItem();
         jAlunoItemAlterar = new javax.swing.JMenuItem();
         jAluniItemBuscar = new javax.swing.JMenuItem();
-        jFuncionario = new javax.swing.JMenu();
-        jFuncionarioItemCadastrarAlterarDeletar = new javax.swing.JMenuItem();
-        jFuncionarioItemAlterar = new javax.swing.JMenuItem();
-        jFuncionarioItemBuscar = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jTreinos = new javax.swing.JMenu();
-        jTreinosItemCadastrar = new javax.swing.JMenuItem();
-        jTreinosItemBuscar = new javax.swing.JMenuItem();
-        jExercicios = new javax.swing.JMenu();
-        jExercicioItemCadastrar = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jAvaliacaoFisicaItemCadastrar = new javax.swing.JMenuItem();
-        jAvaliacaoFisicaItemBuscar = new javax.swing.JMenuItem();
-        jAvaliacaoFisicaItemRelatorio = new javax.swing.JMenuItem();
         jConfigBD = new javax.swing.JMenu();
         jConfiguraçãoItemBancodeDados = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -91,7 +77,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
             .addGap(0, 291, Short.MAX_VALUE)
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adm.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Secretaria.jpg"))); // NOI18N
 
         jCadastroAluno.setText("Aluno");
         jCadastroAluno.addActionListener(new java.awt.event.ActionListener() {
@@ -131,112 +117,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jCadastroAluno.add(jAluniItemBuscar);
 
         jMenuBar1.add(jCadastroAluno);
-
-        jFuncionario.setText("Funcionário");
-
-        jFuncionarioItemCadastrarAlterarDeletar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
-        jFuncionarioItemCadastrarAlterarDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
-        jFuncionarioItemCadastrarAlterarDeletar.setText("Cadastrar");
-        jFuncionarioItemCadastrarAlterarDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFuncionarioItemCadastrarAlterarDeletarActionPerformed(evt);
-            }
-        });
-        jFuncionario.add(jFuncionarioItemCadastrarAlterarDeletar);
-
-        jFuncionarioItemAlterar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.ALT_MASK));
-        jFuncionarioItemAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Alterar.jpg"))); // NOI18N
-        jFuncionarioItemAlterar.setText("Alterar");
-        jFuncionarioItemAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFuncionarioItemAlterarActionPerformed(evt);
-            }
-        });
-        jFuncionario.add(jFuncionarioItemAlterar);
-
-        jFuncionarioItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.ALT_MASK));
-        jFuncionarioItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
-        jFuncionarioItemBuscar.setText("Buscar");
-        jFuncionarioItemBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFuncionarioItemBuscarActionPerformed(evt);
-            }
-        });
-        jFuncionario.add(jFuncionarioItemBuscar);
-        jFuncionario.add(jSeparator2);
-
-        jMenuBar1.add(jFuncionario);
-
-        jTreinos.setText("Treinos");
-
-        jTreinosItemCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_0, java.awt.event.InputEvent.ALT_MASK));
-        jTreinosItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
-        jTreinosItemCadastrar.setText("Cadastrar");
-        jTreinosItemCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTreinosItemCadastrarActionPerformed(evt);
-            }
-        });
-        jTreinos.add(jTreinosItemCadastrar);
-
-        jTreinosItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_SLASH, java.awt.event.InputEvent.ALT_MASK));
-        jTreinosItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
-        jTreinosItemBuscar.setText("Buscar");
-        jTreinosItemBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTreinosItemBuscarActionPerformed(evt);
-            }
-        });
-        jTreinos.add(jTreinosItemBuscar);
-
-        jMenuBar1.add(jTreinos);
-
-        jExercicios.setText("Exercicios");
-
-        jExercicioItemCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.ALT_MASK));
-        jExercicioItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
-        jExercicioItemCadastrar.setText("Cadastrar");
-        jExercicioItemCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jExercicioItemCadastrarActionPerformed(evt);
-            }
-        });
-        jExercicios.add(jExercicioItemCadastrar);
-
-        jMenuBar1.add(jExercicios);
-
-        jMenu4.setText("Avaliação Fisica");
-
-        jAvaliacaoFisicaItemCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_MASK));
-        jAvaliacaoFisicaItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
-        jAvaliacaoFisicaItemCadastrar.setText("Cadastrar");
-        jAvaliacaoFisicaItemCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAvaliacaoFisicaItemCadastrarActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jAvaliacaoFisicaItemCadastrar);
-
-        jAvaliacaoFisicaItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.ALT_MASK));
-        jAvaliacaoFisicaItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buscar.jpg"))); // NOI18N
-        jAvaliacaoFisicaItemBuscar.setText("Buscar");
-        jAvaliacaoFisicaItemBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAvaliacaoFisicaItemBuscarActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jAvaliacaoFisicaItemBuscar);
-
-        jAvaliacaoFisicaItemRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/infoimages.jpg"))); // NOI18N
-        jAvaliacaoFisicaItemRelatorio.setText("Relatório");
-        jAvaliacaoFisicaItemRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAvaliacaoFisicaItemRelatorioActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jAvaliacaoFisicaItemRelatorio);
-
-        jMenuBar1.add(jMenu4);
 
         jConfigBD.setText("Configuração");
 
@@ -298,9 +178,9 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
+                .addContainerGap(157, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -316,25 +196,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmAlunoCadastrar.main(args);
     }//GEN-LAST:event_jAlunoItemCadastrarActionPerformed
-
-    private void jFuncionarioItemCadastrarAlterarDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemCadastrarAlterarDeletarActionPerformed
-        // TODO add your handling code here:
-        FrmFuncionarioCadastrar.main(args);
-    }//GEN-LAST:event_jFuncionarioItemCadastrarAlterarDeletarActionPerformed
-
-    private void jTreinosItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTreinosItemBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTreinosItemBuscarActionPerformed
-
-    private void jAvaliacaoFisicaItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAvaliacaoFisicaItemBuscarActionPerformed
-        // TODO add your handling code here:
-        FrmAvaliacaoFisicaBuscar.main(args);
-    }//GEN-LAST:event_jAvaliacaoFisicaItemBuscarActionPerformed
-
-    private void jFuncionarioItemAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemAlterarActionPerformed
-        // TODO add your handling code here:
-        FrmFuncionarioAlterar.main(args);
-    }//GEN-LAST:event_jFuncionarioItemAlterarActionPerformed
 
     private void jSobreItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSobreItemAboutActionPerformed
         // TODO add your handling code here:
@@ -371,31 +232,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         FrmAlunoBuscar.main(args);
     }//GEN-LAST:event_jAluniItemBuscarActionPerformed
 
-    private void jFuncionarioItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFuncionarioItemBuscarActionPerformed
-        // TODO add your handling code here:
-        FrmFuncionarioBuscar.main(args);
-    }//GEN-LAST:event_jFuncionarioItemBuscarActionPerformed
-
-    private void jAvaliacaoFisicaItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAvaliacaoFisicaItemCadastrarActionPerformed
-        // TODO add your handling code here:
-        FrmAvaliacaoFisica.main(args);
-    }//GEN-LAST:event_jAvaliacaoFisicaItemCadastrarActionPerformed
-
-    private void jAvaliacaoFisicaItemRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAvaliacaoFisicaItemRelatorioActionPerformed
-        // TODO add your handling code here:
-        FrmAvaliacaoFisicaRelatorio.main(args);
-    }//GEN-LAST:event_jAvaliacaoFisicaItemRelatorioActionPerformed
-
-    private void jTreinosItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTreinosItemCadastrarActionPerformed
-        // TODO add your handling code here:
-        FrmTreinoCadastrar.main(args);
-    }//GEN-LAST:event_jTreinosItemCadastrarActionPerformed
-
-    private void jExercicioItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExercicioItemCadastrarActionPerformed
-        // TODO add your handling code here:
-        FrmExercicioCadastrar.main(args);
-    }//GEN-LAST:event_jExercicioItemCadastrarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -413,14 +249,26 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipalSecretaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipalSecretaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipalSecretaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipalSecretaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -429,7 +277,7 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPrincipalAdm().setVisible(true);
+                new FrmPrincipalSecretaria().setVisible(true);
             }
         });
     }
@@ -439,21 +287,11 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jAluniItemBuscar;
     private javax.swing.JMenuItem jAlunoItemAlterar;
     private javax.swing.JMenuItem jAlunoItemCadastrar;
-    private javax.swing.JMenuItem jAvaliacaoFisicaItemBuscar;
-    private javax.swing.JMenuItem jAvaliacaoFisicaItemCadastrar;
-    private javax.swing.JMenuItem jAvaliacaoFisicaItemRelatorio;
     private javax.swing.JMenu jCadastroAluno;
     private javax.swing.JMenu jConfigBD;
     private javax.swing.JMenuItem jConfiguraçãoItemBancodeDados;
-    private javax.swing.JMenuItem jExercicioItemCadastrar;
-    private javax.swing.JMenu jExercicios;
-    private javax.swing.JMenu jFuncionario;
-    private javax.swing.JMenuItem jFuncionarioItemAlterar;
-    private javax.swing.JMenuItem jFuncionarioItemBuscar;
-    private javax.swing.JMenuItem jFuncionarioItemCadastrarAlterarDeletar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -465,10 +303,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jSairItemLogout;
     private javax.swing.JMenuItem jSairItemSairSistema;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem jSobreItemAbout;
-    private javax.swing.JMenu jTreinos;
-    private javax.swing.JMenuItem jTreinosItemBuscar;
-    private javax.swing.JMenuItem jTreinosItemCadastrar;
     // End of variables declaration//GEN-END:variables
 }

@@ -63,7 +63,7 @@ public class AvaliacaoFisicaDAO {
         }
     }
 
-    //Metodo para deletar/Aluno
+    //Metodo para deletar/AvaliacaoFisica
     public boolean deletaAvaliacaoFisica(AvaliacaoFisica avaliacaoFisica, int idAvaliacaoFisica, Connect conexao) {
 
         try {
@@ -103,6 +103,34 @@ public class AvaliacaoFisicaDAO {
             String strSQL = "";
             strSQL = "SELECT * FROM avaliacaofisica ";
             strSQL = strSQL + " WHERE idAvaliacaoFisica = '" + idAvaliacaoFisica + "';";
+
+            //Realiza a conexao com o banco
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+
+            }
+            return rs;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
+
+    }
+    
+     //Metodo para retornar a matricula do aluno desejada
+    public ResultSet buscaAvaliacaoFisicaPorIdMatricula(int Aluno_matriculaAluno, Connect conexao) {
+
+        try {
+
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT * FROM avaliacaofisica ";
+            strSQL = strSQL + " WHERE Aluno_matriculaAluno = '" + Aluno_matriculaAluno + "';";
 
             //Realiza a conexao com o banco
             Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
