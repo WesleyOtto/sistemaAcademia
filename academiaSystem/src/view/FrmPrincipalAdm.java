@@ -51,8 +51,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jTreinos = new javax.swing.JMenu();
         jTreinosItemCadastrar = new javax.swing.JMenuItem();
         jTreinosItemBuscar = new javax.swing.JMenuItem();
-        jExercicios = new javax.swing.JMenu();
-        jExercicioItemCadastrar = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jAvaliacaoFisicaItemCadastrar = new javax.swing.JMenuItem();
         jAvaliacaoFisicaItemBuscar = new javax.swing.JMenuItem();
@@ -190,20 +188,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         jTreinos.add(jTreinosItemBuscar);
 
         jMenuBar1.add(jTreinos);
-
-        jExercicios.setText("Exercicios");
-
-        jExercicioItemCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.ALT_MASK));
-        jExercicioItemCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arquivo.jpg"))); // NOI18N
-        jExercicioItemCadastrar.setText("Cadastrar");
-        jExercicioItemCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jExercicioItemCadastrarActionPerformed(evt);
-            }
-        });
-        jExercicios.add(jExercicioItemCadastrar);
-
-        jMenuBar1.add(jExercicios);
 
         jMenu4.setText("Avaliação Fisica");
 
@@ -391,11 +375,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
         FrmTreinoCadastrar.main(args);
     }//GEN-LAST:event_jTreinosItemCadastrarActionPerformed
 
-    private void jExercicioItemCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExercicioItemCadastrarActionPerformed
-        // TODO add your handling code here:
-        FrmExercicioCadastrar.main(args);
-    }//GEN-LAST:event_jExercicioItemCadastrarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -445,8 +424,6 @@ public class FrmPrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenu jCadastroAluno;
     private javax.swing.JMenu jConfigBD;
     private javax.swing.JMenuItem jConfiguraçãoItemBancodeDados;
-    private javax.swing.JMenuItem jExercicioItemCadastrar;
-    private javax.swing.JMenu jExercicios;
     private javax.swing.JMenu jFuncionario;
     private javax.swing.JMenuItem jFuncionarioItemAlterar;
     private javax.swing.JMenuItem jFuncionarioItemBuscar;

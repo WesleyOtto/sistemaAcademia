@@ -176,16 +176,16 @@ public class FrmTreinoCadastrar extends javax.swing.JFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // TODO add your handling code here:
         int matriculaAluno = -1;
-
-        treino.setCodTreino(Integer.parseInt(jTextCodTreino.getText()));
+        int codTreino = Integer.parseInt(jTextCodTreino.getText()); 
+        treino.setCodTreino(codTreino);
         matriculaAluno = (Integer.parseInt(jTextMatriculaAluno.getText()));
         treino.setObjetivo(jTextObjetivoTreino.getText());
         treino.setDescricaoTreino(jTextDescricaoTreino.getText());
 
         try {
             cadastrar.cadastroTreino(treino, matriculaAluno);
-            JOptionPane.showMessageDialog(this, "Cadastrado com sucesso", "Cadastro Aluno", JOptionPane.INFORMATION_MESSAGE);
-            FrmPlanoTreinoCadastrar.main(args);
+            JOptionPane.showMessageDialog(this, "Cadastrado com sucesso", "Cadastro Treino", JOptionPane.INFORMATION_MESSAGE);
+            FrmPlanoTreinoCadastrar.main(codTreino);
             this.dispose();
 
         } catch (Exception e) {

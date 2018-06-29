@@ -22,15 +22,14 @@ public class PlanoTreinoDAO {
     }
 
     //Insere PlanoTreino 
-    public int inserePlanoTreino(PlanoTreino plano, int Treino_codTreino, Connect conexao) {
-        int codPlanoTreino = -1;
+    public void inserePlanoTreino(PlanoTreino plano, int Treino_codTreino, Connect conexao) {
+
         try {
-            codPlanoTreino = plano.getCodPlano();
+
             //Montar instrução sql
             String strSQL = "";
-            strSQL = "INSERT INTO planotreino (codPlanoTreino ,series, repeticao, tempoDescanso, observacao, diaSemana, Treino_codTreino) values";
-            strSQL = strSQL + "('" + codPlanoTreino + "',";
-            strSQL = strSQL + "'" + plano.getSeries() + "',";
+            strSQL = "INSERT INTO planoTreino (series, repeticao, tempoDescanso, observacao, diaSemana, Treino_codTreino) values";
+            strSQL = strSQL + " ('" + plano.getSeries() + "',";
             strSQL = strSQL + "'" + plano.getRepeticoes() + "',";
             strSQL = strSQL + "'" + plano.getTempoDescanso() + "',";
             strSQL = strSQL + "'" + plano.getObservacao() + "',";
@@ -46,13 +45,12 @@ public class PlanoTreinoDAO {
                 stmt.execute(strSQL);
                 conexao.desconectaBaseDados(con);
 
-                return codPlanoTreino;
             } else {
-                return -1;
+
             }
         } catch (SQLException e) {
             System.err.println(e);
-            return -1;
+
         }
     }
 
@@ -115,6 +113,36 @@ public class PlanoTreinoDAO {
         } catch (Exception e) {
             System.err.println(e);
             return false;
+        }
+
+    }
+    
+    // retorna codPlanoTreino
+    
+     public int retornaCodPlanoTreino(Connect conexao) {
+        int matricula = -1;
+        try {
+
+            ResultSet rs = null;
+            //Montar a instrução sql
+            String strSQL = "";
+            strSQL = "SELECT (max(codPlanoTreino) + 1) as id from planoTreino";
+
+            //Realiza a conexao com o banco
+            Connection con = conexao.conectaBaseDados(conexao.getDriver(), conexao.getUrl(), conexao.getUsuario(), conexao.getSenha());
+            if (con != null) {
+                Statement stmt = (Statement) con.createStatement();
+
+                //Executar a instrução sql
+                rs = stmt.executeQuery(strSQL);
+
+            }
+            rs.next();
+            matricula = rs.getInt("id");
+            return matricula;
+        } catch (Exception e) {
+            System.err.println(e);
+            return matricula;
         }
 
     }
